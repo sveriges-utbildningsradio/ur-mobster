@@ -1,6 +1,6 @@
 // @flow
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Mobsters from './Mobsters'
 import storage from 'electron-json-storage'
@@ -11,13 +11,41 @@ const MobstersContainer = () => {
   const [activeUsers, setActiveUsers] = useState([])
   const [isEditing, setIsEditing] = useState(false)
 
+  useEffect(() => {
+    storage.getAll(function(error, data) {
+      if (error) throw error
+
+      if (Object.keys(data).length === 0 && data.constructor === Object) {
+        return
+      }
+
+      if (data.users && !data.users.length) {
+        return
+      }
+
+      setActiveUsers(data.users)
+    })
+  }, [])
+
+  // Saves activeUsers to disk everytime it updates, apart from when starting the app
+  useEffect(
+    () => {
+      if (!activeUsers.length) {
+        return
+      }
+      storage.set('users', activeUsers, function(error) {
+        if (error) throw error
+      })
+    },
+    [activeUsers]
+  )
+
   const getGitHubInfo = async () => {
-    console.log('username : ', username)
     try {
       const { data } = await axios.get(
         `https://api.github.com/users/${username}`
       )
-      console.log(data)
+
       setActiveUsers([
         ...activeUsers,
         {
@@ -39,10 +67,10 @@ const MobstersContainer = () => {
           user.githubName.toLowerCase() === username.toLowerCase()
       )
     ) {
-      console.log('user already exists!', username)
       return
     }
     getGitHubInfo()
+    setUsername('')
   }
 
   const clickGuestButton = () => {
@@ -51,7 +79,6 @@ const MobstersContainer = () => {
         user => user.name && user.name.toLowerCase() === username.toLowerCase()
       )
     ) {
-      console.log('user already exists!', username)
       return
     }
 
@@ -63,6 +90,7 @@ const MobstersContainer = () => {
         name: username
       }
     ])
+    setUsername('')
   }
 
   const clickEditButton = () => {
@@ -74,6 +102,10 @@ const MobstersContainer = () => {
       user => user.name !== userToRemove
     )
     setActiveUsers(remainingUsers)
+
+    if (!remainingUsers.length) {
+      setIsEditing(false)
+    }
   }
 
   return (

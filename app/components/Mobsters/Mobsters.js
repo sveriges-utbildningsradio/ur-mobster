@@ -32,8 +32,8 @@ const Mobsters = ({
       </div>
       <ul>
         {!!activeUsers.length &&
-          activeUsers.map(user => (
-            <li className={styles.mobster} key={user.name}>
+          activeUsers.map((user, index) => (
+            <li className={styles.mobster} key={index}>
               <img
                 className={styles.avatar}
                 src={user.avatar ? user.avatar : avatarImage}
