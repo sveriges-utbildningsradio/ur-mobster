@@ -2,6 +2,7 @@
 import React from 'react'
 import styles from './Home.css'
 import { formatTime } from '../../utils/formatTime'
+import Mobsters from '../../components/Mobsters'
 
 type HomeProps = {
   count: number,
@@ -16,36 +17,42 @@ export const Home = ({
   handleIsRunningClick,
   handleResetClick
 }: HomeProps) => (
-  <div className={styles.container} data-tid="container">
-    <h2>UR Mobster</h2>
-    <p>Tid kvar: {formatTime(count)}</p>
+  <div className={styles.wrap} data-tid="container">
+    <div className={styles.mobstersWrap}>
+      <Mobsters />
+    </div>
 
-    <div className={styles.buttonsWrap}>
-      {isRunning ? (
+    <div className={styles.container}>
+      <h2 className={styles.header}>UR Mob</h2>
+      <h3 className={styles.timeLeft}>Tid kvar: {formatTime(count)}</h3>
+
+      <div className={styles.buttonsWrap}>
+        {isRunning ? (
+          <button
+            className={styles.timerButton}
+            onClick={() => handleIsRunningClick(false)}
+            type="button"
+          >
+            Pausa mobben!
+          </button>
+        ) : (
+          <button
+            className={styles.timerButton}
+            onClick={() => handleIsRunningClick(true)}
+            type="button"
+          >
+            Starta mobben!
+          </button>
+        )}
+
         <button
-          className={styles.timerButton}
-          onClick={() => handleIsRunningClick(false)}
+          className={styles.resetButton}
+          onClick={() => handleResetClick()}
           type="button"
         >
-          Pausa mobben!
+          Nollställ
         </button>
-      ) : (
-        <button
-          className={styles.timerButton}
-          onClick={() => handleIsRunningClick(true)}
-          type="button"
-        >
-          Starta mobben
-        </button>
-      )}
-
-      <button
-        className={styles.resetButton}
-        onClick={() => handleResetClick()}
-        type="button"
-      >
-        Nollställ
-      </button>
+      </div>
     </div>
   </div>
 )

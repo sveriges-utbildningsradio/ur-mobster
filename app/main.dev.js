@@ -69,8 +69,8 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1024,
-    height: 728,
+    width: 1440,
+    height: 1024,
     webPreferences: {
       backgroundThrottling: false
     }
