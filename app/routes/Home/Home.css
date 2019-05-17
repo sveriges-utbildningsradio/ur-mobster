@@ -1,32 +1,38 @@
-.container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  text-align: center;
-  transform: translate(-50%, -50%);
+.wrap {
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  height: 100vh;
 }
 
-.container h2 {
-  font-size: 5rem;
+.container {
+  background-image: url('../../assets//background.svg');
+  background-size: cover;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  color: #fff;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 150px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.timeLeft {
+  font-size: 36px;
 }
 
 .buttonsWrap {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 300px;
-}
-
-.container button {
-  border: none;
-  border-radius: 5px;
-  color: rgb(255, 255, 255);
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 14px;
-  padding: 20px;
-  text-align: center;
+  margin-top: 60px;
+  width: 400px;
 }
 
 button:focus {
@@ -34,11 +40,20 @@ button:focus {
 }
 
 .timerButton {
-  background-color: rgb(34, 39, 48);
+  border: none;
+  color: #110737;
+  background-color: #2cdbec;
+  border-radius: 42.5px;
+  height: 85px;
 }
 
 .resetButton {
   align-self: center;
-  background-color: rgb(236, 62, 61);
-  width: 100px;
+  background-color: #110737;
+  border-radius: 10px;
+  border: solid 2px #ff4a7e;
+  color: #ff4a7e;
+  height: 50px;
+  margin-top: 35px;
+  width: 140px;
 }

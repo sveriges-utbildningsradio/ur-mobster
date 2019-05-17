@@ -214,6 +214,7 @@
     "yarn": "^1.12.3"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "devtron": "^1.4.0",
     "electron-debug": "^2.0.0",
     "electron-log": "^2.2.17",

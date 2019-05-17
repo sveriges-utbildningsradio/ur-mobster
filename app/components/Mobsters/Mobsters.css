@@ -1,0 +1,82 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  margin: 25px 42px 30px;
+  justify-content: space-between;
+  height: 90vh;
+}
+
+h4 {
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.mobster {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  grid-column-gap: 10px;
+  height: 45px;
+  margin-bottom: 15px;
+}
+
+.addButton {
+  cursor: pointer;
+  margin-left: 12px;
+  height: 24px;
+  width: 24px;
+}
+
+.addWrap {
+  display: grid;
+  grid-template-columns: 45px 1fr;
+  grid-column-gap: 10px;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 45px;
+}
+
+.inputWrap {
+  display: flex;
+}
+
+.name {
+  color: #2cdbec;
+  font-size: 18px;
+  height: 28px;
+  letter-spacing: normal;
+  line-height: 1.56;
+}
+
+.githubName {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+input {
+  background: rgb(17, 6, 54);
+  border: none;
+  border-bottom: 1px solid #2cdbec;
+  color: #caf5ff;
+  font-family: Roboto;
+  font-size: 18px;
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+input:hover {
+  background-color: rgb(17, 6, 54);
+}
+
+input:focus {
+  outline: 0;
+}
+
+input::-webkit-input-placeholder {
+  color: #caf5ff;
+  font-family: Roboto;
+  font-size: 18px;
+}
