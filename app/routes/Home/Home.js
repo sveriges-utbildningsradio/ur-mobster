@@ -8,18 +8,20 @@ type HomeProps = {
   count: number,
   isRunning: boolean,
   handleIsRunningClick: (isRunning: boolean) => void,
-  handleResetClick: () => void
+  handleResetClick: () => void,
+  reachedEnd: boolean
 }
 
 export const Home = ({
   count,
   isRunning,
   handleIsRunningClick,
-  handleResetClick
+  handleResetClick,
+  reachedEnd
 }: HomeProps) => (
   <div className={styles.wrap} data-tid="container">
     <div className={styles.mobstersWrap}>
-      <Mobsters />
+      <Mobsters reachedEnd={reachedEnd} />
     </div>
 
     <div className={styles.container}>

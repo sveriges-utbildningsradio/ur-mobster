@@ -13,6 +13,7 @@ export const HomeContainer = () => {
 
   const [count, setCount] = useState(duration)
   const [isRunning, setIsRunning] = useState(false)
+  const [reachedEnd, setReachedEnd] = useState(false)
 
   useInterval(
     () => {
@@ -22,6 +23,7 @@ export const HomeContainer = () => {
         setIsRunning(false)
         setCount(duration)
         setWindowActive()
+        setReachedEnd(true)
 
         return
       }
@@ -31,6 +33,7 @@ export const HomeContainer = () => {
 
   const handleIsRunningClick = timerIsRunning => {
     if (timerIsRunning) {
+      setReachedEnd(false)
       setWindowHidden()
     }
 
@@ -48,6 +51,7 @@ export const HomeContainer = () => {
       isRunning={isRunning}
       handleIsRunningClick={handleIsRunningClick}
       handleResetClick={handleResetClick}
+      reachedEnd={reachedEnd}
     />
   )
 }

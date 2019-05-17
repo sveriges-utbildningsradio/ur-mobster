@@ -6,7 +6,7 @@ import Mobsters from './Mobsters'
 import storage from 'electron-json-storage'
 import generateMobsterName from '../../utils/generateMobsterName'
 
-const MobstersContainer = () => {
+const MobstersContainer = ({ reachedEnd }) => {
   const [username, setUsername] = useState('')
   const [activeUsers, setActiveUsers] = useState([])
   const [isEditing, setIsEditing] = useState(false)
@@ -38,6 +38,16 @@ const MobstersContainer = () => {
       })
     },
     [activeUsers]
+  )
+
+  useEffect(
+    () => {
+      if (reachedEnd === true) {
+        const newMobsterOrder = activeUsers.concat(activeUsers.splice(0, 1))
+        setActiveUsers(newMobsterOrder)
+      }
+    },
+    [reachedEnd]
   )
 
   const getGitHubInfo = async () => {
