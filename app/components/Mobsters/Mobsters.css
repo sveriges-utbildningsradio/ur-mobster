@@ -6,6 +6,12 @@
   height: 90vh;
 }
 
+.headerWrap {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
 h4 {
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
@@ -13,9 +19,14 @@ h4 {
   font-weight: 500;
 }
 
+.editButton {
+  height: 24px;
+  width: 24px;
+}
+
 .mobster {
   display: grid;
-  grid-template-columns: 45px 1fr;
+  grid-template-columns: 45px 1fr 24px;
   grid-column-gap: 10px;
   height: 45px;
   margin-bottom: 15px;

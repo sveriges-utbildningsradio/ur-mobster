@@ -3,18 +3,13 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Mobsters from './Mobsters'
-
-/* TODO:
-[X] make sure same user can't be twice
-[X] push to end of array, if res is succesful
-- ability to remove mobster
-- mark who is driver/navigator
-- save users!
-*/
+import storage from 'electron-json-storage'
+import generateMobsterName from '../../utils/generateMobsterName'
 
 const MobstersContainer = () => {
   const [username, setUsername] = useState('')
   const [activeUsers, setActiveUsers] = useState([])
+  const [isEditing, setIsEditing] = useState(false)
 
   const getGitHubInfo = async () => {
     console.log('username : ', username)
@@ -28,7 +23,7 @@ const MobstersContainer = () => {
         {
           avatar: data.avatar_url,
           githubName: data.login,
-          name: data.name
+          name: data.name ? data.name : generateMobsterName()
         }
       ])
     } catch (error) {
@@ -53,7 +48,7 @@ const MobstersContainer = () => {
   const clickGuestButton = () => {
     if (
       activeUsers.some(
-        user => user.name.toLowerCase() === username.toLowerCase()
+        user => user.name && user.name.toLowerCase() === username.toLowerCase()
       )
     ) {
       console.log('user already exists!', username)
@@ -70,11 +65,26 @@ const MobstersContainer = () => {
     ])
   }
 
+  const clickEditButton = () => {
+    setIsEditing(!isEditing)
+  }
+
+  const clickRemoveUser = userToRemove => {
+    const remainingUsers = activeUsers.filter(
+      user => user.name !== userToRemove
+    )
+    setActiveUsers(remainingUsers)
+  }
+
   return (
     <Mobsters
       activeUsers={activeUsers}
+      clickEditButton={clickEditButton}
       clickGitHubButton={clickGitHubButton}
       clickGuestButton={clickGuestButton}
+      clickRemoveUser={clickRemoveUser}
+      isEditing={isEditing}
+      setIsEditing={setIsEditing}
       setUsername={setUsername}
       username={username}
     />

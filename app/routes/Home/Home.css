@@ -47,6 +47,10 @@ button:focus {
   height: 85px;
 }
 
+.timerButton:hover {
+  background: #fff;
+}
+
 .resetButton {
   align-self: center;
   background-color: #110737;
@@ -56,4 +60,9 @@ button:focus {
   height: 50px;
   margin-top: 35px;
   width: 140px;
+}
+
+.resetButton:hover {
+  border-color: #fff;
+  color: #fff;
 }
