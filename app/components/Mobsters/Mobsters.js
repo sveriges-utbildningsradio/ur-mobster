@@ -34,10 +34,14 @@ const Mobsters = ({
         {!!activeUsers.length &&
           activeUsers.map((user, index) => (
             <li className={styles.mobster} key={index}>
-              <img
-                className={styles.avatar}
-                src={user.avatar ? user.avatar : avatarImage}
-              />
+              <div className={styles.avatarWrap}>
+                <img
+                  className={styles.avatar}
+                  src={user.avatar ? user.avatar : avatarImage}
+                />
+                {index === 0 && <span className={styles.driverDot} />}
+                {index === 1 && <span className={styles.navigatorDot} />}
+              </div>
               <div>
                 <p className={styles.name}>{user.name}</p>
                 <p className={styles.githubName}>{user.githubName}</p>

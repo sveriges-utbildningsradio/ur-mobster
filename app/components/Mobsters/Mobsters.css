@@ -45,9 +45,34 @@ h4 {
   grid-column-gap: 10px;
 }
 
+.avatarWrap {
+  display: inline-block;
+  position: relative;
+}
+
 .avatar {
   border-radius: 50%;
   width: 45px;
+}
+
+.driverDot {
+  height: 13px;
+  width: 13px;
+  background-color: #f70c54;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.navigatorDot {
+  height: 13px;
+  width: 13px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .inputWrap {
