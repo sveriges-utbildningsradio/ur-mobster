@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import styles from './Home.css'
-import { formatTime } from '../utils/formatTime'
+import { formatTime } from '../../utils/formatTime'
 
 type HomeProps = {
   count: number,

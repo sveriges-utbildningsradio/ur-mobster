@@ -1,7 +1,7 @@
 // @flow
 import React, { useState } from 'react'
-import Home from '../components/Home'
-import useInterval from '../utils/useInterval'
+import Home from './Home'
+import useInterval from '../../utils/useInterval'
 
 const {
   setWindowActive,
