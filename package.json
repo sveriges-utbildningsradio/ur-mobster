@@ -221,6 +221,7 @@
     "electron-log": "^2.2.17",
     "electron-updater": "^3.2.3",
     "react": "16.8.6",
+    "react-beautiful-dnd": "^11.0.3",
     "react-dom": "16.8.6",
     "react-hot-loader": "^4.8.4",
     "source-map-support": "^0.5.9"

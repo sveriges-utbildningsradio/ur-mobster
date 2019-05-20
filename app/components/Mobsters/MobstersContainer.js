@@ -6,6 +6,14 @@ import Mobsters from './Mobsters'
 import storage from 'electron-json-storage'
 import generateMobsterName from '../../utils/generateMobsterName'
 
+const reorder = (list, startIndex, endIndex) => {
+  const result = Array.from(list)
+  const [removed] = result.splice(startIndex, 1)
+  result.splice(endIndex, 0, removed)
+
+  return result
+}
+
 const MobstersContainer = ({ reachedEnd }) => {
   const [username, setUsername] = useState('')
   const [activeUsers, setActiveUsers] = useState([])
@@ -122,6 +130,21 @@ const MobstersContainer = ({ reachedEnd }) => {
     }
   }
 
+  const onDragEnd = result => {
+    // dropped outside the list
+    if (!result.destination) {
+      return
+    }
+
+    const items = reorder(
+      activeUsers,
+      result.source.index,
+      result.destination.index
+    )
+
+    setActiveUsers(items)
+  }
+
   return (
     <Mobsters
       activeUsers={activeUsers}
@@ -130,7 +153,7 @@ const MobstersContainer = ({ reachedEnd }) => {
       clickGuestButton={clickGuestButton}
       clickRemoveUser={clickRemoveUser}
       isEditing={isEditing}
-      setIsEditing={setIsEditing}
+      onDragEnd={onDragEnd}
       setUsername={setUsername}
       username={username}
     />
