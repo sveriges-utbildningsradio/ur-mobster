@@ -115,6 +115,10 @@ const MobstersContainer = ({ reachedEnd }) => {
 
     if (!remainingUsers.length) {
       setIsEditing(false)
+
+      storage.set('users', [], function(error) {
+        if (error) throw error
+      })
     }
   }
 
