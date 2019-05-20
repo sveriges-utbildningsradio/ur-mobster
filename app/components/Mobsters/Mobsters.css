@@ -8,15 +8,20 @@
 
 .headerWrap {
   align-items: center;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 75px 20px;
 }
 
 h4 {
-  color: #ffffff;
+  color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 26px;
   font-weight: 500;
+}
+
+.editLabel {
+  margin-right: 10px;
+  text-align: right;
 }
 
 .editButton {
@@ -97,10 +102,16 @@ input {
   border: none;
   border-bottom: 1px solid #2cdbec;
   color: #caf5ff;
-  font-family: Roboto;
+  font-family: Roboto, sans-serif;
   font-size: 18px;
   margin-bottom: 5px;
   width: 100%;
+}
+
+input::-webkit-input-placeholder {
+  color: #caf5ff;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
 }
 
 input:hover {
@@ -109,10 +120,4 @@ input:hover {
 
 input:focus {
   outline: 0;
-}
-
-input::-webkit-input-placeholder {
-  color: #caf5ff;
-  font-family: Roboto;
-  font-size: 18px;
 }
