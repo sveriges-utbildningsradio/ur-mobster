@@ -5,19 +5,15 @@ import axios from 'axios'
 import Mobsters from './Mobsters'
 import storage from 'electron-json-storage'
 import generateMobsterName from '../../utils/generateMobsterName'
-
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list)
-  const [removed] = result.splice(startIndex, 1)
-  result.splice(endIndex, 0, removed)
-
-  return result
-}
+import { move, reorder } from '../../utils/listHelpers'
 
 const MobstersContainer = ({ reachedEnd }) => {
   const [username, setUsername] = useState('')
   const [activeUsers, setActiveUsers] = useState([])
+  const [inactiveUsers, setInactiveUsers] = useState([])
   const [isEditing, setIsEditing] = useState(false)
+
+  const users = { activeUsers, inactiveUsers }
 
   useEffect(() => {
     storage.getAll(function(error, data) {
@@ -27,11 +23,16 @@ const MobstersContainer = ({ reachedEnd }) => {
         return
       }
 
-      if (data.users && !data.users.length) {
+      if (data.activeUsers && !data.activeUsers.length) {
         return
       }
 
-      setActiveUsers(data.users)
+      setActiveUsers(data.activeUsers)
+
+      if (data.inactiveUsers && !data.inactiveUsers.length) {
+        return
+      }
+      setInactiveUsers(data.inactiveUsers)
     })
   }, [])
 
@@ -41,11 +42,24 @@ const MobstersContainer = ({ reachedEnd }) => {
       if (!activeUsers.length) {
         return
       }
-      storage.set('users', activeUsers, function(error) {
+      storage.set('activeUsers', activeUsers, function(error) {
         if (error) throw error
       })
     },
     [activeUsers]
+  )
+
+  // Save inactiveUsers to disk everytime it updates, apart from when starting the app
+  useEffect(
+    () => {
+      if (!inactiveUsers.length) {
+        return
+      }
+      storage.set('inactiveUsers', inactiveUsers, function(error) {
+        if (error) throw error
+      })
+    },
+    [inactiveUsers]
   )
 
   useEffect(
@@ -115,34 +129,60 @@ const MobstersContainer = ({ reachedEnd }) => {
     setIsEditing(!isEditing)
   }
 
-  const clickRemoveUser = userToRemove => {
-    const remainingUsers = activeUsers.filter(
+  const clickRemoveUser = (userToRemove, list) => {
+    const remainingUsers = users[list].filter(
       user => user.name !== userToRemove
     )
-    setActiveUsers(remainingUsers)
+
+    if (list === 'activeUsers') {
+      setActiveUsers(remainingUsers)
+    } else {
+      setInactiveUsers(remainingUsers)
+    }
 
     if (!remainingUsers.length) {
       setIsEditing(false)
-
-      storage.set('users', [], function(error) {
-        if (error) throw error
-      })
+      persistEmptyList(list)
     }
   }
 
+  const persistEmptyList = list => {
+    storage.set(list, [], function(error) {
+      if (error) throw error
+    })
+  }
+
   const onDragEnd = result => {
+    const { source, destination } = result
+
     // dropped outside the list
     if (!result.destination) {
       return
     }
 
-    const items = reorder(
-      activeUsers,
-      result.source.index,
-      result.destination.index
-    )
+    if (source.droppableId === destination.droppableId) {
+      const items = reorder(
+        users[source.droppableId],
+        source.index,
+        destination.index
+      )
 
-    setActiveUsers(items)
+      if (source.droppableId === 'inactiveUsers') {
+        setInactiveUsers(items)
+      } else {
+        setActiveUsers(items)
+      }
+    } else {
+      const sorted = move(
+        users[source.droppableId],
+        users[destination.droppableId],
+        source,
+        destination
+      )
+
+      setActiveUsers(sorted.activeUsers)
+      setInactiveUsers(sorted.inactiveUsers)
+    }
   }
 
   return (
@@ -152,6 +192,7 @@ const MobstersContainer = ({ reachedEnd }) => {
       clickGitHubButton={clickGitHubButton}
       clickGuestButton={clickGuestButton}
       clickRemoveUser={clickRemoveUser}
+      inactiveUsers={inactiveUsers}
       isEditing={isEditing}
       onDragEnd={onDragEnd}
       setUsername={setUsername}

@@ -14,6 +14,7 @@ const Mobsters = ({
   clickGitHubButton,
   clickGuestButton,
   clickRemoveUser,
+  inactiveUsers,
   isEditing,
   onDragEnd,
   setUsername,
@@ -34,10 +35,10 @@ const Mobsters = ({
           />
         </div>
       </div>
-      <ul>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
+      <DragDropContext onDragEnd={onDragEnd}>
+        <ul>
+          <Droppable droppableId="activeUsers">
+            {provided => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
                 {!!activeUsers.length &&
                   activeUsers.map((user, index) => (
@@ -46,7 +47,7 @@ const Mobsters = ({
                       draggableId={user.name}
                       index={index}
                     >
-                      {(provided, snapshot) => (
+                      {provided => (
                         <li
                           className={styles.mobster}
                           key={index}
@@ -76,7 +77,9 @@ const Mobsters = ({
                           {isEditing && (
                             <img
                               className={styles.editButton}
-                              onClick={() => clickRemoveUser(user.name)}
+                              onClick={() =>
+                                clickRemoveUser(user.name, 'activeUsers')
+                              }
                               src={removeButton}
                             />
                           )}
@@ -88,8 +91,56 @@ const Mobsters = ({
               </div>
             )}
           </Droppable>
-        </DragDropContext>
-      </ul>
+        </ul>
+        <h4>Inaktiva mobsters</h4>
+        <Droppable droppableId="inactiveUsers">
+          {provided => (
+            <div
+              {...provided.droppableProps}
+              ref={provided.innerRef}
+              style={{ minHeight: '100px' }}
+            >
+              {inactiveUsers &&
+                !!inactiveUsers.length &&
+                inactiveUsers.map((user, index) => (
+                  <Draggable key={index} draggableId={user.name} index={index}>
+                    {provided => (
+                      <li
+                        className={styles.mobster}
+                        key={index}
+                        ref={provided.innerRef}
+                        {...provided.draggableProps}
+                        {...provided.dragHandleProps}
+                      >
+                        <div className={styles.avatarWrap}>
+                          <img
+                            className={styles.avatar}
+                            src={user.avatar ? user.avatar : avatarImage}
+                          />
+                        </div>
+                        <div>
+                          <p className={styles.name}>{user.name}</p>
+                          <p className={styles.githubName}>{user.githubName}</p>
+                        </div>
+
+                        {isEditing && (
+                          <img
+                            className={styles.editButton}
+                            onClick={() =>
+                              clickRemoveUser(user.name, 'inactiveUsers')
+                            }
+                            src={removeButton}
+                          />
+                        )}
+                      </li>
+                    )}
+                  </Draggable>
+                ))}
+              {provided.placeholder}
+            </div>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
 
     <div className={styles.addWrap}>
