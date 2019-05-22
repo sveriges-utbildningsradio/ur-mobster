@@ -1,72 +1,67 @@
 // @flow
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
-import Mobsters from './Mobsters'
 import storage from 'electron-json-storage'
+import Mobsters from './Mobsters'
 import generateMobsterName from '../../utils/generateMobsterName'
 import { move, reorder } from '../../utils/listHelpers'
 
-const MobstersContainer = ({ reachedEnd }) => {
-  const [username, setUsername] = useState('')
-  const [activeUsers, setActiveUsers] = useState([])
-  const [inactiveUsers, setInactiveUsers] = useState([])
-  const [isEditing, setIsEditing] = useState(false)
+const setToStore = (list, users) => {
+  storage.set(list, users, error => {
+    if (error) throw error
+  })
+}
 
-  const users = { activeUsers, inactiveUsers }
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_ACTIVEUSER':
+      setToStore('activeUsers', [...state.activeUsers, action.payload])
+      return { ...state, activeUsers: [...state.activeUsers, action.payload] }
+    case 'UPDATE_ACTIVEUSERS':
+      setToStore('activeUsers', action.payload)
+      return { ...state, activeUsers: action.payload }
+    case 'UPDATE_INACTIVEUSERS':
+      setToStore('inactiveUsers', action.payload)
+      return { ...state, inactiveUsers: action.payload }
+    case 'SET_FROM_STORAGE':
+      return { ...action.payload }
+    default:
+      throw new Error()
+  }
+}
 
-  useEffect(() => {
-    storage.getAll(function(error, data) {
-      if (error) throw error
+const initialState = {
+  activeUsers: [],
+  inactiveUsers: []
+}
 
+const MobstersContainer = ({ reachedEnd }: boolean) => {
+  const init = ({ activeUsers, inactiveUsers }) => {
+    storage.getAll((_, data) => {
       if (Object.keys(data).length === 0 && data.constructor === Object) {
         return
       }
 
-      if (data.activeUsers && !data.activeUsers.length) {
-        return
-      }
-
-      setActiveUsers(data.activeUsers)
-
-      if (data.inactiveUsers && !data.inactiveUsers.length) {
-        return
-      }
-      setInactiveUsers(data.inactiveUsers)
+      dispatch({
+        type: 'SET_FROM_STORAGE',
+        payload: data
+      })
     })
-  }, [])
+    return { activeUsers, inactiveUsers }
+  }
 
-  // Saves activeUsers to disk everytime it updates, apart from when starting the app
-  useEffect(
-    () => {
-      if (!activeUsers.length) {
-        return
-      }
-      storage.set('activeUsers', activeUsers, function(error) {
-        if (error) throw error
-      })
-    },
-    [activeUsers]
-  )
-
-  // Save inactiveUsers to disk everytime it updates, apart from when starting the app
-  useEffect(
-    () => {
-      if (!inactiveUsers.length) {
-        return
-      }
-      storage.set('inactiveUsers', inactiveUsers, function(error) {
-        if (error) throw error
-      })
-    },
-    [inactiveUsers]
-  )
+  const [state, dispatch] = useReducer(reducer, initialState, init)
+  const [username, setUsername] = useState('')
+  const [isEditing, setIsEditing] = useState(false)
 
   useEffect(
     () => {
       if (reachedEnd === true) {
+        const { activeUsers } = state
         const newMobsterOrder = activeUsers.concat(activeUsers.splice(0, 1))
-        setActiveUsers(newMobsterOrder)
+
+        dispatch({ type: 'UPDATE_ACTIVEUSERS', payload: newMobsterOrder })
       }
     },
     [reachedEnd]
@@ -78,22 +73,25 @@ const MobstersContainer = ({ reachedEnd }) => {
         `https://api.github.com/users/${username}`
       )
 
-      setActiveUsers([
-        ...activeUsers,
-        {
-          avatar: data.avatar_url,
-          githubName: data.login,
-          name: data.name ? data.name : generateMobsterName()
-        }
-      ])
+      const payload = {
+        avatar: data.avatar_url,
+        githubName: data.login,
+        name: data.name ? data.name : generateMobsterName()
+      }
+
+      dispatch({
+        type: 'ADD_ACTIVEUSER',
+        payload
+      })
     } catch (error) {
       console.error(error)
     }
   }
 
   const clickGitHubButton = () => {
+    console.log('state: ', state)
     if (
-      activeUsers.some(
+      state.activeUsers.some(
         user =>
           user.githubName &&
           user.githubName.toLowerCase() === username.toLowerCase()
@@ -107,21 +105,17 @@ const MobstersContainer = ({ reachedEnd }) => {
 
   const clickGuestButton = () => {
     if (
-      activeUsers.some(
+      state.activeUsers.some(
         user => user.name && user.name.toLowerCase() === username.toLowerCase()
       )
     ) {
       return
     }
 
-    setActiveUsers([
-      ...activeUsers,
-      {
-        avatar: null,
-        githubName: null,
-        name: username
-      }
-    ])
+    const payload = { avatar: null, githubName: null, name: username }
+
+    dispatch({ type: 'ADD_ACTIVEUSER', payload })
+
     setUsername('')
   }
 
@@ -130,14 +124,20 @@ const MobstersContainer = ({ reachedEnd }) => {
   }
 
   const clickRemoveUser = (userToRemove, list) => {
-    const remainingUsers = users[list].filter(
+    const remainingUsers = state[list].filter(
       user => user.name !== userToRemove
     )
 
     if (list === 'activeUsers') {
-      setActiveUsers(remainingUsers)
+      dispatch({
+        type: 'UPDATE_ACTIVEUSERS',
+        payload: remainingUsers
+      })
     } else {
-      setInactiveUsers(remainingUsers)
+      dispatch({
+        type: 'UPDATE_INACTIVEUSERS',
+        payload: remainingUsers
+      })
     }
 
     if (!remainingUsers.length) {
@@ -147,7 +147,7 @@ const MobstersContainer = ({ reachedEnd }) => {
   }
 
   const persistEmptyList = list => {
-    storage.set(list, [], function(error) {
+    storage.set(list, [], error => {
       if (error) throw error
     })
   }
@@ -162,37 +162,49 @@ const MobstersContainer = ({ reachedEnd }) => {
 
     if (source.droppableId === destination.droppableId) {
       const items = reorder(
-        users[source.droppableId],
+        state[source.droppableId],
         source.index,
         destination.index
       )
 
       if (source.droppableId === 'inactiveUsers') {
-        setInactiveUsers(items)
+        dispatch({
+          type: 'UPDATE_INACTIVEUSERS',
+          payload: items
+        })
       } else {
-        setActiveUsers(items)
+        dispatch({
+          type: 'UPDATE_ACTIVEUSERS',
+          payload: items
+        })
       }
     } else {
       const sorted = move(
-        users[source.droppableId],
-        users[destination.droppableId],
+        state[source.droppableId],
+        state[destination.droppableId],
         source,
         destination
       )
 
-      setActiveUsers(sorted.activeUsers)
-      setInactiveUsers(sorted.inactiveUsers)
+      dispatch({
+        type: 'UPDATE_ACTIVEUSERS',
+        payload: sorted.activeUsers
+      })
+      dispatch({
+        type: 'UPDATE_INACTIVEUSERS',
+        payload: sorted.inactiveUsers
+      })
     }
   }
 
   return (
     <Mobsters
-      activeUsers={activeUsers}
+      activeUsers={state.activeUsers}
       clickEditButton={clickEditButton}
       clickGitHubButton={clickGitHubButton}
       clickGuestButton={clickGuestButton}
       clickRemoveUser={clickRemoveUser}
-      inactiveUsers={inactiveUsers}
+      inactiveUsers={state.inactiveUsers}
       isEditing={isEditing}
       onDragEnd={onDragEnd}
       setUsername={setUsername}

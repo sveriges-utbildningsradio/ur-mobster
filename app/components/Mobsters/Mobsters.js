@@ -40,7 +40,8 @@ const Mobsters = ({
           <Droppable droppableId="activeUsers">
             {provided => (
               <div {...provided.droppableProps} ref={provided.innerRef}>
-                {!!activeUsers.length &&
+                {activeUsers &&
+                  !!activeUsers.length &&
                   activeUsers.map((user, index) => (
                     <Draggable
                       key={index}
