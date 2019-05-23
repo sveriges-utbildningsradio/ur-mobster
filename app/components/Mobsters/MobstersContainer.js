@@ -40,12 +40,15 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
   const init = ({ activeUsers, inactiveUsers }) => {
     storage.getAll((_, data) => {
       if (Object.keys(data).length === 0 && data.constructor === Object) {
-        return
+        return { activeUsers, inactiveUsers }
       }
 
       dispatch({
         type: 'SET_FROM_STORAGE',
-        payload: data
+        payload: {
+          activeUsers: data.activeUsers,
+          inactiveUsers: data.inactiveUsers
+        }
       })
     })
     return { activeUsers, inactiveUsers }
