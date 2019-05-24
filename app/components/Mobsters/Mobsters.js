@@ -39,7 +39,11 @@ const Mobsters = ({
         <ul>
           <Droppable droppableId="activeUsers">
             {provided => (
-              <div {...provided.droppableProps} ref={provided.innerRef}>
+              <div
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+                style={{ minHeight: '100px' }}
+              >
                 {activeUsers &&
                   !!activeUsers.length &&
                   activeUsers.map((user, index) => (

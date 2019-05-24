@@ -46,11 +46,12 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
       dispatch({
         type: 'SET_FROM_STORAGE',
         payload: {
-          activeUsers: data.activeUsers,
-          inactiveUsers: data.inactiveUsers
+          activeUsers: data.activeUsers ? data.activeUsers : [],
+          inactiveUsers: data.inactiveUsers ? data.inactiveUsers : []
         }
       })
     })
+
     return { activeUsers, inactiveUsers }
   }
 
@@ -92,7 +93,6 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
   }
 
   const clickGitHubButton = () => {
-    console.log('state: ', state)
     if (
       state.activeUsers.some(
         user =>
