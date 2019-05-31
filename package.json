@@ -119,6 +119,10 @@
     },
     "setupFiles": [
       "./internals/scripts/CheckBuiltsExist.js"
+    ],
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
     ]
   },
   "devDependencies": {
@@ -160,9 +164,6 @@
     "electron": "^3.0.10",
     "electron-builder": "^20.34.0",
     "electron-devtools-installer": "^2.2.4",
-    "enzyme": "^3.7.0",
-    "enzyme-adapter-react-16": "^1.7.0",
-    "enzyme-to-json": "^3.3.4",
     "eslint": "^5.9.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^3.3.0",
@@ -183,7 +184,8 @@
     "flow-typed": "^2.5.1",
     "husky": "^1.1.4",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^23.6.0",
+    "jest": "^24.8.0",
+    "jest-watch-typeahead": "^0.3.1",
     "lint-staged": "^8.1.0",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
@@ -214,12 +216,14 @@
     "yarn": "^1.12.3"
   },
   "dependencies": {
+    "@testing-library/react": "^8.0.1",
     "axios": "^0.18.0",
     "devtron": "^1.4.0",
     "electron-debug": "^2.0.0",
     "electron-json-storage": "^4.1.6",
     "electron-log": "^2.2.17",
     "electron-updater": "^3.2.3",
+    "jest-dom": "^3.4.0",
     "react": "16.8.6",
     "react-beautiful-dnd": "^11.0.3",
     "react-dom": "16.8.6",
