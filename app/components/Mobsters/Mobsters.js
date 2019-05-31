@@ -1,12 +1,12 @@
 import React from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd'
 import styles from './Mobsters.css'
 import avatarImage from '../../assets/avatar.png'
 import githubButton from '../../assets/github.png'
 import addButton from '../../assets/add.png'
 import editButton from '../../assets/pencil.png'
 import stopEditButton from '../../assets/pencil-red.png'
-import removeButton from '../../assets/stop.png'
+import MobstersList from './MobstersList'
 
 const Mobsters = ({
   activeUsers,
@@ -14,6 +14,7 @@ const Mobsters = ({
   clickGitHubButton,
   clickGuestButton,
   clickRemoveUser,
+  inactiveUsers,
   isEditing,
   onDragEnd,
   setUsername,
@@ -27,89 +28,59 @@ const Mobsters = ({
           <span className={styles.editLabel}>
             {isEditing ? 'Spara' : 'Redigera'}
           </span>
-          <img
+
+          <input
+            alt={isEditing ? 'Stop editing mobsters' : 'Edit mobsters'}
             className={styles.editButton}
             onClick={clickEditButton}
+            onKeyDown={e => e.keyCode === 13 && clickEditButton()}
             src={isEditing ? stopEditButton : editButton}
+            type="image"
           />
         </div>
       </div>
-      <ul>
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable droppableId="droppable">
-            {(provided, snapshot) => (
-              <div {...provided.droppableProps} ref={provided.innerRef}>
-                {!!activeUsers.length &&
-                  activeUsers.map((user, index) => (
-                    <Draggable
-                      key={index}
-                      draggableId={user.name}
-                      index={index}
-                    >
-                      {(provided, snapshot) => (
-                        <li
-                          className={styles.mobster}
-                          key={index}
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
-                        >
-                          <div className={styles.avatarWrap}>
-                            <img
-                              className={styles.avatar}
-                              src={user.avatar ? user.avatar : avatarImage}
-                            />
-                            {index === 0 && (
-                              <span className={styles.driverDot} />
-                            )}
-                            {index === 1 && (
-                              <span className={styles.navigatorDot} />
-                            )}
-                          </div>
-                          <div>
-                            <p className={styles.name}>{user.name}</p>
-                            <p className={styles.githubName}>
-                              {user.githubName}
-                            </p>
-                          </div>
-
-                          {isEditing && (
-                            <img
-                              className={styles.editButton}
-                              onClick={() => clickRemoveUser(user.name)}
-                              src={removeButton}
-                            />
-                          )}
-                        </li>
-                      )}
-                    </Draggable>
-                  ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-      </ul>
+      <DragDropContext onDragEnd={onDragEnd}>
+        <MobstersList
+          clickRemoveUser={clickRemoveUser}
+          droppableId="activeUsers"
+          isEditing={isEditing}
+          users={activeUsers}
+        />
+        <h4>Inaktiva mobsters</h4>
+        <MobstersList
+          clickRemoveUser={clickRemoveUser}
+          droppableId="inactiveUsers"
+          isEditing={isEditing}
+          users={inactiveUsers}
+        />
+      </DragDropContext>
     </div>
 
     <div className={styles.addWrap}>
-      <img className={styles.avatar} src={avatarImage} />
+      <img alt="Default avatar" className={styles.avatar} src={avatarImage} />
       <div>
         <div className={styles.inputWrap}>
           <input
-            value={username}
+            className={styles.userInput}
             onChange={e => setUsername(e.target.value)}
             placeholder="Lägg till mobster"
+            value={username}
           />
-          <img
+          <input
+            alt="Add user as guest"
             className={styles.addButton}
             onClick={clickGuestButton}
+            onKeyDown={e => e.keyCode === 13 && clickGuestButton()}
             src={addButton}
+            type="image"
           />
-          <img
+          <input
+            alt="Add user from GitHub"
             className={styles.addButton}
             onClick={clickGitHubButton}
+            onKeyDown={e => e.keyCode === 13 && clickGitHubButton()}
             src={githubButton}
+            type="image"
           />
         </div>
         <p className={styles.githubName}>
