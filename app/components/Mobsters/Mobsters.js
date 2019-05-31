@@ -15,10 +15,10 @@ const Mobsters = ({
   clickGuestButton,
   clickRemoveUser,
   inactiveUsers,
-  isEditing,
+  isEditing = false,
   onDragEnd,
   setUsername,
-  username
+  username = ''
 }) => (
   <div className={styles.wrap}>
     <div>
@@ -32,6 +32,7 @@ const Mobsters = ({
           <input
             alt={isEditing ? 'Stop editing mobsters' : 'Edit mobsters'}
             className={styles.editButton}
+            data-testid="mobsters-edit-button"
             onClick={clickEditButton}
             onKeyDown={e => e.keyCode === 13 && clickEditButton()}
             src={isEditing ? stopEditButton : editButton}

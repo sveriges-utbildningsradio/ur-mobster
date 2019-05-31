@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/MobstersContainer renders given activeUsers and inactiveUsers from store 1`] = `
+<div
+  class="wrap"
+>
+  <div>
+    <div>
+      <div
+        class="headerWrap"
+      >
+        <h4>
+          Mobsters
+        </h4>
+        <span
+          class="editLabel"
+        >
+          Redigera
+        </span>
+        <input
+          alt="Edit mobsters"
+          class="editButton"
+          data-testid="mobsters-edit-button"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+    </div>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="1"
+      >
+        <ul />
+      </div>
+    </ul>
+    <h4>
+      Inaktiva mobsters
+    </h4>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="1"
+      >
+        <ul />
+      </div>
+    </ul>
+  </div>
+  <div
+    class="addWrap"
+  >
+    <img
+      alt="Default avatar"
+      class="avatar"
+      src="test-file-stub"
+    />
+    <div>
+      <div
+        class="inputWrap"
+      >
+        <input
+          class="userInput"
+          placeholder="Lägg till mobster"
+          value="test user"
+        />
+        <input
+          alt="Add user as guest"
+          class="addButton"
+          src="test-file-stub"
+          type="image"
+        />
+        <input
+          alt="Add user from GitHub"
+          class="addButton"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+      <p
+        class="githubName"
+      >
+        Skriv namn eller GitHub-användarnamn
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/MobstersContainer renders given no activeUsers nor inactiveUsers 1`] = `
+<div
+  class="wrap"
+>
+  <div>
+    <div>
+      <div
+        class="headerWrap"
+      >
+        <h4>
+          Mobsters
+        </h4>
+        <span
+          class="editLabel"
+        >
+          Redigera
+        </span>
+        <input
+          alt="Edit mobsters"
+          class="editButton"
+          data-testid="mobsters-edit-button"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+    </div>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="0"
+      >
+        <ul />
+      </div>
+    </ul>
+    <h4>
+      Inaktiva mobsters
+    </h4>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="0"
+      >
+        <ul />
+      </div>
+    </ul>
+  </div>
+  <div
+    class="addWrap"
+  >
+    <img
+      alt="Default avatar"
+      class="avatar"
+      src="test-file-stub"
+    />
+    <div>
+      <div
+        class="inputWrap"
+      >
+        <input
+          class="userInput"
+          placeholder="Lägg till mobster"
+          value=""
+        />
+        <input
+          alt="Add user as guest"
+          class="addButton"
+          src="test-file-stub"
+          type="image"
+        />
+        <input
+          alt="Add user from GitHub"
+          class="addButton"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+      <p
+        class="githubName"
+      >
+        Skriv namn eller GitHub-användarnamn
+      </p>
+    </div>
+  </div>
+</div>
+`;
