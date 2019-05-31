@@ -3,6 +3,7 @@
 import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
 import storage from 'electron-json-storage'
+import shortid from 'shortid'
 import Mobsters from './Mobsters'
 import generateMobsterName from '../../utils/generateMobsterName'
 import { move, reorder } from '../../utils/listHelpers'
@@ -80,6 +81,7 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
       const payload = {
         avatar: data.avatar_url,
         githubName: data.login,
+        id: shortid.generate(),
         name: data.name ? data.name : generateMobsterName()
       }
 
@@ -98,6 +100,11 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
         user =>
           user.githubName &&
           user.githubName.toLowerCase() === username.toLowerCase()
+      ) ||
+      state.inactiveUsers.some(
+        user =>
+          user.githubName &&
+          user.githubName.toLowerCase() === username.toLowerCase()
       )
     ) {
       return
@@ -110,12 +117,20 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
     if (
       state.activeUsers.some(
         user => user.name && user.name.toLowerCase() === username.toLowerCase()
+      ) ||
+      state.inactiveUsers.some(
+        user => user.name && user.name.toLowerCase() === username.toLowerCase()
       )
     ) {
       return
     }
 
-    const payload = { avatar: null, githubName: null, name: username }
+    const payload = {
+      avatar: null,
+      githubName: null,
+      id: shortid.generate(),
+      name: username
+    }
 
     dispatch({ type: 'ADD_ACTIVEUSER', payload })
 

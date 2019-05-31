@@ -97,7 +97,7 @@ h4 {
   font-weight: 500;
 }
 
-input {
+.userInput {
   background: rgb(17, 6, 54);
   border: none;
   border-bottom: 1px solid #2cdbec;
@@ -118,6 +118,7 @@ input:hover {
   background-color: rgb(17, 6, 54);
 }
 
+input:active,
 input:focus {
-  outline: 0;
+  outline: none;
 }

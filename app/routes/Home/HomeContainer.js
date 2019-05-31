@@ -24,8 +24,6 @@ export const HomeContainer = () => {
         setCount(duration)
         setWindowActive()
         setReachedEnd(true)
-
-        return
       }
     },
     isRunning ? 1000 : null

@@ -28,10 +28,14 @@ const Mobsters = ({
           <span className={styles.editLabel}>
             {isEditing ? 'Spara' : 'Redigera'}
           </span>
-          <img
+
+          <input
+            alt={isEditing ? 'Stop editing mobsters' : 'Edit mobsters'}
             className={styles.editButton}
             onClick={clickEditButton}
+            onKeyDown={e => e.keyCode === 13 && clickEditButton()}
             src={isEditing ? stopEditButton : editButton}
+            type="image"
           />
         </div>
       </div>
@@ -48,20 +52,21 @@ const Mobsters = ({
                   !!activeUsers.length &&
                   activeUsers.map((user, index) => (
                     <Draggable
-                      key={index}
                       draggableId={user.name}
                       index={index}
+                      key={user.id ? user.id : user.name}
                     >
-                      {provided => (
+                      {providedDraggable => (
                         <li
                           className={styles.mobster}
-                          key={index}
-                          ref={provided.innerRef}
-                          {...provided.draggableProps}
-                          {...provided.dragHandleProps}
+                          key={user.id ? user.id : user.name}
+                          ref={providedDraggable.innerRef}
+                          {...providedDraggable.draggableProps}
+                          {...providedDraggable.dragHandleProps}
                         >
                           <div className={styles.avatarWrap}>
                             <img
+                              alt={user.name}
                               className={styles.avatar}
                               src={user.avatar ? user.avatar : avatarImage}
                             />
@@ -80,12 +85,18 @@ const Mobsters = ({
                           </div>
 
                           {isEditing && (
-                            <img
+                            <input
+                              alt="Remove user from active mobsters"
                               className={styles.editButton}
                               onClick={() =>
                                 clickRemoveUser(user.name, 'activeUsers')
                               }
+                              onKeyDown={e =>
+                                e.keyCode === 13 &&
+                                clickRemoveUser(user.name, 'activeUsers')
+                              }
                               src={removeButton}
+                              type="image"
                             />
                           )}
                         </li>
@@ -108,17 +119,22 @@ const Mobsters = ({
               {inactiveUsers &&
                 !!inactiveUsers.length &&
                 inactiveUsers.map((user, index) => (
-                  <Draggable key={index} draggableId={user.name} index={index}>
-                    {provided => (
+                  <Draggable
+                    draggableId={user.name}
+                    index={index}
+                    key={user.id ? user.id : user.name}
+                  >
+                    {providedDraggable => (
                       <li
                         className={styles.mobster}
-                        key={index}
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
+                        key={user.id ? user.id : user.name}
+                        ref={providedDraggable.innerRef}
+                        {...providedDraggable.draggableProps}
+                        {...providedDraggable.dragHandleProps}
                       >
                         <div className={styles.avatarWrap}>
                           <img
+                            alt={user.name}
                             className={styles.avatar}
                             src={user.avatar ? user.avatar : avatarImage}
                           />
@@ -129,12 +145,14 @@ const Mobsters = ({
                         </div>
 
                         {isEditing && (
-                          <img
+                          <input
+                            alt="Remove user from inactive mobsters"
                             className={styles.editButton}
                             onClick={() =>
                               clickRemoveUser(user.name, 'inactiveUsers')
                             }
                             src={removeButton}
+                            type="image"
                           />
                         )}
                       </li>
@@ -149,23 +167,30 @@ const Mobsters = ({
     </div>
 
     <div className={styles.addWrap}>
-      <img className={styles.avatar} src={avatarImage} />
+      <img alt="Default avatar" className={styles.avatar} src={avatarImage} />
       <div>
         <div className={styles.inputWrap}>
           <input
-            value={username}
+            className={styles.userInput}
             onChange={e => setUsername(e.target.value)}
             placeholder="Lägg till mobster"
+            value={username}
           />
-          <img
+          <input
+            alt="Add user as guest"
             className={styles.addButton}
             onClick={clickGuestButton}
+            onKeyDown={e => e.keyCode === 13 && clickGuestButton()}
             src={addButton}
+            type="image"
           />
-          <img
+          <input
+            alt="Add user from GitHub"
             className={styles.addButton}
             onClick={clickGitHubButton}
+            onKeyDown={e => e.keyCode === 13 && clickGitHubButton()}
             src={githubButton}
+            type="image"
           />
         </div>
         <p className={styles.githubName}>
