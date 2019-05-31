@@ -1,12 +1,12 @@
 import React from 'react'
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+import { DragDropContext } from 'react-beautiful-dnd'
 import styles from './Mobsters.css'
 import avatarImage from '../../assets/avatar.png'
 import githubButton from '../../assets/github.png'
 import addButton from '../../assets/add.png'
 import editButton from '../../assets/pencil.png'
 import stopEditButton from '../../assets/pencil-red.png'
-import removeButton from '../../assets/stop.png'
+import MobstersList from './MobstersList'
 
 const Mobsters = ({
   activeUsers,
@@ -40,129 +40,19 @@ const Mobsters = ({
         </div>
       </div>
       <DragDropContext onDragEnd={onDragEnd}>
-        <ul>
-          <Droppable droppableId="activeUsers">
-            {provided => (
-              <div
-                {...provided.droppableProps}
-                ref={provided.innerRef}
-                style={{ minHeight: '100px' }}
-              >
-                {activeUsers &&
-                  !!activeUsers.length &&
-                  activeUsers.map((user, index) => (
-                    <Draggable
-                      draggableId={user.name}
-                      index={index}
-                      key={user.id ? user.id : user.name}
-                    >
-                      {providedDraggable => (
-                        <li
-                          className={styles.mobster}
-                          key={user.id ? user.id : user.name}
-                          ref={providedDraggable.innerRef}
-                          {...providedDraggable.draggableProps}
-                          {...providedDraggable.dragHandleProps}
-                        >
-                          <div className={styles.avatarWrap}>
-                            <img
-                              alt={user.name}
-                              className={styles.avatar}
-                              src={user.avatar ? user.avatar : avatarImage}
-                            />
-                            {index === 0 && (
-                              <span className={styles.driverDot} />
-                            )}
-                            {index === 1 && (
-                              <span className={styles.navigatorDot} />
-                            )}
-                          </div>
-                          <div>
-                            <p className={styles.name}>{user.name}</p>
-                            <p className={styles.githubName}>
-                              {user.githubName}
-                            </p>
-                          </div>
-
-                          {isEditing && (
-                            <input
-                              alt="Remove user from active mobsters"
-                              className={styles.editButton}
-                              onClick={() =>
-                                clickRemoveUser(user.name, 'activeUsers')
-                              }
-                              onKeyDown={e =>
-                                e.keyCode === 13 &&
-                                clickRemoveUser(user.name, 'activeUsers')
-                              }
-                              src={removeButton}
-                              type="image"
-                            />
-                          )}
-                        </li>
-                      )}
-                    </Draggable>
-                  ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </ul>
+        <MobstersList
+          clickRemoveUser={clickRemoveUser}
+          droppableId="activeUsers"
+          isEditing={isEditing}
+          users={activeUsers}
+        />
         <h4>Inaktiva mobsters</h4>
-        <Droppable droppableId="inactiveUsers">
-          {provided => (
-            <div
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-              style={{ minHeight: '100px' }}
-            >
-              {inactiveUsers &&
-                !!inactiveUsers.length &&
-                inactiveUsers.map((user, index) => (
-                  <Draggable
-                    draggableId={user.name}
-                    index={index}
-                    key={user.id ? user.id : user.name}
-                  >
-                    {providedDraggable => (
-                      <li
-                        className={styles.mobster}
-                        key={user.id ? user.id : user.name}
-                        ref={providedDraggable.innerRef}
-                        {...providedDraggable.draggableProps}
-                        {...providedDraggable.dragHandleProps}
-                      >
-                        <div className={styles.avatarWrap}>
-                          <img
-                            alt={user.name}
-                            className={styles.avatar}
-                            src={user.avatar ? user.avatar : avatarImage}
-                          />
-                        </div>
-                        <div>
-                          <p className={styles.name}>{user.name}</p>
-                          <p className={styles.githubName}>{user.githubName}</p>
-                        </div>
-
-                        {isEditing && (
-                          <input
-                            alt="Remove user from inactive mobsters"
-                            className={styles.editButton}
-                            onClick={() =>
-                              clickRemoveUser(user.name, 'inactiveUsers')
-                            }
-                            src={removeButton}
-                            type="image"
-                          />
-                        )}
-                      </li>
-                    )}
-                  </Draggable>
-                ))}
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
+        <MobstersList
+          clickRemoveUser={clickRemoveUser}
+          droppableId="inactiveUsers"
+          isEditing={isEditing}
+          users={inactiveUsers}
+        />
       </DragDropContext>
     </div>
 
