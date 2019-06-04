@@ -7,10 +7,15 @@ import removeButton from '../../assets/stop.png'
 const MobstersList = ({ clickRemoveUser, droppableId, isEditing, users }) => (
   <ul>
     <Droppable droppableId={droppableId}>
-      {provided => (
+      {(provided, snapshot) => (
         <div
           {...provided.droppableProps}
           className={styles.droppableWrap}
+          style={{
+            backgroundColor: snapshot.isDraggingOver
+              ? 'rgba(255, 255, 255, 0.1)'
+              : 'rgb(17, 6, 54)'
+          }}
           ref={provided.innerRef}
         >
           <ul>
@@ -36,8 +41,10 @@ const MobstersList = ({ clickRemoveUser, droppableId, isEditing, users }) => (
                           className={styles.avatar}
                           src={user.avatar ? user.avatar : avatarImage}
                         />
-                        {index === 0 && <span className={styles.driverDot} />}
-                        {index === 1 && (
+                        {index === 0 && droppableId === 'activeUsers' && (
+                          <span className={styles.driverDot} />
+                        )}
+                        {index === 1 && droppableId === 'activeUsers' && (
                           <span className={styles.navigatorDot} />
                         )}
                       </div>
