@@ -1,0 +1,57 @@
+.buttonWrap {
+  position: absolute;
+  right: 40px;
+  top: 40px;
+  z-index: 2;
+}
+
+.cog {
+  height: 24px;
+  width: 24px;
+}
+
+.pageWrap {
+  align-items: center;
+  background-color: #110737;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 1;
+}
+
+.innerWrap {
+  width: 950px;
+}
+
+.header {
+  color: #fff;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 55px;
+  font-weight: 800;
+  letter-spacing: -0.82px;
+  line-height: 0.58;
+}
+
+.settingsWrap {
+  border-bottom: 2px solid #caf5ff;
+  margin-bottom: 80px;
+}
+
+.settingWrap {
+  align-items: center;
+  border-top: 2px solid #caf5ff;
+  display: flex;
+  max-width: 927px;
+  padding: 30px 0 30px 128px;
+}
+
+.settingLabel {
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+}

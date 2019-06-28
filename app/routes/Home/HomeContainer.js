@@ -9,8 +9,9 @@ const {
 } = require('electron').remote.getGlobal('windowUtils')
 
 export const HomeContainer = () => {
-  const duration = 60 * 10 // 10 minutes
+  const DEFAULT_DURATION = 60 * 10 // 10 minutes
 
+  const [duration, setDuration] = useState(DEFAULT_DURATION)
   const [count, setCount] = useState(duration)
   const [isRunning, setIsRunning] = useState(false)
   const [reachedEnd, setReachedEnd] = useState(false)
