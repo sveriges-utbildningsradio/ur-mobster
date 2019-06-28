@@ -49,14 +49,25 @@ const MobstersList = ({ clickRemoveUser, droppableId, isEditing, users }) => (
                         )}
                       </div>
                       <div>
-                        <p className={styles.name}>{user.name}</p>
-                        <p className={styles.githubName}>{user.githubName}</p>
+                        <p
+                          className={styles.name}
+                          data-testid={`mobsterslist-name-${index}`}
+                        >
+                          {user.name}
+                        </p>
+                        <p
+                          className={styles.githubName}
+                          data-testid={`mobsterslist-githubName-${index}`}
+                        >
+                          {user.githubName}
+                        </p>
                       </div>
 
                       {isEditing && (
                         <input
                           alt={`Remove user from ${droppableId}`}
                           className={styles.editButton}
+                          data-testid={`mobsterslist-remove-${index}`}
                           onClick={() =>
                             clickRemoveUser(user.name, droppableId)
                           }

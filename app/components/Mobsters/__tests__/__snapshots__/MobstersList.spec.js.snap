@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Mobsters/MobstersList should display a list of Mobsters 1`] = `
+<ul>
+  <div
+    class="droppableWrap"
+    data-react-beautiful-dnd-droppable="0"
+  >
+    <ul>
+      <li
+        aria-roledescription="Draggable item. Press space bar to lift"
+        class="mobster"
+        data-react-beautiful-dnd-drag-handle="0"
+        data-react-beautiful-dnd-draggable="0"
+        draggable="false"
+        tabindex="0"
+      >
+        <div
+          class="avatarWrap"
+        >
+          <img
+            alt="Active 1 Name"
+            class="avatar"
+            src="https://avatars1.githubusercontent.com/u/test"
+          />
+          <span
+            class="driverDot"
+          />
+        </div>
+        <div>
+          <p
+            class="name"
+            data-testid="mobsterslist-name-0"
+          >
+            Active 1 Name
+          </p>
+          <p
+            class="githubName"
+            data-testid="mobsterslist-githubName-0"
+          >
+            Active 1 Githubname
+          </p>
+        </div>
+      </li>
+      <li
+        aria-roledescription="Draggable item. Press space bar to lift"
+        class="mobster"
+        data-react-beautiful-dnd-drag-handle="0"
+        data-react-beautiful-dnd-draggable="0"
+        draggable="false"
+        tabindex="0"
+      >
+        <div
+          class="avatarWrap"
+        >
+          <img
+            alt="Active 2 Name"
+            class="avatar"
+            src="test-file-stub"
+          />
+          <span
+            class="navigatorDot"
+          />
+        </div>
+        <div>
+          <p
+            class="name"
+            data-testid="mobsterslist-name-1"
+          >
+            Active 2 Name
+          </p>
+          <p
+            class="githubName"
+            data-testid="mobsterslist-githubName-1"
+          />
+        </div>
+      </li>
+    </ul>
+  </div>
+</ul>
+`;
