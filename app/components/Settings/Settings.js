@@ -2,8 +2,24 @@
 import React, { useState } from 'react'
 import styles from './Settings.css'
 import Cog from '../../assets/cog.png'
+import Close from '../../assets/close.png'
 import Time from '../../assets/time.png'
+import Break from '../../assets/break.png'
+import Language from '../../assets/language.png'
 import DefaultButton from '../Button/DefaultButton'
+import SettingsToggle from './components/SettingsToggle'
+import SettingsDuration from './components/SettingsDuration/SettingsDuration'
+
+export const LANGUAGE_OPTIONS = [
+  {
+    label: 'Svenska',
+    value: 'sv'
+  },
+  {
+    label: 'Engelska',
+    value: 'en'
+  }
+]
 
 export const Settings = () => {
   const [showingSettings, toggleShowingSettings] = useState(false)
@@ -15,9 +31,20 @@ export const Settings = () => {
         onClick={() => toggleShowingSettings(!showingSettings)}
       >
         {showingSettings ? (
-          <span>Stäng</span>
+          <span className={styles.settingsButtonWrapper}>
+            Stäng
+            <img
+              alt="Close settings"
+              className={styles.settingsButton}
+              src={Close}
+            />
+          </span>
         ) : (
-          <img className={styles.cog} src={Cog} />
+          <img
+            alt="Settings page"
+            className={styles.settingsButton}
+            src={Cog}
+          />
         )}
       </div>
       {!!showingSettings && (
@@ -26,19 +53,31 @@ export const Settings = () => {
             <h2 className={styles.header}>Mobster-inställningar</h2>
             <ul className={styles.settingsWrap}>
               <li className={styles.settingWrap}>
-                <img src={Time} />
+                <img
+                  alt="Duration settings"
+                  className={styles.icon}
+                  src={Time}
+                />
                 <span className={styles.settingLabel}>Tid</span>
-                <span>10 min</span>
+                <SettingsDuration time={10} />
               </li>
               <li className={styles.settingWrap}>
-                <img src={Time} />
+                <img alt="Pause settings" className={styles.icon} src={Break} />
                 <span className={styles.settingLabel}>Rast</span>
-                <span>längd 5 min intervall 20 min</span>
+                <SettingsDuration prefixLabel="Längd " time={5} />
+                <SettingsDuration prefixLabel="Intervall " time={50} />
               </li>
               <li className={styles.settingWrap}>
-                <img src={Time} />
+                <img
+                  alt="Language settings"
+                  className={styles.icon}
+                  src={Language}
+                />
                 <span className={styles.settingLabel}>Språk</span>
-                <span>svenska</span>
+                <SettingsToggle
+                  active={LANGUAGE_OPTIONS[0].value}
+                  options={LANGUAGE_OPTIONS}
+                />
               </li>
             </ul>
             <DefaultButton

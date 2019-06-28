@@ -6,7 +6,7 @@ type DefaultButtonProps = {
   text: string
 }
 
-export const DefaultButton = ({ handleClick, text }: DefaultButtonProps) => (
+const DefaultButton = ({ handleClick, text }: DefaultButtonProps) => (
   <button className={styles.defaultButton} onClick={handleClick} type="button">
     {text}
   </button>

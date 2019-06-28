@@ -5,8 +5,13 @@
   z-index: 2;
 }
 
-.cog {
+.settingsButtonWrapper {
+  display: flex;
+}
+
+.settingsButton {
   height: 24px;
+  margin-left: 12px;
   width: 24px;
 }
 
@@ -33,6 +38,7 @@
   font-family: 'Exo 2', sans-serif;
   font-size: 55px;
   font-weight: 800;
+  margin-bottom: 70px;
   letter-spacing: -0.82px;
   line-height: 0.58;
 }
@@ -45,13 +51,21 @@
 .settingWrap {
   align-items: center;
   border-top: 2px solid #caf5ff;
-  display: flex;
+  display: grid;
+  grid-template-columns: 80px minmax(auto, 120px) 1fr 1fr;
+  grid-column-gap: 60px;
   max-width: 927px;
-  padding: 30px 0 30px 128px;
+  padding: 30px 0 30px 100px;
+}
+
+.icon {
+  width: 62px;
 }
 
 .settingLabel {
+  border-right: 2px solid #caf5ff;
   color: #fff;
   font-family: 'Roboto', sans-serif;
   font-size: 36px;
+  text-align: left;
 }

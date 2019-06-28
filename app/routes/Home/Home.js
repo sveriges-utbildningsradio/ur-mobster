@@ -1,9 +1,9 @@
 // @flow
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './Home.css'
 import { formatTime } from '../../utils/formatTime'
 import Mobsters from '../../components/Mobsters'
-import Settings from '../../components/Settings/Settings'
+import Settings from '../../components/Settings'
 import DefaultButton from '../../components/Button/DefaultButton'
 
 type HomeProps = {

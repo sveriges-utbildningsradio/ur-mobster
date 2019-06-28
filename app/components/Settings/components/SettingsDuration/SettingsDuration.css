@@ -1,0 +1,24 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.time {
+  color: #2cdbec;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.buttonsWrap {
+  margin-top: 15px;
+}
+
+.button {
+  background: transparent;
+  border: none;
+}
+
+.icon {
+  height: 36px;
+  width: 36px;
+}
