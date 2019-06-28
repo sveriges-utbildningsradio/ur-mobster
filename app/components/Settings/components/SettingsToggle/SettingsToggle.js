@@ -1,8 +1,9 @@
 // @flow
 
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import dot from '../../../../assets/dot-blue.png'
+import { SettingsStoreContext } from '../../../../store/store'
 
 const Wrap = styled.ul`
   display: flex;
@@ -35,18 +36,26 @@ type SettingsToggleProps = {
   options: OptionType[]
 }
 
-const SettingsToggle = ({ active, options }: SettingsToggleProps) => (
-  <Wrap>
-    {options.map(option => {
-      const isActive = active === option.value
-      return (
-        <Option active={isActive} key={option.value}>
-          {option.label}
-          {!!isActive && <Dot src={dot} />}
-        </Option>
-      )
-    })}
-  </Wrap>
-)
+const SettingsToggle = ({ active, options }: SettingsToggleProps) => {
+  const { dispatch, updateLanguage } = useContext(SettingsStoreContext)
+
+  return (
+    <Wrap>
+      {options.map(option => {
+        const isActive = active === option.value
+        return (
+          <Option
+            active={isActive}
+            onClick={() => dispatch(updateLanguage(option.value))}
+            key={option.value}
+          >
+            {option.label}
+            {!!isActive && <Dot src={dot} />}
+          </Option>
+        )
+      })}
+    </Wrap>
+  )
+}
 
 export default SettingsToggle

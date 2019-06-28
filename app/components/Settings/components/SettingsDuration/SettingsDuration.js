@@ -17,18 +17,18 @@ const SettingsDuration = ({ label, prefixLabel, time }) => (
   <div className={styles.wrap}>
     <p className={styles.time}>
       {!!prefixLabel && prefixLabel}
-      {time} min
+      {time / 60} min
     </p>
     <div className={styles.buttonsWrap}>
+      <button className={styles.button}>
+        <img alt="Increase time 5 minutes" className={styles.icon} src={Add} />
+      </button>
       <button className={styles.button}>
         <img
           alt="Decrease time 5 minutes"
           className={styles.icon}
           src={Remove}
         />
-      </button>
-      <button className={styles.button}>
-        <img alt="Increase time 5 minutes" className={styles.icon} src={Add} />
       </button>
     </div>
   </div>

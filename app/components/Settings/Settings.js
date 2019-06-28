@@ -1,5 +1,5 @@
 // @flow
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from './Settings.css'
 import Cog from '../../assets/cog.png'
 import Close from '../../assets/close.png'
@@ -9,6 +9,7 @@ import Language from '../../assets/language.png'
 import DefaultButton from '../Button/DefaultButton'
 import SettingsToggle from './components/SettingsToggle'
 import SettingsDuration from './components/SettingsDuration/SettingsDuration'
+import { SettingsStoreContext } from '../../store/store'
 
 export const LANGUAGE_OPTIONS = [
   {
@@ -22,6 +23,7 @@ export const LANGUAGE_OPTIONS = [
 ]
 
 export const Settings = () => {
+  const { state } = useContext(SettingsStoreContext)
   const [showingSettings, toggleShowingSettings] = useState(false)
 
   return (
@@ -59,13 +61,19 @@ export const Settings = () => {
                   src={Time}
                 />
                 <span className={styles.settingLabel}>Tid</span>
-                <SettingsDuration time={10} />
+                <SettingsDuration time={state.duration} />
               </li>
               <li className={styles.settingWrap}>
                 <img alt="Pause settings" className={styles.icon} src={Break} />
                 <span className={styles.settingLabel}>Rast</span>
-                <SettingsDuration prefixLabel="Längd " time={5} />
-                <SettingsDuration prefixLabel="Intervall " time={50} />
+                <SettingsDuration
+                  prefixLabel="Längd "
+                  time={state.breakDuration}
+                />
+                <SettingsDuration
+                  prefixLabel="Intervall "
+                  time={state.breakFrequency}
+                />
               </li>
               <li className={styles.settingWrap}>
                 <img
@@ -75,7 +83,7 @@ export const Settings = () => {
                 />
                 <span className={styles.settingLabel}>Språk</span>
                 <SettingsToggle
-                  active={LANGUAGE_OPTIONS[0].value}
+                  active={state.language}
                   options={LANGUAGE_OPTIONS}
                 />
               </li>

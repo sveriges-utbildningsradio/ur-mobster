@@ -2,11 +2,14 @@ import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import HomeContainer from './routes/Home'
+import Store from './store'
 import './app.global.css'
 
 render(
   <AppContainer>
-    <HomeContainer />
+    <Store>
+      <HomeContainer />
+    </Store>
   </AppContainer>,
   document.getElementById('root')
 )
@@ -17,7 +20,9 @@ if (module.hot) {
     const NextHome = require('./routes/Home').default
     render(
       <AppContainer>
-        <NextHome />
+        <Store>
+          <NextHome />
+        </Store>
       </AppContainer>,
       document.getElementById('root')
     )
