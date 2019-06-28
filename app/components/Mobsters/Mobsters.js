@@ -70,6 +70,7 @@ const Mobsters = ({
           <input
             alt="Add user as guest"
             className={styles.addButton}
+            disabled={!username.length}
             onClick={clickGuestButton}
             onKeyDown={e => e.keyCode === 13 && clickGuestButton()}
             src={addButton}
@@ -78,6 +79,7 @@ const Mobsters = ({
           <input
             alt="Add user from GitHub"
             className={styles.addButton}
+            disabled={!username.length}
             onClick={clickGitHubButton}
             onKeyDown={e => e.keyCode === 13 && clickGitHubButton()}
             src={githubButton}
