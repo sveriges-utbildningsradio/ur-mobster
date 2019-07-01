@@ -23,7 +23,7 @@ export const LANGUAGE_OPTIONS = [
 ]
 
 export const Settings = () => {
-  const { state } = useContext(SettingsStoreContext)
+  const settingsContext = useContext(SettingsStoreContext)
   const [showingSettings, toggleShowingSettings] = useState(false)
 
   return (
@@ -61,18 +61,18 @@ export const Settings = () => {
                   src={Time}
                 />
                 <span className={styles.settingLabel}>Tid</span>
-                <SettingsDuration time={state.duration} />
+                <SettingsDuration time={settingsContext.duration} />
               </li>
               <li className={styles.settingWrap}>
                 <img alt="Pause settings" className={styles.icon} src={Break} />
                 <span className={styles.settingLabel}>Rast</span>
                 <SettingsDuration
                   prefixLabel="Längd "
-                  time={state.breakDuration}
+                  time={settingsContext.breakDuration}
                 />
                 <SettingsDuration
                   prefixLabel="Intervall "
-                  time={state.breakFrequency}
+                  time={settingsContext.breakFrequency}
                 />
               </li>
               <li className={styles.settingWrap}>
@@ -83,7 +83,7 @@ export const Settings = () => {
                 />
                 <span className={styles.settingLabel}>Språk</span>
                 <SettingsToggle
-                  active={state.language}
+                  active={settingsContext.language}
                   options={LANGUAGE_OPTIONS}
                 />
               </li>
