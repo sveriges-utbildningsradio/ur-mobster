@@ -1,0 +1,40 @@
+{
+  "en": {
+    "addMobsterPlaceholder": "Add mobster",
+    "addMobsterLabel": "Enter name or GitHub username",
+    "break": "Break",
+    "close": "Close",
+    "doneButton": "Done!",
+    "edit": "Edit",
+    "inactiveMobsters": "Inactive mobsters",
+    "interval": "Interval",
+    "language": "Language",
+    "length": "Length",
+    "pauseButton": "Pause the mob!",
+    "resetButton": "Reset",
+    "save": "Save",
+    "settingsHeader": "Mobster Settings",
+    "startButton": "Start the mob!",
+    "time": "Time",
+    "timeLeft": "Time left"
+  },
+  "sv": {
+    "addMobsterPlaceholder": "Lägg till mobster",
+    "addMobsterLabel": "Skriv namn eller GitHub-användarnamn",
+    "break": "Rast",
+    "close": "Stäng",
+    "doneButton": "Klar!",
+    "edit": "Redigera",
+    "inactiveMobsters": "Inaktiva mobsters",
+    "interval": "Intervall",
+    "language": "Språk",
+    "length": "Längd",
+    "pauseButton": "Pausa mobben!",
+    "resetButton": "Återställ",
+    "save": "Spara",
+    "settingsHeader": "Mobster-inställningar",
+    "startButton": "Starta mobben!",
+    "time": "Tid",
+    "timeLeft": "Tid kvar"
+  }
+}

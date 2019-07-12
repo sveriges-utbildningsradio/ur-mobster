@@ -4,26 +4,21 @@ import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
 import storage from 'electron-json-storage'
 import shortid from 'shortid'
+import persistToStore from '../../utils/persistToStore'
 import Mobsters from './Mobsters'
 import generateMobsterName from '../../utils/generateMobsterName'
 import { move, reorder } from '../../utils/listHelpers'
 
-const setToStore = (list, users) => {
-  storage.set(list, users, error => {
-    if (error) throw error
-  })
-}
-
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_ACTIVEUSER':
-      setToStore('activeUsers', [...state.activeUsers, action.payload])
+      persistToStore('activeUsers', [...state.activeUsers, action.payload])
       return { ...state, activeUsers: [...state.activeUsers, action.payload] }
     case 'UPDATE_ACTIVEUSERS':
-      setToStore('activeUsers', action.payload)
+      persistToStore('activeUsers', action.payload)
       return { ...state, activeUsers: action.payload }
     case 'UPDATE_INACTIVEUSERS':
-      setToStore('inactiveUsers', action.payload)
+      persistToStore('inactiveUsers', action.payload)
       return { ...state, inactiveUsers: action.payload }
     case 'SET_FROM_STORAGE':
       return { ...action.payload }

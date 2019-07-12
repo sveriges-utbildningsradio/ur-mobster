@@ -1,5 +1,6 @@
 import React from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
+import { FormattedMessage } from 'react-intl'
 import styles from './Mobsters.css'
 import avatarImage from '../../assets/avatar.png'
 import githubButton from '../../assets/github.png'
@@ -26,7 +27,11 @@ const Mobsters = ({
         <div className={styles.headerWrap}>
           <h4>Mobsters</h4>
           <span className={styles.editLabel}>
-            {isEditing ? 'Spara' : 'Redigera'}
+            {isEditing ? (
+              <FormattedMessage id="save" />
+            ) : (
+              <FormattedMessage id="edit" />
+            )}
           </span>
 
           <input
@@ -47,7 +52,7 @@ const Mobsters = ({
           isEditing={isEditing}
           users={activeUsers}
         />
-        <h4>Inaktiva mobsters</h4>
+        <FormattedMessage id="inactiveMobsters" tagName="h4" />
         <MobstersList
           clickRemoveUser={clickRemoveUser}
           droppableId="inactiveUsers"
@@ -61,15 +66,21 @@ const Mobsters = ({
       <img alt="Default avatar" className={styles.avatar} src={avatarImage} />
       <div>
         <div className={styles.inputWrap}>
-          <input
-            className={styles.userInput}
-            onChange={e => setUsername(e.target.value)}
-            placeholder="Lägg till mobster"
-            value={username}
-          />
+          <FormattedMessage id="addMobsterPlaceholder">
+            {msg => (
+              <input
+                className={styles.userInput}
+                onChange={e => setUsername(e.target.value)}
+                placeholder={msg}
+                value={username}
+              />
+            )}
+          </FormattedMessage>
+
           <input
             alt="Add user as guest"
             className={styles.addButton}
+            disabled={!username.length}
             onClick={clickGuestButton}
             onKeyDown={e => e.keyCode === 13 && clickGuestButton()}
             src={addButton}
@@ -78,6 +89,7 @@ const Mobsters = ({
           <input
             alt="Add user from GitHub"
             className={styles.addButton}
+            disabled={!username.length}
             onClick={clickGitHubButton}
             onKeyDown={e => e.keyCode === 13 && clickGitHubButton()}
             src={githubButton}
@@ -85,7 +97,7 @@ const Mobsters = ({
           />
         </div>
         <p className={styles.githubName}>
-          Skriv namn eller GitHub-användarnamn
+          <FormattedMessage id="addMobsterLabel" />
         </p>
       </div>
     </div>

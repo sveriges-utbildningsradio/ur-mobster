@@ -1,8 +1,11 @@
 // @flow
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import styles from './Home.css'
 import { formatTime } from '../../utils/formatTime'
 import Mobsters from '../../components/Mobsters'
+import Settings from '../../components/Settings'
+import DefaultButton from '../../components/Button/DefaultButton'
 
 type HomeProps = {
   count: number,
@@ -25,26 +28,23 @@ export const Home = ({
     </div>
 
     <div className={styles.container}>
+      <Settings />
       <h2 className={styles.header}>UR Mob</h2>
-      <h3 className={styles.timeLeft}>Tid kvar: {formatTime(count)}</h3>
+      <h3 className={styles.timeLeft}>
+        <FormattedMessage id="timeLeft" />: {formatTime(count)}
+      </h3>
 
       <div className={styles.buttonsWrap}>
         {isRunning ? (
-          <button
-            className={styles.timerButton}
-            onClick={() => handleIsRunningClick(false)}
-            type="button"
-          >
-            Pausa mobben!
-          </button>
+          <DefaultButton
+            handleClick={() => handleIsRunningClick(false)}
+            textId="pauseButton"
+          />
         ) : (
-          <button
-            className={styles.timerButton}
-            onClick={() => handleIsRunningClick(true)}
-            type="button"
-          >
-            Starta mobben!
-          </button>
+          <DefaultButton
+            handleClick={() => handleIsRunningClick(true)}
+            textId="startButton"
+          />
         )}
 
         <button
@@ -52,7 +52,7 @@ export const Home = ({
           onClick={() => handleResetClick()}
           type="button"
         >
-          Nollställ
+          <FormattedMessage id="resetButton" />
         </button>
       </div>
     </div>

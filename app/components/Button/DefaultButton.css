@@ -1,0 +1,12 @@
+.defaultButton {
+  border: none;
+  color: #110737;
+  background-color: #2cdbec;
+  border-radius: 42.5px;
+  height: 85px;
+  min-width: 400px;
+}
+
+.defaultButton:hover {
+  background: #fff;
+}

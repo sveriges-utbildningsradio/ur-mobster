@@ -1,6 +1,7 @@
 import React from 'react'
-import { render, fireEvent, cleanup } from '@testing-library/react'
+import { fireEvent, cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
+import renderWithReactIntl from '../../../utils/testHelpers'
 import { DragDropContext } from 'react-beautiful-dnd'
 import MobstersList from '../MobstersList'
 import { activeUsers } from '../__fixtures__/UsersFixture'
@@ -16,7 +17,7 @@ describe('components/Mobsters/MobstersList', () => {
   afterEach(cleanup)
 
   it('should display a list of Mobsters', () => {
-    const { getByTestId, container } = render(
+    const { getByTestId, container } = renderWithReactIntl(
       <DragDropContext onDragEnd={jest.fn()}>
         <MobstersList
           clickRemoveUser={clickRemoveUser}

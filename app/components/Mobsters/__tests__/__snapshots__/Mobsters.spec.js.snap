@@ -15,7 +15,9 @@ exports[`components/Mobsters renders 1`] = `
         <span
           class="editLabel"
         >
-          Redigera
+          <span>
+            Redigera
+          </span>
         </span>
         <input
           alt="Edit mobsters"
@@ -30,6 +32,7 @@ exports[`components/Mobsters renders 1`] = `
       <div
         class="droppableWrap"
         data-react-beautiful-dnd-droppable="0"
+        style="background-color: rgb(17, 6, 54);"
       >
         <ul>
           <li
@@ -110,6 +113,7 @@ exports[`components/Mobsters renders 1`] = `
       <div
         class="droppableWrap"
         data-react-beautiful-dnd-droppable="0"
+        style="background-color: rgb(17, 6, 54);"
       >
         <ul>
           <li
@@ -127,9 +131,6 @@ exports[`components/Mobsters renders 1`] = `
                 alt="Inactive 2 Name"
                 class="avatar"
                 src="https://avatars1.githubusercontent.com/u/inactivetest"
-              />
-              <span
-                class="driverDot"
               />
             </div>
             <div>
@@ -162,9 +163,6 @@ exports[`components/Mobsters renders 1`] = `
                 alt="Inactive 2 Name"
                 class="avatar"
                 src="test-file-stub"
-              />
-              <span
-                class="navigatorDot"
               />
             </div>
             <div>
@@ -204,12 +202,14 @@ exports[`components/Mobsters renders 1`] = `
         <input
           alt="Add user as guest"
           class="addButton"
+          disabled=""
           src="test-file-stub"
           type="image"
         />
         <input
           alt="Add user from GitHub"
           class="addButton"
+          disabled=""
           src="test-file-stub"
           type="image"
         />
@@ -217,7 +217,9 @@ exports[`components/Mobsters renders 1`] = `
       <p
         class="githubName"
       >
-        Skriv namn eller GitHub-användarnamn
+        <span>
+          Skriv namn eller GitHub-användarnamn
+        </span>
       </p>
     </div>
   </div>
