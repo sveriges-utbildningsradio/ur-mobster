@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import styles from './Home.css'
 import { formatTime } from '../../utils/formatTime'
 import Mobsters from '../../components/Mobsters'
@@ -29,18 +30,20 @@ export const Home = ({
     <div className={styles.container}>
       <Settings />
       <h2 className={styles.header}>UR Mob</h2>
-      <h3 className={styles.timeLeft}>Tid kvar: {formatTime(count)}</h3>
+      <h3 className={styles.timeLeft}>
+        <FormattedMessage id="timeLeft" />: {formatTime(count)}
+      </h3>
 
       <div className={styles.buttonsWrap}>
         {isRunning ? (
           <DefaultButton
             handleClick={() => handleIsRunningClick(false)}
-            text="Pausa mobben!"
+            textId="pauseButton"
           />
         ) : (
           <DefaultButton
             handleClick={() => handleIsRunningClick(true)}
-            text="Starta mobben!"
+            textId="startButton"
           />
         )}
 
@@ -49,7 +52,7 @@ export const Home = ({
           onClick={() => handleResetClick()}
           type="button"
         >
-          Nollställ
+          <FormattedMessage id="resetButton" />
         </button>
       </div>
     </div>

@@ -1,14 +1,15 @@
 import React from 'react'
+import { FormattedMessage } from 'react-intl'
 import styles from './DefaultButton.css'
 
 type DefaultButtonProps = {
   handleClick: any => void,
-  text: string
+  textId: string
 }
 
-const DefaultButton = ({ handleClick, text }: DefaultButtonProps) => (
+const DefaultButton = ({ handleClick, textId }: DefaultButtonProps) => (
   <button className={styles.defaultButton} onClick={handleClick} type="button">
-    {text}
+    <FormattedMessage id={textId} />
   </button>
 )
 

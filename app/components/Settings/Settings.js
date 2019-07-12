@@ -1,5 +1,6 @@
 // @flow
 import React, { useContext, useState } from 'react'
+import { FormattedMessage } from 'react-intl'
 import styles from './Settings.css'
 import Cog from '../../assets/cog.png'
 import Close from '../../assets/close.png'
@@ -17,7 +18,7 @@ export const LANGUAGE_OPTIONS = [
     value: 'sv'
   },
   {
-    label: 'Engelska',
+    label: 'English',
     value: 'en'
   }
 ]
@@ -42,7 +43,7 @@ export const Settings = () => {
       >
         {showingSettings ? (
           <span className={styles.settingsButtonWrapper}>
-            Stäng
+            <FormattedMessage id="close" />
             <img
               alt="Close settings"
               className={styles.settingsButton}
@@ -60,7 +61,9 @@ export const Settings = () => {
       {!!showingSettings && (
         <div className={styles.pageWrap}>
           <div className={styles.innerWrap}>
-            <h2 className={styles.header}>Mobster-inställningar</h2>
+            <h2 className={styles.header}>
+              <FormattedMessage id="settingsHeader" />
+            </h2>
             <ul className={styles.settingsWrap}>
               <li className={styles.settingWrap}>
                 <img
@@ -68,22 +71,35 @@ export const Settings = () => {
                   className={styles.icon}
                   src={Time}
                 />
-                <span className={styles.settingLabel}>Tid</span>
+                <span className={styles.settingLabel}>
+                  <FormattedMessage id="time" />
+                </span>
                 <SettingsDuration time={duration} updaterFn={updateDuration} />
               </li>
               <li className={styles.settingWrap}>
                 <img alt="Pause settings" className={styles.icon} src={Break} />
-                <span className={styles.settingLabel}>Rast</span>
-                <SettingsDuration
-                  prefixLabel="Längd "
-                  time={breakDuration}
-                  updaterFn={updateBreakDuration}
-                />
-                <SettingsDuration
-                  prefixLabel="Intervall "
-                  time={breakFrequency}
-                  updaterFn={updateBreakFrequency}
-                />
+                <span className={styles.settingLabel}>
+                  <FormattedMessage id="break" />
+                </span>
+                <FormattedMessage id="length">
+                  {msg => (
+                    <SettingsDuration
+                      prefixLabel={`${msg} `}
+                      time={breakDuration}
+                      updaterFn={updateBreakDuration}
+                    />
+                  )}
+                </FormattedMessage>
+
+                <FormattedMessage id="interval">
+                  {msg => (
+                    <SettingsDuration
+                      prefixLabel={`${msg} `}
+                      time={breakFrequency}
+                      updaterFn={updateBreakFrequency}
+                    />
+                  )}
+                </FormattedMessage>
               </li>
               <li className={styles.settingWrap}>
                 <img
@@ -91,13 +107,15 @@ export const Settings = () => {
                   className={styles.icon}
                   src={Language}
                 />
-                <span className={styles.settingLabel}>Språk</span>
+                <span className={styles.settingLabel}>
+                  <FormattedMessage id="language" />
+                </span>
                 <SettingsToggle active={language} options={LANGUAGE_OPTIONS} />
               </li>
             </ul>
             <DefaultButton
               handleClick={() => toggleShowingSettings(false)}
-              text="Klar!"
+              textId="doneButton"
             />
           </div>
         </div>

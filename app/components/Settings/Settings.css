@@ -52,7 +52,7 @@
   align-items: center;
   border-top: 2px solid #caf5ff;
   display: grid;
-  grid-template-columns: 80px minmax(auto, 120px) 1fr 1fr;
+  grid-template-columns: 80px auto 210px 190px;
   grid-column-gap: 60px;
   max-width: 927px;
   padding: 30px 0 30px 100px;

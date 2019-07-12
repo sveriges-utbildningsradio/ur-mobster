@@ -19,6 +19,15 @@ export const initialState = {
 
 export const SettingsStoreContext = createContext(initialState)
 
+const handleLanguage = () => {
+  const browserLanguage = navigator.language.substring(0, 2)
+  const availableLanguages = new Set(['en', 'sv'])
+
+  if (!availableLanguages.has(browserLanguage)) return 'sv'
+
+  return browserLanguage
+}
+
 const Store = ({ initialState, children }) => {
   const init = ({ breakDuration, breakFrequency, duration, language }) => {
     storage.getAll((_, data) => {
@@ -26,13 +35,15 @@ const Store = ({ initialState, children }) => {
         return { breakDuration, breakFrequency, duration, language }
       }
 
+      const defaultLanguage = handleLanguage()
+
       dispatch({
         type: 'SET_SETTINGS_FROM_STORAGE',
         payload: {
           breakDuration: data.breakDuration ? data.breakDuration : 60 * 5,
           breakFrequency: data.breakFrequency ? data.breakFrequency : 60 * 50,
           duration: data.duration ? data.duration : 60 * 10,
-          language: data.language ? data.language : 'sv'
+          language: data.language ? data.language : defaultLanguage
         }
       })
     })

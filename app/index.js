@@ -1,14 +1,14 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
-import HomeContainer from './routes/Home'
 import Store from './store'
+import LanguageProvider from './LanguageProvider'
 import './app.global.css'
 
 render(
   <AppContainer>
     <Store>
-      <HomeContainer />
+      <LanguageProvider />
     </Store>
   </AppContainer>,
   document.getElementById('root')
@@ -21,7 +21,7 @@ if (module.hot) {
     render(
       <AppContainer>
         <Store>
-          <NextHome />
+          <LanguageProvider />
         </Store>
       </AppContainer>,
       document.getElementById('root')
