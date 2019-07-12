@@ -10,9 +10,8 @@ const {
 } = require('electron').remote.getGlobal('windowUtils')
 
 export const HomeContainer = () => {
-  const { duration: DURATION_FROM_SETTINGS } = useContext(SettingsStoreContext)
+  const { duration } = useContext(SettingsStoreContext)
 
-  const [duration, setDuration] = useState(DURATION_FROM_SETTINGS)
   const [count, setCount] = useState(duration)
   const [isRunning, setIsRunning] = useState(false)
   const [reachedEnd, setReachedEnd] = useState(false)
@@ -33,9 +32,9 @@ export const HomeContainer = () => {
 
   useEffect(
     () => {
-      setCount(DURATION_FROM_SETTINGS)
+      setCount(duration)
     },
-    [DURATION_FROM_SETTINGS]
+    [duration]
   )
 
   const handleIsRunningClick = timerIsRunning => {
