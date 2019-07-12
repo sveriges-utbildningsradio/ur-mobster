@@ -1,6 +1,6 @@
 // @flow
 
-import React, { createContext, useReducer, useState } from 'react'
+import React, { createContext, useReducer } from 'react'
 import storage from 'electron-json-storage'
 import reducer from './reducer'
 import {

@@ -1,7 +1,8 @@
 // @flow
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Home from './Home'
 import useInterval from '../../utils/useInterval'
+import { SettingsStoreContext } from '../../store/store'
 
 const {
   setWindowActive,
@@ -9,9 +10,9 @@ const {
 } = require('electron').remote.getGlobal('windowUtils')
 
 export const HomeContainer = () => {
-  const DEFAULT_DURATION = 60 * 10 // 10 minutes
+  const { duration: DURATION_FROM_SETTINGS } = useContext(SettingsStoreContext)
 
-  const [duration, setDuration] = useState(DEFAULT_DURATION)
+  const [duration, setDuration] = useState(DURATION_FROM_SETTINGS)
   const [count, setCount] = useState(duration)
   const [isRunning, setIsRunning] = useState(false)
   const [reachedEnd, setReachedEnd] = useState(false)
@@ -28,6 +29,13 @@ export const HomeContainer = () => {
       }
     },
     isRunning ? 1000 : null
+  )
+
+  useEffect(
+    () => {
+      setCount(DURATION_FROM_SETTINGS)
+    },
+    [DURATION_FROM_SETTINGS]
   )
 
   const handleIsRunningClick = timerIsRunning => {

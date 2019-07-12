@@ -23,7 +23,15 @@ export const LANGUAGE_OPTIONS = [
 ]
 
 export const Settings = () => {
-  const settingsContext = useContext(SettingsStoreContext)
+  const {
+    duration,
+    breakDuration,
+    breakFrequency,
+    language,
+    updateDuration,
+    updateBreakDuration,
+    updateBreakFrequency
+  } = useContext(SettingsStoreContext)
   const [showingSettings, toggleShowingSettings] = useState(false)
 
   return (
@@ -61,18 +69,20 @@ export const Settings = () => {
                   src={Time}
                 />
                 <span className={styles.settingLabel}>Tid</span>
-                <SettingsDuration time={settingsContext.duration} />
+                <SettingsDuration time={duration} updaterFn={updateDuration} />
               </li>
               <li className={styles.settingWrap}>
                 <img alt="Pause settings" className={styles.icon} src={Break} />
                 <span className={styles.settingLabel}>Rast</span>
                 <SettingsDuration
                   prefixLabel="Längd "
-                  time={settingsContext.breakDuration}
+                  time={breakDuration}
+                  updaterFn={updateBreakDuration}
                 />
                 <SettingsDuration
                   prefixLabel="Intervall "
-                  time={settingsContext.breakFrequency}
+                  time={breakFrequency}
+                  updaterFn={updateBreakFrequency}
                 />
               </li>
               <li className={styles.settingWrap}>
@@ -82,10 +92,7 @@ export const Settings = () => {
                   src={Language}
                 />
                 <span className={styles.settingLabel}>Språk</span>
-                <SettingsToggle
-                  active={settingsContext.language}
-                  options={LANGUAGE_OPTIONS}
-                />
+                <SettingsToggle active={language} options={LANGUAGE_OPTIONS} />
               </li>
             </ul>
             <DefaultButton
