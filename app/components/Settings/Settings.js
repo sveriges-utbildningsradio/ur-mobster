@@ -76,31 +76,37 @@ export const Settings = () => {
                 </span>
                 <SettingsDuration time={duration} updaterFn={updateDuration} />
               </li>
-              <li className={styles.settingWrap}>
-                <img alt="Pause settings" className={styles.icon} src={Break} />
-                <span className={styles.settingLabel}>
-                  <FormattedMessage id="break" />
-                </span>
-                <FormattedMessage id="length">
-                  {msg => (
-                    <SettingsDuration
-                      prefixLabel={`${msg} `}
-                      time={breakDuration}
-                      updaterFn={updateBreakDuration}
-                    />
-                  )}
-                </FormattedMessage>
+              {false && (
+                <li className={styles.settingWrap}>
+                  <img
+                    alt="Pause settings"
+                    className={styles.icon}
+                    src={Break}
+                  />
+                  <span className={styles.settingLabel}>
+                    <FormattedMessage id="break" />
+                  </span>
+                  <FormattedMessage id="length">
+                    {msg => (
+                      <SettingsDuration
+                        prefixLabel={`${msg} `}
+                        time={breakDuration}
+                        updaterFn={updateBreakDuration}
+                      />
+                    )}
+                  </FormattedMessage>
 
-                <FormattedMessage id="interval">
-                  {msg => (
-                    <SettingsDuration
-                      prefixLabel={`${msg} `}
-                      time={breakFrequency}
-                      updaterFn={updateBreakFrequency}
-                    />
-                  )}
-                </FormattedMessage>
-              </li>
+                  <FormattedMessage id="interval">
+                    {msg => (
+                      <SettingsDuration
+                        prefixLabel={`${msg} `}
+                        time={breakFrequency}
+                        updaterFn={updateBreakFrequency}
+                      />
+                    )}
+                  </FormattedMessage>
+                </li>
+              )}
               <li className={styles.settingWrap}>
                 <img
                   alt="Language settings"

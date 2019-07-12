@@ -101,7 +101,9 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         <span
           class="editLabel"
         >
-          Redigera
+          <span>
+            Redigera
+          </span>
         </span>
         <input
           alt="Edit mobsters"
@@ -116,6 +118,7 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
       <div
         class="droppableWrap"
         data-react-beautiful-dnd-droppable="0"
+        style="background-color: rgb(17, 6, 54);"
       >
         <ul />
       </div>
@@ -127,6 +130,7 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
       <div
         class="droppableWrap"
         data-react-beautiful-dnd-droppable="0"
+        style="background-color: rgb(17, 6, 54);"
       >
         <ul />
       </div>
@@ -152,12 +156,14 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         <input
           alt="Add user as guest"
           class="addButton"
+          disabled=""
           src="test-file-stub"
           type="image"
         />
         <input
           alt="Add user from GitHub"
           class="addButton"
+          disabled=""
           src="test-file-stub"
           type="image"
         />
@@ -165,7 +171,9 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
       <p
         class="githubName"
       >
-        Skriv namn eller GitHub-användarnamn
+        <span>
+          Skriv namn eller GitHub-användarnamn
+        </span>
       </p>
     </div>
   </div>

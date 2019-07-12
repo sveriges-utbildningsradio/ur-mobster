@@ -5,6 +5,7 @@ exports[`components/Mobsters/MobstersList should display a list of Mobsters 1`] 
   <div
     class="droppableWrap"
     data-react-beautiful-dnd-droppable="0"
+    style="background-color: rgb(17, 6, 54);"
   >
     <ul>
       <li
@@ -22,9 +23,6 @@ exports[`components/Mobsters/MobstersList should display a list of Mobsters 1`] 
             alt="Active 1 Name"
             class="avatar"
             src="https://avatars1.githubusercontent.com/u/test"
-          />
-          <span
-            class="driverDot"
           />
         </div>
         <div>
@@ -57,9 +55,6 @@ exports[`components/Mobsters/MobstersList should display a list of Mobsters 1`] 
             alt="Active 2 Name"
             class="avatar"
             src="test-file-stub"
-          />
-          <span
-            class="navigatorDot"
           />
         </div>
         <div>
