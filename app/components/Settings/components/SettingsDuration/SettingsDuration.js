@@ -42,6 +42,8 @@ const SettingsDuration = ({ label, prefixLabel, time, updaterFn }) => {
             alt="Increase time 5 minutes"
             className={styles.icon}
             onClick={() => handleClickIncrease()}
+            onMouseOver={e => (e.currentTarget.src = AddActive)}
+            onMouseOut={e => (e.currentTarget.src = Add)}
             src={Add}
           />
         </button>
@@ -50,6 +52,8 @@ const SettingsDuration = ({ label, prefixLabel, time, updaterFn }) => {
             alt="Decrease time 5 minutes"
             className={styles.icon}
             onClick={() => handleClickDecrease()}
+            onMouseOver={e => (e.currentTarget.src = RemoveActive)}
+            onMouseOut={e => (e.currentTarget.src = Remove)}
             src={Remove}
           />
         </button>
