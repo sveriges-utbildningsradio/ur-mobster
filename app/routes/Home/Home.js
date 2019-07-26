@@ -9,7 +9,6 @@ import Break from '../../components/Break'
 import DefaultButton from '../../components/Button/DefaultButton'
 
 type HomeProps = {
-  breakTimeLeft: number,
   count: number,
   isOnBreak: boolean,
   isRunning: boolean,
@@ -19,7 +18,6 @@ type HomeProps = {
 }
 
 export const Home = ({
-  breakTimeLeft,
   count,
   isOnBreak,
   isRunning,
@@ -34,7 +32,7 @@ export const Home = ({
 
     <div className={styles.container}>
       <Settings />
-      {isOnBreak && <Break breakTimeLeft={breakTimeLeft} />}
+      {isOnBreak && <Break />}
       <h2 className={styles.header}>UR Mob</h2>
       <h3 className={styles.timeLeft}>
         <FormattedMessage id="timeLeft" />: {formatTime(count)}

@@ -11,3 +11,8 @@
   width: 70vw;
   z-index: 3;
 }
+
+.text {
+  color: #2cdbec;
+  font-size: 40px;
+}

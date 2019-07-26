@@ -89,7 +89,6 @@ export const HomeContainer = () => {
 
   return (
     <Home
-      breakTimeLeft={breakTimeLeft}
       count={count}
       isOnBreak={isOnBreak}
       isRunning={isRunning}
