@@ -2,9 +2,9 @@
  * Base webpack config used across other specific configs
  */
 
-import path from 'path';
-import webpack from 'webpack';
-import { dependencies } from '../package.json';
+import path from 'path'
+import webpack from 'webpack'
+import { dependencies } from '../package.json'
 
 export default {
   externals: [...Object.keys(dependencies || {})],
@@ -12,14 +12,17 @@ export default {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.[jt]sx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true
-          }
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true
+            }
+          },
+          'ts-loader'
+        ]
       }
     ]
   },
@@ -34,7 +37,7 @@ export default {
    * Determine the array of extensions that should be used to resolve modules.
    */
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.ts', '.tsx', '.json']
   },
 
   plugins: [
@@ -44,4 +47,4 @@ export default {
 
     new webpack.NamedModulesPlugin()
   ]
-};
+}

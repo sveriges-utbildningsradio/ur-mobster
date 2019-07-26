@@ -8,11 +8,11 @@ import Break from '../../components/Break'
 import DefaultButton from '../../components/Button/DefaultButton'
 
 type HomeProps = {
-  count: number,
-  isOnBreak: boolean,
-  isRunning: boolean,
-  handleIsRunningClick: (isRunning: boolean) => void,
-  handleResetClick: () => void,
+  count: number
+  isOnBreak: boolean
+  isRunning: boolean
+  handleIsRunningClick: (isRunning: boolean) => void
+  handleResetClick: () => void
   reachedEnd: boolean
 }
 

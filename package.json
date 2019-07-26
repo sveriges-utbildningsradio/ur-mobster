@@ -10,6 +10,7 @@
     "build-main": "cross-env NODE_ENV=production webpack --config ./configs/webpack.config.main.prod.babel.js --colors",
     "build-renderer": "cross-env NODE_ENV=production webpack --config ./configs/webpack.config.renderer.prod.babel.js --colors",
     "dev": "cross-env START_HOT=1 node -r @babel/register ./internals/scripts/CheckPortInUse.js && cross-env START_HOT=1 yarn start-renderer-dev",
+    "lint": "cross-env NODE_ENV=development eslint --cache --format=pretty .",
     "lint-fix": "yarn --silent lint --fix; exit 0",
     "lint-styles": "stylelint --ignore-path .eslintignore '**/*.*(css|scss)' --syntax scss",
     "lint-styles-fix": "yarn --silent lint-styles --fix; exit 0",
@@ -24,16 +25,16 @@
     "precommit": "lint-staged",
     "prestart": "yarn build",
     "start": "cross-env NODE_ENV=production electron ./app/main.prod.js",
-    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron -r @babel/register ./app/main.dev.js",
+    "start-main-dev": "cross-env HOT=1 NODE_ENV=development electron ./app/main.dev.babel.js",
     "start-renderer-dev": "cross-env NODE_ENV=development webpack-dev-server --config configs/webpack.config.renderer.dev.babel.js",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 jest",
     "test-all": "yarn lint && yarn build && yarn test && yarn build-e2e && yarn test-e2e",
-    "test-e2e": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
-    "test-e2e-live": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
+    "test-e2e": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.ts",
+    "test-e2e-live": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.ts",
     "test-watch": "yarn test --watch"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "prettier --ignore-path .eslintignore --single-quote --no-semi --write",
       "git add"
     ],
@@ -109,12 +110,15 @@
     },
     "moduleFileExtensions": [
       "js",
+      "ts",
+      "tsx",
       "jsx",
       "json"
     ],
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
     },
+    "testRegex": "test/.*(spec|test).(ts|tsx|js)$",
     "setupFiles": [
       "./internals/scripts/CheckBuiltsExist.js"
     ],
@@ -208,7 +212,14 @@
     "yarn": "^1.12.3"
   },
   "dependencies": {
+    "@babel/preset-typescript": "^7.3.3",
     "@testing-library/react": "^8.0.1",
+    "@types/electron": "^1.6.10",
+    "@types/jest": "^24.0.15",
+    "@types/react": "^16.8.23",
+    "@types/react-beautiful-dnd": "^11.0.2",
+    "@types/react-circular-progressbar": "^1.0.2",
+    "@types/styled-components": "^4.1.18",
     "axios": "^0.18.0",
     "devtron": "^1.4.0",
     "electron-debug": "^2.0.0",
@@ -224,7 +235,9 @@
     "react-intl": "^2.9.0",
     "shortid": "^2.2.14",
     "source-map-support": "^0.5.9",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3"
   },
   "devEngines": {
     "node": ">=7.x",

@@ -25,12 +25,12 @@ const Dot = styled.img`
 `
 
 type OptionType = {
-  label: string,
+  label: string
   value: string
 }
 
 type SettingsToggleProps = {
-  active: string,
+  active: string
   options: OptionType[]
 }
 

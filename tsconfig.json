@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    // "target": "es5",
+    // "baseUrl": "./",
+    // "rootDir": "./",
+    // "jsx": "react",
+    // "module": "es2015",
+    // "moduleResolution": "node",
+    // "noUnusedLocals": true,
+    // "pretty": true,
+    // "sourceMap": true,
+    // "resolveJsonModule": true,
+    // "lib": ["es2015", "dom"],
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "lib": ["es6", "dom"],
+    "module": "es6",
+    "sourceMap": true,
+    "target": "es5",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "noImplicitAny": true
+  },
+  "exclude": ["node_modules", "**/node_modules/*"],
+  "compileOnSave": true
+}

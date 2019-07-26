@@ -7,8 +7,8 @@ import RemoveActive from '../../../../assets/minus-active.png'
 import { SettingsStoreContext } from '../../../../store/store'
 
 type SettingsToggleProps = {
-  prefixLabel?: string,
-  time: number,
+  prefixLabel?: string
+  time: number
   updaterFn: () => void
 }
 

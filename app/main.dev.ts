@@ -7,7 +7,6 @@
  *
  * When running `yarn build` or `yarn build-main`, this file is compiled to
  * `./app/main.prod.js` using webpack. This gives us some performance wins.
- *
  */
 import { app, BrowserWindow } from 'electron'
 import { autoUpdater } from 'electron-updater'
@@ -39,7 +38,7 @@ if (
 const installExtensions = async () => {
   const installer = require('electron-devtools-installer')
   const forceDownload = !!process.env.UPGRADE_EXTENSIONS
-  const extensions = ['REACT_DEVELOPER_TOOLS']
+  const extensions = ['REACT_DEVELOPER_TOOLS', 'REDUX_DEVTOOLS']
 
   return Promise.all(
     extensions.map(name => installer.default(installer[name], forceDownload))
@@ -68,35 +67,9 @@ app.on('ready', async () => {
 
   mainWindow = new BrowserWindow({
     show: false,
-    width: 1440,
-    height: 1024,
-    webPreferences: {
-      backgroundThrottling: false
-    }
+    width: 1024,
+    height: 728
   })
-
-  const setWindowActive = () => {
-    mainWindow.restore() // restore from minimized state
-    mainWindow.setVisibleOnAllWorkspaces(true) // put the window on all screens
-    mainWindow.focus() // focus the window up front on the active screen
-    mainWindow.setVisibleOnAllWorkspaces(false) // disable all screen behavior
-  }
-
-  const setWindowHidden = () => {
-    mainWindow.minimize()
-  }
-
-  /*
-  Makes globally importable in React as:
-
-  const {
-    setWindowActive,
-    setWindowHidden
-  } = require('electron').remote.getGlobal('windowUtils');
-
-  and then just use by calling, e.g.: setWindowHidden() or setWindowActive()
-  */
-  global.windowUtils = { setWindowActive, setWindowHidden }
 
   mainWindow.loadURL(`file://${__dirname}/app.html`)
 
