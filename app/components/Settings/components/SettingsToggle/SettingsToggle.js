@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import dot from '../../../../assets/dot-blue.png'

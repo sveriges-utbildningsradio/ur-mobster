@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useEffect, useReducer, useState } from 'react'
 import axios from 'axios'
 import storage from 'electron-json-storage'

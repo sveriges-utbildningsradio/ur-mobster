@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import styles from './Home.css'

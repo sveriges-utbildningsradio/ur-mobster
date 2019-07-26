@@ -1,5 +1,3 @@
-// @flow
-
 import React, { useContext } from 'react'
 import styles from './SettingsDuration.css'
 import Add from '../../../../assets/plus-default.png'

@@ -1,4 +1,3 @@
-// @flow
 import React, { useContext, useEffect, useState } from 'react'
 import Home from './Home'
 import useInterval from '../../utils/useInterval'
