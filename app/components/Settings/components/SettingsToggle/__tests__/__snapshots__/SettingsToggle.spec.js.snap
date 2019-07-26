@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Settings/SettingsToggle renders 1`] = `
+<ul
+  class="sc-bdVaJa imDAUP"
+>
+  <li
+    class="sc-bwzfXH akcDY"
+  >
+    Svenska
+  </li>
+  <li
+    class="sc-bwzfXH akcDY"
+  >
+    English
+  </li>
+</ul>
+`;

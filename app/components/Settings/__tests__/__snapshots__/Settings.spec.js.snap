@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Settings closes when clicking the Done button 1`] = `
+<div>
+  <button
+    class="buttonWrap"
+    type="button"
+  >
+    <img
+      alt="Settings page"
+      class="settingsButton"
+      src="test-file-stub"
+    />
+  </button>
+</div>
+`;
+
+exports[`components/Settings renders just the button when closed 1`] = `
+<div>
+  <button
+    class="buttonWrap"
+    type="button"
+  >
+    <img
+      alt="Settings page"
+      class="settingsButton"
+      src="test-file-stub"
+    />
+  </button>
+</div>
+`;
+
+exports[`components/Settings renders when open 1`] = `
+<div>
+  <button
+    class="buttonWrap"
+    type="button"
+  >
+    <span
+      class="settingsButtonWrapper"
+    >
+      <span>
+        Stäng
+      </span>
+      <img
+        alt="Close settings"
+        class="settingsButton"
+        src="test-file-stub"
+      />
+    </span>
+  </button>
+  <div
+    class="pageWrap"
+  >
+    <div
+      class="innerWrap"
+    >
+      <h2
+        class="header"
+      >
+        <span>
+          Mobster-inställningar
+        </span>
+      </h2>
+      <ul
+        class="settingsWrap"
+      >
+        <li
+          class="settingWrap"
+        >
+          <img
+            alt="Duration settings"
+            class="icon"
+            src="test-file-stub"
+          />
+          <span
+            class="settingLabel"
+          >
+            <span>
+              Tid
+            </span>
+          </span>
+          <div
+            class="wrap"
+          >
+            <p
+              class="time"
+            >
+              0.16666666666666666
+               min
+            </p>
+            <div
+              class="buttonsWrap"
+            >
+              <button
+                class="button"
+                type="button"
+              >
+                <img
+                  alt="Increase time 5 minutes"
+                  class="icon"
+                  src="test-file-stub"
+                />
+              </button>
+              <button
+                class="button"
+                type="button"
+              >
+                <img
+                  alt="Decrease time 5 minutes"
+                  class="icon"
+                  src="test-file-stub"
+                />
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="settingWrap"
+        >
+          <img
+            alt="Pause settings"
+            class="icon"
+            src="test-file-stub"
+          />
+          <span
+            class="settingLabel"
+          >
+            <span>
+              Rast
+            </span>
+          </span>
+          <div
+            class="wrap"
+          >
+            <p
+              class="time"
+            >
+              Längd 
+              5
+               min
+            </p>
+            <div
+              class="buttonsWrap"
+            >
+              <button
+                class="button"
+                type="button"
+              >
+                <img
+                  alt="Increase time 5 minutes"
+                  class="icon"
+                  src="test-file-stub"
+                />
+              </button>
+              <button
+                class="button"
+                type="button"
+              >
+                <img
+                  alt="Decrease time 5 minutes"
+                  class="icon"
+                  src="test-file-stub"
+                />
+              </button>
+            </div>
+          </div>
+          <div
+            class="wrap"
+          >
+            <p
+              class="time"
+            >
+              Intervall 
+              50
+               min
+            </p>
+            <div
+              class="buttonsWrap"
+            >
+              <button
+                class="button"
+                type="button"
+              >
+                <img
+                  alt="Increase time 5 minutes"
+                  class="icon"
+                  src="test-file-stub"
+                />
+              </button>
+              <button
+                class="button"
+                type="button"
+              >
+                <img
+                  alt="Decrease time 5 minutes"
+                  class="icon"
+                  src="test-file-stub"
+                />
+              </button>
+            </div>
+          </div>
+        </li>
+        <li
+          class="settingWrap"
+        >
+          <img
+            alt="Language settings"
+            class="icon"
+            src="test-file-stub"
+          />
+          <span
+            class="settingLabel"
+          >
+            <span>
+              Språk
+            </span>
+          </span>
+          <ul
+            class="sc-bdVaJa imDAUP"
+          >
+            <li
+              class="sc-bwzfXH lkHdtP"
+            >
+              Svenska
+              <img
+                class="sc-htpNat cfdZzv"
+                src="test-file-stub"
+              />
+            </li>
+            <li
+              class="sc-bwzfXH akcDY"
+            >
+              English
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <button
+        class="defaultButton"
+        type="button"
+      >
+        <span>
+          Klar!
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

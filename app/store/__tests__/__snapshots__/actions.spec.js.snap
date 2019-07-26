@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`store/actions updateBreakDuration 1`] = `
+Object {
+  "payload": 300,
+  "type": "UPDATE_BREAK_DURATION",
+}
+`;
+
+exports[`store/actions updateBreakFrequency 1`] = `
+Object {
+  "payload": 300,
+  "type": "UPDATE_BREAK_FREQUENCY",
+}
+`;
+
+exports[`store/actions updateBreakTimeLeft 1`] = `
+Object {
+  "payload": 300,
+  "type": "UPDATE_BREAK_TIME_LEFT",
+}
+`;
+
+exports[`store/actions updateDuration 1`] = `
+Object {
+  "payload": 300,
+  "type": "UPDATE_DURATION",
+}
+`;
+
+exports[`store/actions updateLanguage 1`] = `
+Object {
+  "payload": "en",
+  "type": "UPDATE_LANGUAGE",
+}
+`;

@@ -21,7 +21,7 @@ export const initialState = {
 
 export const SettingsStoreContext = createContext(initialState)
 
-const handleLanguage = () => {
+export const handleLanguage = () => {
   const browserLanguage = navigator.language.substring(0, 2)
   const availableLanguages = new Set(['en', 'sv'])
 

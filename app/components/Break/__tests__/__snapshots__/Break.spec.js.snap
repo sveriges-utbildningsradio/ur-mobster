@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Break renders 1`] = `
+<div
+  class="breakWrap"
+>
+  <div>
+    <div
+      data-test-id="CircularProgressbarWithChildren"
+    >
+      <div
+        style="position: relative; width: 100%; height: 100%;"
+      >
+        <svg
+          class="CircularProgressbar "
+          data-test-id="CircularProgressbar"
+          viewBox="0 0 100 100"
+        >
+          <path
+            class="CircularProgressbar-trail"
+            d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+            fill-opacity="0"
+            stroke-width="8"
+            style="stroke-dasharray: 289.02652413026095px 289.02652413026095px; stroke-dashoffset: 0px;"
+          />
+          <path
+            class="CircularProgressbar-path"
+            d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+            fill-opacity="0"
+            stroke-width="8"
+            style="stroke-dasharray: 289.02652413026095px 289.02652413026095px; stroke-dashoffset: 0px;"
+          />
+        </svg>
+        <div
+          data-test-id="CircularProgressbarWithChildren__children"
+          style="position: absolute; width: 100%; height: 100%; margin-top: -100%; display: flex; flex-direction: column; justify-content: center; align-items: center;"
+        >
+          <p
+            class="text"
+          >
+            <span>
+              Rast
+            </span>
+            : 
+            05:00
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Settings/SettingsDuration renders 1`] = `
+<div
+  class="wrap"
+>
+  <p
+    class="time"
+  >
+    5
+     min
+  </p>
+  <div
+    class="buttonsWrap"
+  >
+    <button
+      class="button"
+      type="button"
+    >
+      <img
+        alt="Increase time 5 minutes"
+        class="icon"
+        src="test-file-stub"
+      />
+    </button>
+    <button
+      class="button"
+      type="button"
+    >
+      <img
+        alt="Decrease time 5 minutes"
+        class="icon"
+        src="test-file-stub"
+      />
+    </button>
+  </div>
+</div>
+`;
