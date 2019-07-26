@@ -10,14 +10,17 @@ import { SettingsStoreContext } from '../../../../store/store'
 
 type SettingsToggleProps = {
   prefixLabel?: string,
-  setting: string,
   time: number,
   updaterFn: () => void
 }
 
 const FIVE_MINUTES = 60 * 5
 
-const SettingsDuration = ({ label, prefixLabel, time, updaterFn }) => {
+const SettingsDuration = ({
+  prefixLabel,
+  time,
+  updaterFn
+}: SettingsToggleProps) => {
   const { dispatch } = useContext(SettingsStoreContext)
 
   const handleClickDecrease = () => {
@@ -33,33 +36,41 @@ const SettingsDuration = ({ label, prefixLabel, time, updaterFn }) => {
   return (
     <div className={styles.wrap}>
       <p className={styles.time}>
-        {!!prefixLabel && prefixLabel}
+        {!!prefixLabel.length && prefixLabel}
         {time / 60} min
       </p>
       <div className={styles.buttonsWrap}>
-        <button className={styles.button}>
+        <button className={styles.button} type="button">
           <img
             alt="Increase time 5 minutes"
             className={styles.icon}
+            onBlur={e => (e.currentTarget.src = Add)}
             onClick={() => handleClickIncrease()}
-            onMouseOver={e => (e.currentTarget.src = AddActive)}
+            onFocus={e => (e.currentTarget.src = AddActive)}
             onMouseOut={e => (e.currentTarget.src = Add)}
+            onMouseOver={e => (e.currentTarget.src = AddActive)}
             src={Add}
           />
         </button>
-        <button className={styles.button}>
+        <button className={styles.button} type="button">
           <img
             alt="Decrease time 5 minutes"
             className={styles.icon}
+            onBlur={e => (e.currentTarget.src = Remove)}
             onClick={() => handleClickDecrease()}
-            onMouseOver={e => (e.currentTarget.src = RemoveActive)}
+            onFocus={e => (e.currentTarget.src = RemoveActive)}
             onMouseOut={e => (e.currentTarget.src = Remove)}
+            onMouseOver={e => (e.currentTarget.src = RemoveActive)}
             src={Remove}
           />
         </button>
       </div>
     </div>
   )
+}
+
+SettingsDuration.defaultProps = {
+  prefixLabel: ''
 }
 
 export default SettingsDuration

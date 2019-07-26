@@ -10,9 +10,14 @@ const {
 } = require('electron').remote.getGlobal('windowUtils')
 
 export const HomeContainer = () => {
-  const { breakDuration, breakFrequency, duration } = useContext(
-    SettingsStoreContext
-  )
+  const {
+    breakDuration,
+    breakFrequency,
+    breakTimeLeft,
+    dispatch,
+    duration,
+    updateBreakTimeLeft
+  } = useContext(SettingsStoreContext)
 
   const [count, setCount] = useState(duration)
   const [isRunning, setIsRunning] = useState(false)
@@ -20,7 +25,6 @@ export const HomeContainer = () => {
 
   // Break state
   const [timeSinceBreak, setTimeSinceBreak] = useState(0)
-  const [breakCount, setBreakCount] = useState(breakDuration)
   const [isOnBreak, setIsOnBreak] = useState(false)
 
   useInterval(
@@ -49,10 +53,10 @@ export const HomeContainer = () => {
   // Break logic
   useInterval(
     () => {
-      console.log('inside useInterval: ', breakCount)
-      setBreakCount(breakCount - 1)
+      dispatch(updateBreakTimeLeft(breakTimeLeft - 1))
 
-      if (breakCount === 0) {
+      if (breakTimeLeft === 1) {
+        dispatch(updateBreakTimeLeft(breakDuration))
         setIsOnBreak(false)
         setTimeSinceBreak(0)
       }
@@ -85,7 +89,7 @@ export const HomeContainer = () => {
 
   return (
     <Home
-      breakCount={breakCount}
+      breakTimeLeft={breakTimeLeft}
       count={count}
       isOnBreak={isOnBreak}
       isRunning={isRunning}

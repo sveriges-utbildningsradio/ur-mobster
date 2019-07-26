@@ -37,9 +37,10 @@ export const Settings = () => {
 
   return (
     <>
-      <div
+      <button
         className={styles.buttonWrap}
         onClick={() => toggleShowingSettings(!showingSettings)}
+        type="button"
       >
         {showingSettings ? (
           <span className={styles.settingsButtonWrapper}>
@@ -57,7 +58,7 @@ export const Settings = () => {
             src={Cog}
           />
         )}
-      </div>
+      </button>
       {!!showingSettings && (
         <div className={styles.pageWrap}>
           <div className={styles.innerWrap}>

@@ -3,12 +3,14 @@ import { formatTime } from '../../utils/formatTime'
 import styles from './Break.css'
 
 type BreakProps = {
-  breakCount: number
+  breakTimeLeft: number
 }
 
-const Break = ({ breakCount }: BreakProps) => (
+const Break = ({ breakTimeLeft }: BreakProps) => (
   <>
-    <div className={styles.breakWrap}>Break time! {formatTime(breakCount)}</div>
+    <div className={styles.breakWrap}>
+      Break time! {formatTime(breakTimeLeft)}
+    </div>
   </>
 )
 

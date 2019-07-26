@@ -19,3 +19,8 @@ export const updateBreakFrequency = frequency => ({
   type: types.UPDATE_BREAK_FREQUENCY,
   payload: frequency
 })
+
+export const updateBreakTimeLeft = timeLeft => ({
+  type: types.UPDATE_BREAK_TIME_LEFT,
+  payload: timeLeft
+})
