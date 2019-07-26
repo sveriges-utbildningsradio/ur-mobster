@@ -1,4 +1,7 @@
 .buttonWrap {
+  background: transparent;
+  border: none;
+  color: #fff;
   position: absolute;
   right: 40px;
   top: 40px;
@@ -6,6 +9,7 @@
 }
 
 .settingsButtonWrapper {
+  align-items: center;
   display: flex;
 }
 

@@ -22,6 +22,9 @@ const reducer = (state, action) => {
       persistToStore('duration', action.payload)
       return { ...state, duration: action.payload }
 
+    case types.UPDATE_BREAK_TIME_LEFT:
+      return { ...state, breakTimeLeft: action.payload }
+
     default:
       return state
   }

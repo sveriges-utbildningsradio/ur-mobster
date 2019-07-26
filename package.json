@@ -225,6 +225,7 @@
     "jest-dom": "^3.4.0",
     "react": "16.8.6",
     "react-beautiful-dnd": "^11.0.3",
+    "react-circular-progressbar": "^2.0.1",
     "react-dom": "16.8.6",
     "react-hot-loader": "^4.8.4",
     "react-intl": "^2.9.0",

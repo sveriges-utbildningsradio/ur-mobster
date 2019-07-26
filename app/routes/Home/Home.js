@@ -5,10 +5,12 @@ import styles from './Home.css'
 import { formatTime } from '../../utils/formatTime'
 import Mobsters from '../../components/Mobsters'
 import Settings from '../../components/Settings'
+import Break from '../../components/Break'
 import DefaultButton from '../../components/Button/DefaultButton'
 
 type HomeProps = {
   count: number,
+  isOnBreak: boolean,
   isRunning: boolean,
   handleIsRunningClick: (isRunning: boolean) => void,
   handleResetClick: () => void,
@@ -17,6 +19,7 @@ type HomeProps = {
 
 export const Home = ({
   count,
+  isOnBreak,
   isRunning,
   handleIsRunningClick,
   handleResetClick,
@@ -29,6 +32,7 @@ export const Home = ({
 
     <div className={styles.container}>
       <Settings />
+      {isOnBreak && <Break />}
       <h2 className={styles.header}>UR Mob</h2>
       <h3 className={styles.timeLeft}>
         <FormattedMessage id="timeLeft" />: {formatTime(count)}

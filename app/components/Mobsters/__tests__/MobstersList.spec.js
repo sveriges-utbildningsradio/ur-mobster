@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, cleanup } from '@testing-library/react'
+import { cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
 import renderWithReactIntl from '../../../utils/testHelpers'
 import { DragDropContext } from 'react-beautiful-dnd'

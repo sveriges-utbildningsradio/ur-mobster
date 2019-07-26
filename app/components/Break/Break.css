@@ -1,0 +1,18 @@
+.breakWrap {
+  align-items: center;
+  background-color: #110737;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  right: 0;
+  position: absolute;
+  top: 0;
+  width: 70vw;
+  z-index: 3;
+}
+
+.text {
+  color: #2cdbec;
+  font-size: 40px;
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, cleanup } from '@testing-library/react'
+import { cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
 import renderWithReactIntl from '../../../utils/testHelpers'
 import Mobsters from '../Mobsters'
@@ -9,7 +9,7 @@ describe('components/Mobsters', () => {
   afterEach(cleanup)
 
   it('renders', () => {
-    let { getByTestId, container } = renderWithReactIntl(
+    const { container } = renderWithReactIntl(
       <Mobsters
         activeUsers={activeUsers}
         clickEditButton={jest.fn()}
