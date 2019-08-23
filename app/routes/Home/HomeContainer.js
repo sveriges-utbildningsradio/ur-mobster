@@ -50,15 +50,19 @@ export const HomeContainer = () => {
     [duration]
   )
 
+  const resetBreak = () => {
+    dispatch(updateBreakTimeLeft(breakDuration))
+    setIsOnBreak(false)
+    setTimeSinceBreak(0)
+  }
+
   // Break logic
   useInterval(
     () => {
       dispatch(updateBreakTimeLeft(breakTimeLeft - 1))
 
       if (breakTimeLeft === 1) {
-        dispatch(updateBreakTimeLeft(breakDuration))
-        setIsOnBreak(false)
-        setTimeSinceBreak(0)
+        resetBreak()
       }
     },
     isOnBreak ? 1000 : null
@@ -95,6 +99,7 @@ export const HomeContainer = () => {
       handleIsRunningClick={handleIsRunningClick}
       handleResetClick={handleResetClick}
       reachedEnd={reachedEnd}
+      resetBreak={resetBreak}
     />
   )
 }

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Button/ResetButton renders 1`] = `
+<button
+  class="resetButton"
+  type="button"
+>
+  <span>
+    Avsluta rast
+  </span>
+</button>
+`;

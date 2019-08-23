@@ -57,6 +57,14 @@ exports[`components/Break renders 1`] = `
         </div>
       </div>
     </div>
+    <button
+      class="resetButton"
+      type="button"
+    >
+      <span>
+        Avsluta rast
+      </span>
+    </button>
   </div>
 </div>
 `;
