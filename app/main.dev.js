@@ -73,7 +73,8 @@ app.on('ready', async () => {
     height: 1024,
     webPreferences: {
       backgroundThrottling: false
-    }
+    },
+    titleBarStyle: 'hidden'
   })
 
   const setWindowActive = () => {

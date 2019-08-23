@@ -29,6 +29,7 @@ export const Home = ({
   resetBreak
 }: HomeProps) => (
   <div className={styles.wrap} data-tid="container">
+    <div className={styles.dragArea} />
     <div className={styles.mobstersWrap}>
       <Mobsters reachedEnd={reachedEnd} />
     </div>
