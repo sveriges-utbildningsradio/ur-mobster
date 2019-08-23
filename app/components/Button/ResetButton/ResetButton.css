@@ -1,0 +1,15 @@
+.resetButton {
+  align-self: center;
+  background-color: #110737;
+  border-radius: 10px;
+  border: solid 2px #ff4a7e;
+  color: #ff4a7e;
+  height: 50px;
+  margin-top: 35px;
+  padding: 0 20px;
+}
+
+.resetButton:hover {
+  border-color: #fff;
+  color: #fff;
+}

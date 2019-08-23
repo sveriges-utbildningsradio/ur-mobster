@@ -7,6 +7,7 @@ import Mobsters from '../../components/Mobsters'
 import Settings from '../../components/Settings'
 import Break from '../../components/Break'
 import DefaultButton from '../../components/Button/DefaultButton'
+import ResetButton from '../../components/Button/ResetButton'
 
 type HomeProps = {
   count: number,
@@ -14,7 +15,8 @@ type HomeProps = {
   isRunning: boolean,
   handleIsRunningClick: (isRunning: boolean) => void,
   handleResetClick: () => void,
-  reachedEnd: boolean
+  reachedEnd: boolean,
+  resetBreak: () => void
 }
 
 export const Home = ({
@@ -23,7 +25,8 @@ export const Home = ({
   isRunning,
   handleIsRunningClick,
   handleResetClick,
-  reachedEnd
+  reachedEnd,
+  resetBreak
 }: HomeProps) => (
   <div className={styles.wrap} data-tid="container">
     <div className={styles.mobstersWrap}>
@@ -32,7 +35,7 @@ export const Home = ({
 
     <div className={styles.container}>
       <Settings />
-      {isOnBreak && <Break />}
+      {isOnBreak && <Break resetBreak={resetBreak} />}
       <h2 className={styles.header}>UR Mob</h2>
       <h3 className={styles.timeLeft}>
         <FormattedMessage id="timeLeft" />: {formatTime(count)}
@@ -51,13 +54,7 @@ export const Home = ({
           />
         )}
 
-        <button
-          className={styles.resetButton}
-          onClick={() => handleResetClick()}
-          type="button"
-        >
-          <FormattedMessage id="resetButton" />
-        </button>
+        <ResetButton handleClick={handleResetClick} id="resetButton" />
       </div>
     </div>
   </div>
