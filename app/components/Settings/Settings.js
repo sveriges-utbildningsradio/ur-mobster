@@ -61,64 +61,83 @@ export const Settings = () => {
       </button>
       {!!showingSettings && (
         <div className={styles.pageWrap}>
-          <div className={styles.innerWrap}>
-            <h2 className={styles.header}>
-              <FormattedMessage id="settingsHeader" />
-            </h2>
-            <ul className={styles.settingsWrap}>
-              <li className={styles.settingWrap}>
-                <img
-                  alt="Duration settings"
-                  className={styles.icon}
-                  src={Time}
-                />
-                <span className={styles.settingLabel}>
-                  <FormattedMessage id="time" />
-                </span>
-                <SettingsDuration time={duration} updaterFn={updateDuration} />
-              </li>
-              <li className={styles.settingWrap}>
-                <img alt="Pause settings" className={styles.icon} src={Break} />
-                <span className={styles.settingLabel}>
-                  <FormattedMessage id="break" />
-                </span>
-                <FormattedMessage id="length">
-                  {msg => (
-                    <SettingsDuration
-                      prefixLabel={`${msg} `}
-                      time={breakDuration}
-                      updaterFn={updateBreakDuration}
-                    />
-                  )}
-                </FormattedMessage>
+          <div>
+            <div className={styles.innerWrap}>
+              <h2 className={styles.header}>
+                <FormattedMessage id="settingsHeader" />
+              </h2>
+              <ul className={styles.settingsWrap}>
+                <li className={styles.settingWrap}>
+                  <img
+                    alt="Duration settings"
+                    className={styles.icon}
+                    src={Time}
+                  />
+                  <span className={styles.settingLabel}>
+                    <FormattedMessage id="time" />
+                  </span>
+                  <SettingsDuration
+                    time={duration}
+                    updaterFn={updateDuration}
+                  />
+                </li>
+                <li className={styles.settingWrap}>
+                  <img
+                    alt="Pause settings"
+                    className={styles.icon}
+                    src={Break}
+                  />
+                  <span className={styles.settingLabel}>
+                    <FormattedMessage id="break" />
+                  </span>
+                  <FormattedMessage id="length">
+                    {msg => (
+                      <SettingsDuration
+                        prefixLabel={`${msg} `}
+                        time={breakDuration}
+                        updaterFn={updateBreakDuration}
+                      />
+                    )}
+                  </FormattedMessage>
 
-                <FormattedMessage id="interval">
-                  {msg => (
-                    <SettingsDuration
-                      prefixLabel={`${msg} `}
-                      time={breakFrequency}
-                      updaterFn={updateBreakFrequency}
-                    />
-                  )}
-                </FormattedMessage>
-              </li>
-              <li className={styles.settingWrap}>
-                <img
-                  alt="Language settings"
-                  className={styles.icon}
-                  src={Language}
-                />
-                <span className={styles.settingLabel}>
-                  <FormattedMessage id="language" />
-                </span>
-                <SettingsToggle active={language} options={LANGUAGE_OPTIONS} />
-              </li>
-            </ul>
-            <DefaultButton
-              handleClick={() => toggleShowingSettings(false)}
-              textId="doneButton"
-            />
+                  <FormattedMessage id="interval">
+                    {msg => (
+                      <SettingsDuration
+                        prefixLabel={`${msg} `}
+                        time={breakFrequency}
+                        updaterFn={updateBreakFrequency}
+                      />
+                    )}
+                  </FormattedMessage>
+                </li>
+                <li className={styles.settingWrap}>
+                  <img
+                    alt="Language settings"
+                    className={styles.icon}
+                    src={Language}
+                  />
+                  <span className={styles.settingLabel}>
+                    <FormattedMessage id="language" />
+                  </span>
+                  <SettingsToggle
+                    active={language}
+                    options={LANGUAGE_OPTIONS}
+                  />
+                </li>
+              </ul>
+              <DefaultButton
+                handleClick={() => toggleShowingSettings(false)}
+                textId="doneButton"
+              />
+            </div>
           </div>
+          <FormattedMessage
+            id="createdBy"
+            values={{
+              andre: <a href="https://github.com/Aelmoznino">@Aelmoznino</a>,
+              agnes: <a href="https://github.com/agnesforsell">@AgnesForsell</a>
+            }}
+          />
         </div>
       )}
     </>
