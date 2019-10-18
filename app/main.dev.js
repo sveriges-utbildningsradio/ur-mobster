@@ -13,6 +13,7 @@
 import { app, BrowserWindow } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
+import path from 'path'
 import MenuBuilder from './menu'
 
 export default class AppUpdater {
@@ -74,7 +75,8 @@ app.on('ready', async () => {
     height: 1024,
     minHeight: 600,
     webPreferences: {
-      backgroundThrottling: false
+      backgroundThrottling: false,
+      preload: path.join(app.getAppPath(), 'preload.js')
     },
     titleBarStyle: 'hidden'
   })
