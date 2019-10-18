@@ -23,7 +23,7 @@ export const LANGUAGE_OPTIONS = [
   }
 ]
 
-export const Settings = () => {
+const Settings = () => {
   const {
     duration,
     breakDuration,

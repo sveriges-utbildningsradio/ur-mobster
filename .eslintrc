@@ -7,11 +7,11 @@
   "extends": ["airbnb", "prettier", "prettier/flowtype", "prettier/react"],
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "jest": true
   },
   "rules": {
     "arrow-parens": ["off"],
-    "compat/compat": "error",
     "consistent-return": "off",
     "comma-dangle": "off",
     "flowtype/boolean-style": ["error", "boolean"],
@@ -61,7 +61,7 @@
     ],
     "react/prefer-stateless-function": "off"
   },
-  "plugins": ["flowtype", "import", "promise", "compat", "react"],
+  "plugins": ["flowtype", "import", "promise", "react"],
   "settings": {
     "import/resolver": {
       "webpack": {

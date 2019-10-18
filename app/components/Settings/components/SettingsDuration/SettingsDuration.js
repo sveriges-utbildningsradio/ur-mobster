@@ -12,7 +12,7 @@ import { FIVE_MINUTES } from '../../../../constants'
 type SettingsToggleProps = {
   prefixLabel?: string,
   time: number,
-  updaterFn: () => void
+  updaterFn: (time: number) => void
 }
 
 const SettingsDuration = ({
@@ -35,28 +35,37 @@ const SettingsDuration = ({
   return (
     <div className={styles.wrap}>
       <p className={styles.time}>
-        {!!prefixLabel.length && prefixLabel}
+        {!!prefixLabel && !!prefixLabel.length && prefixLabel}
         {time / 60} min
       </p>
       <div className={styles.buttonsWrap}>
-        <button className={styles.button} type="button">
+        {/* eslint-disable no-return-assign */}
+        <button
+          className={styles.button}
+          onClick={() => handleClickIncrease()}
+          onKeyPress={() => handleClickIncrease()}
+          type="button"
+        >
           <img
             alt="Increase time 5 minutes"
             className={styles.icon}
             onBlur={e => (e.currentTarget.src = Add)}
-            onClick={() => handleClickIncrease()}
             onFocus={e => (e.currentTarget.src = AddActive)}
             onMouseOut={e => (e.currentTarget.src = Add)}
             onMouseOver={e => (e.currentTarget.src = AddActive)}
             src={Add}
           />
         </button>
-        <button className={styles.button} type="button">
+        <button
+          className={styles.button}
+          onClick={() => handleClickDecrease()}
+          onKeyPress={() => handleClickDecrease()}
+          type="button"
+        >
           <img
             alt="Decrease time 5 minutes"
             className={styles.icon}
             onBlur={e => (e.currentTarget.src = Remove)}
-            onClick={() => handleClickDecrease()}
             onFocus={e => (e.currentTarget.src = RemoveActive)}
             onMouseOut={e => (e.currentTarget.src = Remove)}
             onMouseOver={e => (e.currentTarget.src = RemoveActive)}
@@ -64,6 +73,7 @@ const SettingsDuration = ({
           />
         </button>
       </div>
+      {/* eslint-enable no-return-assign */}
     </div>
   )
 }

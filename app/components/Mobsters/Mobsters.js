@@ -1,6 +1,10 @@
+// @flow
+
 import React from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
+import type { OnDragEndResponder } from 'react-beautiful-dnd'
 import { FormattedMessage } from 'react-intl'
+import type { User } from '../../types'
 import styles from './Mobsters.css'
 import avatarImage from '../../assets/avatar.png'
 import githubButton from '../../assets/github.png'
@@ -8,6 +12,19 @@ import addButton from '../../assets/add.png'
 import editButton from '../../assets/pencil.png'
 import stopEditButton from '../../assets/pencil-red.png'
 import MobstersList from './MobstersList'
+
+type MobstersProps = {
+  activeUsers: User[],
+  clickEditButton: () => void,
+  clickGitHubButton: () => void,
+  clickGuestButton: () => void,
+  clickRemoveUser: () => void,
+  inactiveUsers: User[],
+  isEditing: boolean,
+  onDragEnd: OnDragEndResponder,
+  setUsername: (value: string) => void,
+  username?: string
+}
 
 const Mobsters = ({
   activeUsers,
@@ -20,7 +37,7 @@ const Mobsters = ({
   onDragEnd,
   setUsername,
   username = ''
-}) => (
+}: MobstersProps) => (
   <div className={styles.wrap}>
     <div>
       <div>
@@ -103,5 +120,9 @@ const Mobsters = ({
     </div>
   </div>
 )
+
+Mobsters.defaultProps = {
+  username: ''
+}
 
 export default Mobsters

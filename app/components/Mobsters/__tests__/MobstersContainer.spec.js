@@ -2,9 +2,6 @@ import React from 'react'
 import { fireEvent, cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
 import renderWithReactIntl from '../../../utils/testHelpers'
-import axiosMock from 'axios'
-import storageMock from 'electron-json-storage'
-import { activeUsers, inactiveUsers } from '../__fixtures__/UsersFixture'
 
 import MobstersContainer from '../MobstersContainer'
 
@@ -12,9 +9,7 @@ describe('components/MobstersContainer', () => {
   afterEach(cleanup)
 
   it('renders given no activeUsers nor inactiveUsers', () => {
-    const { getByTestId, container } = renderWithReactIntl(
-      <MobstersContainer />
-    )
+    const { container } = renderWithReactIntl(<MobstersContainer />)
 
     expect(container.firstChild).toMatchSnapshot()
   })
@@ -26,11 +21,9 @@ describe('components/MobstersContainer', () => {
     //   data: { activeUsers, inactiveUsers }
     // })
 
-    const {
-      getByTestId,
-      container,
-      getByPlaceholderText
-    } = renderWithReactIntl(<MobstersContainer />)
+    const { container, getByPlaceholderText } = renderWithReactIntl(
+      <MobstersContainer />
+    )
 
     const input = getByPlaceholderText('Lägg till mobster')
     fireEvent.change(input, { target: { value: 'test user' } })

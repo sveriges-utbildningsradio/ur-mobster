@@ -2,7 +2,6 @@
 
 import React, { useContext } from 'react'
 import Lottie from 'react-lottie'
-import { FormattedMessage } from 'react-intl'
 import { SettingsStoreContext } from '../../store/store'
 import { formatTime } from '../../utils/formatTime'
 import styles from './Break.css'
@@ -14,9 +13,7 @@ type BreakProps = {
 }
 
 const Break = ({ resetBreak }: BreakProps) => {
-  const { breakDuration, breakTimeLeft } = useContext(SettingsStoreContext)
-
-  const progress = (breakTimeLeft / breakDuration) * 100
+  const { breakTimeLeft } = useContext(SettingsStoreContext)
 
   const defaultOptions = {
     loop: true,

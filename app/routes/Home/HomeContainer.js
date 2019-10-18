@@ -9,7 +9,7 @@ const {
   setWindowHidden
 } = require('electron').remote.getGlobal('windowUtils')
 
-export const HomeContainer = () => {
+const HomeContainer = () => {
   const {
     breakDuration,
     breakFrequency,
@@ -43,12 +43,9 @@ export const HomeContainer = () => {
     isRunning ? 1000 : null
   )
 
-  useEffect(
-    () => {
-      setCount(duration)
-    },
-    [duration]
-  )
+  useEffect(() => {
+    setCount(duration)
+  }, [duration])
 
   const resetBreak = () => {
     dispatch(updateBreakTimeLeft(breakDuration))
@@ -68,14 +65,11 @@ export const HomeContainer = () => {
     isOnBreak ? 1000 : null
   )
 
-  useEffect(
-    () => {
-      if (timeSinceBreak >= breakFrequency) {
-        setIsOnBreak(true)
-      }
-    },
-    [timeSinceBreak]
-  )
+  useEffect(() => {
+    if (timeSinceBreak >= breakFrequency) {
+      setIsOnBreak(true)
+    }
+  }, [timeSinceBreak])
 
   const handleIsRunningClick = timerIsRunning => {
     if (timerIsRunning) {

@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl'
 import styles from './DefaultButton.css'
 
 type DefaultButtonProps = {
-  handleClick: any => void,
+  handleClick: () => void,
   textId: string
 }
 

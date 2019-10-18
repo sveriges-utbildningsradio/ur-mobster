@@ -24,13 +24,13 @@ render(
 )
 
 if (module.hot) {
-  module.hot.accept('./routes/Home', () => {
+  module.hot.accept('./LanguageProvider', () => {
     // eslint-disable-next-line global-require
-    const NextHome = require('./routes/Home').default
+    const NextRoot = require('./LanguageProvider').default
     render(
       <AppContainer>
         <Store>
-          <LanguageProvider />
+          <NextRoot />
         </Store>
       </AppContainer>,
       document.getElementById('root')

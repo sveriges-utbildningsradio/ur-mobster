@@ -1,6 +1,6 @@
 // @flow
 
-import React, { createContext, useReducer } from 'react'
+import * as React from 'react'
 import storage from 'electron-json-storage'
 import reducer from './reducer'
 import {
@@ -12,7 +12,7 @@ import {
 } from './actions'
 import { FIFTY_MINUTES, FIVE_MINUTES, TEN_MINUTES } from '../constants'
 
-export const initialState = {
+export const INITIAL_STATE = {
   breakTimeLeft: FIVE_MINUTES,
   breakDuration: FIVE_MINUTES,
   breakFrequency: FIFTY_MINUTES,
@@ -20,7 +20,7 @@ export const initialState = {
   language: 'sv'
 }
 
-export const SettingsStoreContext = createContext(initialState)
+export const SettingsStoreContext = React.createContext(INITIAL_STATE)
 
 export const handleLanguage = () => {
   const browserLanguage = navigator.language.substring(0, 2)
@@ -31,7 +31,20 @@ export const handleLanguage = () => {
   return browserLanguage
 }
 
-const Store = ({ initialState, children }) => {
+type initialStateProps = {
+  breakTimeLeft: number,
+  breakDuration: number,
+  breakFrequency: number,
+  duration: number,
+  language: string
+}
+
+type StoreProps = {
+  initialState?: initialStateProps,
+  children: React.Node
+}
+
+const Store = ({ initialState, children }: StoreProps) => {
   const init = ({
     breakDuration,
     breakFrequency,
@@ -63,7 +76,7 @@ const Store = ({ initialState, children }) => {
     return { breakDuration, breakFrequency, breakTimeLeft, duration, language }
   }
 
-  const [state, dispatch] = useReducer(reducer, initialState, init)
+  const [state, dispatch] = React.useReducer(reducer, initialState, init)
 
   return (
     <SettingsStoreContext.Provider
@@ -83,7 +96,7 @@ const Store = ({ initialState, children }) => {
 }
 
 Store.defaultProps = {
-  initialState
+  initialState: INITIAL_STATE
 }
 
 export default Store
