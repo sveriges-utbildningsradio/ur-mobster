@@ -1,13 +1,29 @@
+// @flow
+
 import React from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
+import type { User } from '../../types'
 import styles from './Mobsters.css'
 import avatarImage from '../../assets/avatar.png'
 import removeButton from '../../assets/stop.png'
 
-const MobstersList = ({ clickRemoveUser, droppableId, isEditing, users }) => (
+type MobstersListProps = {
+  clickRemoveUser: (name: string, id: string) => void,
+  droppableId: string,
+  isEditing: boolean,
+  users: User[]
+}
+
+const MobstersList = ({
+  clickRemoveUser,
+  droppableId,
+  isEditing,
+  users
+}: MobstersListProps) => (
   <ul>
     <Droppable droppableId={droppableId}>
       {(provided, snapshot) => (
+        /* eslint-disable react/jsx-props-no-spreading */
         <div
           {...provided.droppableProps}
           className={styles.droppableWrap}
@@ -86,6 +102,7 @@ const MobstersList = ({ clickRemoveUser, droppableId, isEditing, users }) => (
           </ul>
           {provided.placeholder}
         </div>
+        /* eslint-enable react/jsx-props-no-spreading */
       )}
     </Droppable>
   </ul>

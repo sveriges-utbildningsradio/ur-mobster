@@ -6,10 +6,8 @@ type AppProps = {
 }
 
 export default class App extends React.Component<AppProps> {
-  props: AppProps
-
   render() {
     const { children } = this.props
-    return <React.Fragment>{children}</React.Fragment>
+    return <>{children}</>
   }
 }

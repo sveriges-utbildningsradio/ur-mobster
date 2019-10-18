@@ -1,14 +1,13 @@
 import React from 'react'
 import { cleanup } from '@testing-library/react'
 import 'jest-dom/extend-expect'
-import renderWithReactIntl from '../../../utils/testHelpers'
 import { DragDropContext } from 'react-beautiful-dnd'
+import renderWithReactIntl from '../../../utils/testHelpers'
 import MobstersList from '../MobstersList'
 import { activeUsers } from '../__fixtures__/UsersFixture'
 
 describe('components/Mobsters/MobstersList', () => {
   let clickRemoveUser
-  let users
 
   beforeEach(() => {
     clickRemoveUser = jest.fn()

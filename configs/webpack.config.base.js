@@ -2,9 +2,9 @@
  * Base webpack config used across other specific configs
  */
 
-import path from 'path';
-import webpack from 'webpack';
-import { dependencies } from '../package.json';
+import path from 'path'
+import webpack from 'webpack'
+import { dependencies } from '../package.json'
 
 export default {
   externals: [...Object.keys(dependencies || {})],
@@ -44,4 +44,4 @@ export default {
 
     new webpack.NamedModulesPlugin()
   ]
-};
+}

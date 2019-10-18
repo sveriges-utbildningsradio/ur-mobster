@@ -9,12 +9,8 @@ type ResetButtonProps = {
   id: string
 }
 
-const ResetButton = ({ handleClick, id }) => (
-  <button
-    className={styles.resetButton}
-    onClick={() => handleClick()}
-    type="button"
-  >
+const ResetButton = ({ handleClick, id }: ResetButtonProps) => (
+  <button className={styles.resetButton} onClick={handleClick} type="button">
     <FormattedMessage id={id} />
   </button>
 )

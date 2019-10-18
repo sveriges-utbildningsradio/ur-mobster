@@ -19,7 +19,7 @@ type HomeProps = {
   resetBreak: () => void
 }
 
-export const Home = ({
+const Home = ({
   count,
   isOnBreak,
   isRunning,

@@ -5,7 +5,7 @@ import translations from '../translations'
 
 const renderWithReactIntl = component => {
   return render(
-    <IntlProvider locale="sv" messages={translations['sv']}>
+    <IntlProvider locale="sv" messages={translations.sv}>
       {component}
     </IntlProvider>
   )
