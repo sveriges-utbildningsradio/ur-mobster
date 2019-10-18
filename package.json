@@ -118,7 +118,8 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "setupFiles": [
-      "./internals/scripts/CheckBuiltsExist.js"
+      "./internals/scripts/CheckBuiltsExist.js",
+      "jest-canvas-mock"
     ],
     "watchPlugins": [
       "jest-watch-typeahead/filename",
@@ -185,6 +186,7 @@
     "husky": "^1.1.4",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.8.0",
+    "jest-canvas-mock": "^2.1.2",
     "jest-watch-typeahead": "^0.3.1",
     "lint-staged": "^8.1.0",
     "mini-css-extract-plugin": "^0.4.4",
@@ -226,10 +228,10 @@
     "jest-dom": "^3.4.0",
     "react": "16.10.2",
     "react-beautiful-dnd": "^11.0.3",
-    "react-circular-progressbar": "^2.0.1",
     "react-dom": "16.10.2",
     "react-hot-loader": "^4.8.4",
     "react-intl": "2.9.0",
+    "react-lottie": "^1.2.3",
     "shortid": "^2.2.14",
     "source-map-support": "^0.5.9",
     "styled-components": "^4.3.2"
