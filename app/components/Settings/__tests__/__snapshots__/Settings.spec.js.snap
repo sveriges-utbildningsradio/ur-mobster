@@ -52,199 +52,216 @@ exports[`components/Settings renders when open 1`] = `
   <div
     class="pageWrap"
   >
-    <div
-      class="innerWrap"
-    >
-      <h2
-        class="header"
+    <div>
+      <div
+        class="innerWrap"
       >
-        <span>
-          Mobster-inställningar
-        </span>
-      </h2>
-      <ul
-        class="settingsWrap"
-      >
-        <li
-          class="settingWrap"
+        <h2
+          class="header"
         >
-          <img
-            alt="Duration settings"
-            class="icon"
-            src="test-file-stub"
-          />
-          <span
-            class="settingLabel"
-          >
-            <span>
-              Tid
-            </span>
+          <span>
+            Mobster-inställningar
           </span>
-          <div
-            class="wrap"
-          >
-            <p
-              class="time"
-            >
-              0.16666666666666666
-               min
-            </p>
-            <div
-              class="buttonsWrap"
-            >
-              <button
-                class="button"
-                type="button"
-              >
-                <img
-                  alt="Increase time 5 minutes"
-                  class="icon"
-                  src="test-file-stub"
-                />
-              </button>
-              <button
-                class="button"
-                type="button"
-              >
-                <img
-                  alt="Decrease time 5 minutes"
-                  class="icon"
-                  src="test-file-stub"
-                />
-              </button>
-            </div>
-          </div>
-        </li>
-        <li
-          class="settingWrap"
+        </h2>
+        <ul
+          class="settingsWrap"
         >
-          <img
-            alt="Pause settings"
-            class="icon"
-            src="test-file-stub"
-          />
-          <span
-            class="settingLabel"
+          <li
+            class="settingWrap"
           >
-            <span>
-              Rast
+            <img
+              alt="Duration settings"
+              class="icon"
+              src="test-file-stub"
+            />
+            <span
+              class="settingLabel"
+            >
+              <span>
+                Tid
+              </span>
             </span>
-          </span>
-          <div
-            class="wrap"
-          >
-            <p
-              class="time"
-            >
-              Längd 
-              5
-               min
-            </p>
             <div
-              class="buttonsWrap"
+              class="wrap"
             >
-              <button
-                class="button"
-                type="button"
+              <p
+                class="time"
               >
-                <img
-                  alt="Increase time 5 minutes"
-                  class="icon"
-                  src="test-file-stub"
-                />
-              </button>
-              <button
-                class="button"
-                type="button"
+                10
+                 min
+              </p>
+              <div
+                class="buttonsWrap"
               >
-                <img
-                  alt="Decrease time 5 minutes"
-                  class="icon"
-                  src="test-file-stub"
-                />
-              </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Increase time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Decrease time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+              </div>
             </div>
-          </div>
-          <div
-            class="wrap"
+          </li>
+          <li
+            class="settingWrap"
           >
-            <p
-              class="time"
+            <img
+              alt="Pause settings"
+              class="icon"
+              src="test-file-stub"
+            />
+            <span
+              class="settingLabel"
             >
-              Intervall 
-              50
-               min
-            </p>
+              <span>
+                Rast
+              </span>
+            </span>
             <div
-              class="buttonsWrap"
+              class="wrap"
             >
-              <button
-                class="button"
-                type="button"
+              <p
+                class="time"
               >
-                <img
-                  alt="Increase time 5 minutes"
-                  class="icon"
-                  src="test-file-stub"
-                />
-              </button>
-              <button
-                class="button"
-                type="button"
+                Längd 
+                5
+                 min
+              </p>
+              <div
+                class="buttonsWrap"
               >
-                <img
-                  alt="Decrease time 5 minutes"
-                  class="icon"
-                  src="test-file-stub"
-                />
-              </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Increase time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Decrease time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+              </div>
             </div>
-          </div>
-        </li>
-        <li
-          class="settingWrap"
+            <div
+              class="wrap"
+            >
+              <p
+                class="time"
+              >
+                Intervall 
+                50
+                 min
+              </p>
+              <div
+                class="buttonsWrap"
+              >
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Increase time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Decrease time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+              </div>
+            </div>
+          </li>
+          <li
+            class="settingWrap"
+          >
+            <img
+              alt="Language settings"
+              class="icon"
+              src="test-file-stub"
+            />
+            <span
+              class="settingLabel"
+            >
+              <span>
+                Språk
+              </span>
+            </span>
+            <ul
+              class="sc-bdVaJa imDAUP"
+            >
+              <li
+                class="sc-bwzfXH lkHdtP"
+              >
+                Svenska
+                <img
+                  class="sc-htpNat cfdZzv"
+                  src="test-file-stub"
+                />
+              </li>
+              <li
+                class="sc-bwzfXH akcDY"
+              >
+                English
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <button
+          class="defaultButton"
+          type="button"
         >
-          <img
-            alt="Language settings"
-            class="icon"
-            src="test-file-stub"
-          />
-          <span
-            class="settingLabel"
-          >
-            <span>
-              Språk
-            </span>
+          <span>
+            Klar!
           </span>
-          <ul
-            class="sc-bdVaJa imDAUP"
-          >
-            <li
-              class="sc-bwzfXH lkHdtP"
-            >
-              Svenska
-              <img
-                class="sc-htpNat cfdZzv"
-                src="test-file-stub"
-              />
-            </li>
-            <li
-              class="sc-bwzfXH akcDY"
-            >
-              English
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <button
-        class="defaultButton"
-        type="button"
-      >
-        <span>
-          Klar!
-        </span>
-      </button>
+        </button>
+      </div>
     </div>
+    <span>
+      Skapat av 
+      <a
+        href="https://github.com/Aelmoznino"
+      >
+        @Aelmoznino
+      </a>
+       och 
+      <a
+        href="https://github.com/agnesforsell"
+      >
+        @AgnesForsell
+      </a>
+       för Sveriges Utbildningsradio AB
+    </span>
   </div>
 </div>
 `;

@@ -1,23 +1,24 @@
 import reducer from '../reducer'
 import * as types from '../actionTypes'
 import persistToStore from '../../utils/persistToStore'
+import { FIVE_MINUTES, TEN_MINUTES } from '../../constants'
 
 jest.mock('../../utils/persistToStore')
 
 describe('store/reducer', () => {
   const initialState = {
-    breakTimeLeft: 300,
-    breakDuration: 300,
-    breakFrequency: 300,
-    duration: 300,
+    breakTimeLeft: FIVE_MINUTES,
+    breakDuration: FIVE_MINUTES,
+    breakFrequency: FIVE_MINUTES,
+    duration: FIVE_MINUTES,
     language: 'sv'
   }
   it('handles SET_FROM_STORAGE', () => {
     const payload = {
-      breakTimeLeft: 600,
-      breakDuration: 600,
-      breakFrequency: 600,
-      duration: 600,
+      breakTimeLeft: TEN_MINUTES,
+      breakDuration: TEN_MINUTES,
+      breakFrequency: TEN_MINUTES,
+      duration: TEN_MINUTES,
       language: 'en'
     }
 

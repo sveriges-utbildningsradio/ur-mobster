@@ -7,14 +7,13 @@ import AddActive from '../../../../assets/plus-active.png'
 import Remove from '../../../../assets/minus-default.png'
 import RemoveActive from '../../../../assets/minus-active.png'
 import { SettingsStoreContext } from '../../../../store/store'
+import { FIVE_MINUTES } from '../../../../constants'
 
 type SettingsToggleProps = {
   prefixLabel?: string,
   time: number,
   updaterFn: () => void
 }
-
-const FIVE_MINUTES = 60 * 5
 
 const SettingsDuration = ({
   prefixLabel,

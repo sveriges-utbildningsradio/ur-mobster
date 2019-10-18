@@ -10,12 +10,13 @@ import {
   updateBreakFrequency,
   updateBreakTimeLeft
 } from './actions'
+import { FIFTY_MINUTES, FIVE_MINUTES, TEN_MINUTES } from '../constants'
 
 export const initialState = {
-  breakTimeLeft: 60 * 5,
-  breakDuration: 60 * 5,
-  breakFrequency: 60 * 50,
-  duration: 10,
+  breakTimeLeft: FIVE_MINUTES,
+  breakDuration: FIVE_MINUTES,
+  breakFrequency: FIFTY_MINUTES,
+  duration: TEN_MINUTES,
   language: 'sv'
 }
 
@@ -48,10 +49,12 @@ const Store = ({ initialState, children }) => {
       dispatch({
         type: 'SET_SETTINGS_FROM_STORAGE',
         payload: {
-          breakTimeLeft: data.breakDuration ? data.breakDuration : 60 * 5,
-          breakDuration: data.breakDuration ? data.breakDuration : 60 * 5,
-          breakFrequency: data.breakFrequency ? data.breakFrequency : 60 * 50,
-          duration: data.duration ? data.duration : 60 * 10,
+          breakTimeLeft: data.breakDuration ? data.breakDuration : FIVE_MINUTES,
+          breakDuration: data.breakDuration ? data.breakDuration : FIVE_MINUTES,
+          breakFrequency: data.breakFrequency
+            ? data.breakFrequency
+            : FIFTY_MINUTES,
+          duration: data.duration ? data.duration : TEN_MINUTES,
           language: data.language ? data.language : defaultLanguage
         }
       })
