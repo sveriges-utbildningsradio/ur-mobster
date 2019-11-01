@@ -13,7 +13,6 @@
 import { app, BrowserWindow } from 'electron'
 import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
-import path from 'path'
 import MenuBuilder from './menu'
 
 export default class AppUpdater {
@@ -76,16 +75,15 @@ app.on('ready', async () => {
     minHeight: 600,
     webPreferences: {
       backgroundThrottling: false,
-      preload: path.join(app.getAppPath(), 'preload.js')
+      nodeIntegration: true
     },
     titleBarStyle: 'hidden'
   })
 
   const setWindowActive = () => {
     mainWindow.restore() // restore from minimized state
+    mainWindow.show()
     mainWindow.setVisibleOnAllWorkspaces(true) // put the window on all screens
-    mainWindow.focus() // focus the window up front on the active screen
-    mainWindow.setVisibleOnAllWorkspaces(false) // disable all screen behavior
   }
 
   const setWindowHidden = () => {
@@ -127,7 +125,7 @@ app.on('ready', async () => {
   const menuBuilder = new MenuBuilder(mainWindow)
   menuBuilder.buildMenu()
 
-  // Remove this if your app does not use auto updates
+  // TODO: Uncomment and use new AppUpdater() once we want to use auto updates
   // eslint-disable-next-line
-  new AppUpdater()
+  // new AppUpdater()
 })
