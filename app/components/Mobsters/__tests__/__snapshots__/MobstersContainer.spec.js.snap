@@ -120,7 +120,11 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         data-react-beautiful-dnd-droppable="0"
         style="background-color: rgb(17, 6, 54);"
       >
-        <ul />
+        <ul>
+          <li>
+            Listan är tom
+          </li>
+        </ul>
       </div>
     </ul>
     <h4>
@@ -132,7 +136,11 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         data-react-beautiful-dnd-droppable="0"
         style="background-color: rgb(17, 6, 54);"
       >
-        <ul />
+        <ul>
+          <li>
+            Listan är tom
+          </li>
+        </ul>
       </div>
     </ul>
   </div>
