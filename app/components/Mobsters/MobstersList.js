@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
+import { FormattedMessage } from 'react-intl'
 import type { User } from '../../types'
 import styles from './Mobsters.css'
 import avatarImage from '../../assets/avatar.png'
@@ -35,8 +36,7 @@ const MobstersList = ({
           ref={provided.innerRef}
         >
           <ul>
-            {users &&
-              !!users.length &&
+            {users && !!users.length ? (
               users.map((user, index) => (
                 <Draggable
                   draggableId={user.name}
@@ -98,7 +98,10 @@ const MobstersList = ({
                     </li>
                   )}
                 </Draggable>
-              ))}
+              ))
+            ) : (
+              <FormattedMessage id="noMobstersListItem" tagName="li" />
+            )}
           </ul>
           {provided.placeholder}
         </div>
