@@ -1,7 +1,7 @@
 {
   "name": "ur-mobster",
   "productName": "UR Mobster",
-  "version": "1.4.5",
+  "version": "1.4.6",
   "description": "Mobprogramming timer",
   "scripts": {
     "build": "concurrently \"yarn build-main\" \"yarn build-renderer\"",
