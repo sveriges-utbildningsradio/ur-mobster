@@ -4,6 +4,7 @@ exports[`components/Settings closes when clicking the Done button 1`] = `
 <div>
   <button
     class="buttonWrap"
+    data-e2e="settingsToggleButton"
     type="button"
   >
     <img
@@ -19,6 +20,7 @@ exports[`components/Settings renders just the button when closed 1`] = `
 <div>
   <button
     class="buttonWrap"
+    data-e2e="settingsToggleButton"
     type="button"
   >
     <img
@@ -34,6 +36,7 @@ exports[`components/Settings renders when open 1`] = `
 <div>
   <button
     class="buttonWrap"
+    data-e2e="settingsToggleButton"
     type="button"
   >
     <span
@@ -239,6 +242,7 @@ exports[`components/Settings renders when open 1`] = `
         </ul>
         <button
           class="defaultButton"
+          data-e2e="doneButton"
           type="button"
         >
           <span>

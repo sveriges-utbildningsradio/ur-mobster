@@ -108,6 +108,7 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         <input
           alt="Edit mobsters"
           class="editButton"
+          data-e2e="mobsters-edit-button"
           data-testid="mobsters-edit-button"
           src="test-file-stub"
           type="image"
@@ -158,12 +159,14 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
       >
         <input
           class="userInput"
+          data-e2e="mobsters-add-input"
           placeholder="Lägg till mobster"
           value=""
         />
         <input
           alt="Add user as guest"
           class="addButton"
+          data-e2e="mobsters-add-by-name"
           disabled=""
           src="test-file-stub"
           type="image"
@@ -171,6 +174,7 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         <input
           alt="Add user from GitHub"
           class="addButton"
+          data-e2e="mobsters-add-by-github-username"
           disabled=""
           src="test-file-stub"
           type="image"

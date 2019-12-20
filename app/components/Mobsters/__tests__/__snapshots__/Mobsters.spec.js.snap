@@ -22,6 +22,7 @@ exports[`components/Mobsters renders 1`] = `
         <input
           alt="Edit mobsters"
           class="editButton"
+          data-e2e="mobsters-edit-button"
           data-testid="mobsters-edit-button"
           src="test-file-stub"
           type="image"
@@ -58,6 +59,7 @@ exports[`components/Mobsters renders 1`] = `
             <div>
               <p
                 class="name"
+                data-e2e="mobsterslist-name-0"
                 data-testid="mobsterslist-name-0"
               >
                 Active 1 Name
@@ -93,6 +95,7 @@ exports[`components/Mobsters renders 1`] = `
             <div>
               <p
                 class="name"
+                data-e2e="mobsterslist-name-1"
                 data-testid="mobsterslist-name-1"
               >
                 Active 2 Name
@@ -136,6 +139,7 @@ exports[`components/Mobsters renders 1`] = `
             <div>
               <p
                 class="name"
+                data-e2e="mobsterslist-name-0"
                 data-testid="mobsterslist-name-0"
               >
                 Inactive 2 Name
@@ -168,6 +172,7 @@ exports[`components/Mobsters renders 1`] = `
             <div>
               <p
                 class="name"
+                data-e2e="mobsterslist-name-1"
                 data-testid="mobsterslist-name-1"
               >
                 Inactive 2 Name
@@ -196,12 +201,14 @@ exports[`components/Mobsters renders 1`] = `
       >
         <input
           class="userInput"
+          data-e2e="mobsters-add-input"
           placeholder="Lägg till mobster"
           value=""
         />
         <input
           alt="Add user as guest"
           class="addButton"
+          data-e2e="mobsters-add-by-name"
           disabled=""
           src="test-file-stub"
           type="image"
@@ -209,6 +216,7 @@ exports[`components/Mobsters renders 1`] = `
         <input
           alt="Add user from GitHub"
           class="addButton"
+          data-e2e="mobsters-add-by-github-username"
           disabled=""
           src="test-file-stub"
           type="image"

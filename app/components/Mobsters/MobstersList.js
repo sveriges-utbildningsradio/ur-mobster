@@ -67,6 +67,7 @@ const MobstersList = ({
                       <div>
                         <p
                           className={styles.name}
+                          data-e2e={`mobsterslist-name-${index}`}
                           data-testid={`mobsterslist-name-${index}`}
                         >
                           {user.name}
@@ -83,6 +84,7 @@ const MobstersList = ({
                         <input
                           alt={`Remove user from ${droppableId}`}
                           className={styles.editButton}
+                          data-e2e="mobsterslist-remove-user"
                           data-testid={`mobsterslist-remove-${index}`}
                           onClick={() =>
                             clickRemoveUser(user.name, droppableId)

@@ -40,6 +40,7 @@ const Settings = () => {
       <button
         className={styles.buttonWrap}
         onClick={() => toggleShowingSettings(!showingSettings)}
+        data-e2e="settingsToggleButton"
         type="button"
       >
         {showingSettings ? (

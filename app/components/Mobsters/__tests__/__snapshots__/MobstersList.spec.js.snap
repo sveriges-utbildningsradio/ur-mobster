@@ -28,6 +28,7 @@ exports[`components/Mobsters/MobstersList should display a list of Mobsters 1`] 
         <div>
           <p
             class="name"
+            data-e2e="mobsterslist-name-0"
             data-testid="mobsterslist-name-0"
           >
             Active 1 Name
@@ -60,6 +61,7 @@ exports[`components/Mobsters/MobstersList should display a list of Mobsters 1`] 
         <div>
           <p
             class="name"
+            data-e2e="mobsterslist-name-1"
             data-testid="mobsterslist-name-1"
           >
             Active 2 Name
