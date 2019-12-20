@@ -18,6 +18,13 @@ const assertNoConsoleErrors = async t => {
   await t.expect(error).eql([])
 }
 
+const mobsterInput = Selector('[data-e2e="mobsters-add-input"]')
+const mobsterSelector = Selector('[data-e2e="mobsterslist-name-0"]')
+const getMobsterName = () => mobsterSelector().innerText
+
+const mobsterGitHubSelector = Selector('[data-e2e="mobsterslist-githubName-0"]')
+const getMobsterGitHub = () => mobsterGitHubSelector().innerText
+
 const removeAllUsers = async t => {
   const editButton = Selector('[data-e2e="mobsters-edit-button"]')
   if (!editButton) return
@@ -30,10 +37,20 @@ const removeAllUsers = async t => {
   const count = await removeUserButtons.count
 
   if (count) {
-    for (var i = 0; i <= count; i++) {
+    for (var i = 0; i < count; i++) {
       await t.click(removeUserButtons.nth(i))
     }
   }
+
+  const mobstersList = Selector('[data-e2e="mobsters-list-draggable-wrapper"]')
+
+  await t.expect(mobstersList().innerText).eql('Listan är tom')
+}
+
+const resetTimer = async (t, timer) => {
+  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
+
+  await t.click(Selector(`[data-e2e="decrease-${timer}"]`))
 }
 
 fixture`Home Page`
@@ -48,86 +65,52 @@ test('should open window and set correct page title', async t => {
 test("should haven't any logs in console of main window", assertNoConsoleErrors)
 
 test('should be able to add new user by name', async t => {
-  const mobsterInput = Selector('[data-e2e="mobsters-add-input"]')
   const MOBSTER_NAME = 'Vito Corleone'
 
   await t.typeText(mobsterInput, MOBSTER_NAME)
 
   await t.click(Selector('[data-e2e="mobsters-add-by-name"]'))
 
-  const mobsterSelector = Selector('[data-e2e="mobsterslist-name-0"]')
-  const getMobsterName = () => mobsterSelector().innerText
-
   await t.expect(getMobsterName()).eql(MOBSTER_NAME)
 })
 
-// TODO: Remove. Using for reference until more tests have been added
+test('should be able to add new user by GitHub username', async t => {
+  const GITHUB_USERNAME = 'AElmoznino'
+  const GITHUB_FULLNAME = 'André Elmoznino Laufer'
 
-// test('should to Counter with click "to Counter" link', async t => {
-//   await t
-//     .click('[data-tid=container] > a')
-//     .expect(getCounterText())
-//     .eql('0')
-// })
+  await t.typeText(mobsterInput, GITHUB_USERNAME)
 
-// test('should navgiate to /counter', async t => {
-//   await waitForReact()
-//   await t
-//     .click(
-//       ReactSelector('Link').withProps({
-//         to: '/counter'
-//       })
-//     )
-//     .expect(getPageUrl())
-//     .contains('/counter')
-// })
+  await t.click(Selector('[data-e2e="mobsters-add-by-github-username"]'))
 
-// fixture`Counter Tests`
-//   .page('../../app/app.html')
-//   .beforeEach(clickToCounterLink)
-//   .afterEach(assertNoConsoleErrors)
+  await t.expect(getMobsterName()).eql(GITHUB_FULLNAME)
+  await t.expect(getMobsterGitHub()).eql(GITHUB_USERNAME)
+})
 
-// test('should display updated count after increment button click', async t => {
-//   await t
-//     .click(incrementButton)
-//     .expect(getCounterText())
-//     .eql('1')
-// })
+test('should be able to access settings panel and toggle language', async t => {
+  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
 
-// test('should display updated count after descrement button click', async t => {
-//   await t
-//     .click(decrementButton)
-//     .expect(getCounterText())
-//     .eql('-1')
-// })
+  const settingsHeader = Selector('[data-e2e="settings-header"]')
 
-// test('should not change if even and if odd button clicked', async t => {
-//   await t
-//     .click(oddButton)
-//     .expect(getCounterText())
-//     .eql('0')
-// })
+  await t.expect(settingsHeader().innerText).eql('Mobster-inställningar')
 
-// test('should change if odd and if odd button clicked', async t => {
-//   await t
-//     .click(incrementButton)
-//     .click(oddButton)
-//     .expect(getCounterText())
-//     .eql('2')
-// })
+  await t.click(Selector('[data-e2e="settings-toggle-en"]'))
 
-// test('should change if async button clicked and a second later', async t => {
-//   await t
-//     .click(asyncButton)
-//     .expect(getCounterText())
-//     .eql('0')
-//     .expect(getCounterText())
-//     .eql('1')
-// })
+  await t.expect(settingsHeader().innerText).eql('Mobster Settings')
 
-// test('should back to home if back button clicked', async t => {
-//   await t
-//     .click('[data-tid="backButton"] > a')
-//     .expect(Selector('[data-tid="container"]').visible)
-//     .ok()
-// })
+  await t.click(Selector('[data-e2e="settings-toggle-sv"]'))
+})
+
+test('should be able to update duration', async t => {
+  const durationTimeLeft = Selector('[data-e2e="duration-time-left"]')
+  await t.expect(durationTimeLeft().innerText).eql('Tid kvar: 05:00')
+
+  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
+
+  await t.click(Selector('[data-e2e="increase-duration"]'))
+
+  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
+
+  await t.expect(durationTimeLeft().innerText).eql('Tid kvar: 10:00')
+
+  await resetTimer(t, 'duration')
+})

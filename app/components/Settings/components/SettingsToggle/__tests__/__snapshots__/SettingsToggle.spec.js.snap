@@ -6,11 +6,13 @@ exports[`components/Settings/SettingsToggle renders 1`] = `
 >
   <li
     class="sc-bwzfXH akcDY"
+    data-e2e="settings-toggle-sv"
   >
     Svenska
   </li>
   <li
     class="sc-bwzfXH akcDY"
+    data-e2e="settings-toggle-en"
   >
     English
   </li>

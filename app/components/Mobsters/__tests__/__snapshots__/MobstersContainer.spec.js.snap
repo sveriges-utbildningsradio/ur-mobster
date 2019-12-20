@@ -121,7 +121,9 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         data-react-beautiful-dnd-droppable="0"
         style="background-color: rgb(17, 6, 54);"
       >
-        <ul>
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper"
+        >
           <li>
             Listan är tom
           </li>
@@ -137,7 +139,9 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         data-react-beautiful-dnd-droppable="0"
         style="background-color: rgb(17, 6, 54);"
       >
-        <ul>
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper"
+        >
           <li>
             Listan är tom
           </li>

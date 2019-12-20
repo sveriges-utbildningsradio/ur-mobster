@@ -33,7 +33,7 @@
     "test-all": "yarn lint && yarn flow && yarn build && yarn test && yarn build-e2e && yarn test-e2e",
     "test-e2e": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe electron:./ ./test/e2e/HomePage.e2e.js",
     "test-e2e-live": "node -r @babel/register ./internals/scripts/CheckBuiltsExist.js && cross-env NODE_ENV=test testcafe-live electron:./ ./test/e2e/HomePage.e2e.js",
-    "test-and-build-e2e": "yarn build-e2e && yarn test-e2e",
+    "build-and-test-e2e": "yarn build-e2e && yarn test-e2e",
     "test-watch": "yarn test --watch"
   },
   "lint-staged": {

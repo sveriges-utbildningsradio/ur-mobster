@@ -43,9 +43,11 @@ const SettingsToggle = ({ active, options }: SettingsToggleProps) => {
     <Wrap>
       {options.map(option => {
         const isActive = active === option.value
+
         return (
           <Option
             active={isActive}
+            data-e2e={`settings-toggle-${option.value}`}
             onClick={() => dispatch(updateLanguage(option.value))}
             key={option.value}
           >

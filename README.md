@@ -53,7 +53,7 @@ $ yarn jest --watch
 You can also run e2e tests using [Testcafe](https://devexpress.github.io/testcafe/) by running:
 
 ```bash
-$ yarn test-and-build-e2e
+$ yarn build-and-test-e2e
 ```
 
 ## Packaging

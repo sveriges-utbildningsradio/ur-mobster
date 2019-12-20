@@ -35,7 +35,9 @@ exports[`components/Mobsters renders 1`] = `
         data-react-beautiful-dnd-droppable="0"
         style="background-color: rgb(17, 6, 54);"
       >
-        <ul>
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper"
+        >
           <li
             aria-roledescription="Draggable item. Press space bar to lift"
             class="mobster"
@@ -66,6 +68,7 @@ exports[`components/Mobsters renders 1`] = `
               </p>
               <p
                 class="githubName"
+                data-e2e="mobsterslist-githubName-0"
                 data-testid="mobsterslist-githubName-0"
               >
                 Active 1 Githubname
@@ -102,6 +105,7 @@ exports[`components/Mobsters renders 1`] = `
               </p>
               <p
                 class="githubName"
+                data-e2e="mobsterslist-githubName-1"
                 data-testid="mobsterslist-githubName-1"
               />
             </div>
@@ -118,7 +122,9 @@ exports[`components/Mobsters renders 1`] = `
         data-react-beautiful-dnd-droppable="0"
         style="background-color: rgb(17, 6, 54);"
       >
-        <ul>
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper"
+        >
           <li
             aria-roledescription="Draggable item. Press space bar to lift"
             class="mobster"
@@ -146,6 +152,7 @@ exports[`components/Mobsters renders 1`] = `
               </p>
               <p
                 class="githubName"
+                data-e2e="mobsterslist-githubName-0"
                 data-testid="mobsterslist-githubName-0"
               >
                 Inactive 1 Githubname
@@ -179,6 +186,7 @@ exports[`components/Mobsters renders 1`] = `
               </p>
               <p
                 class="githubName"
+                data-e2e="mobsterslist-githubName-1"
                 data-testid="mobsterslist-githubName-1"
               />
             </div>

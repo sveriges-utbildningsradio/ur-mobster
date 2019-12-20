@@ -35,7 +35,7 @@ const MobstersList = ({
           }}
           ref={provided.innerRef}
         >
-          <ul>
+          <ul data-e2e="mobsters-list-draggable-wrapper">
             {users && !!users.length ? (
               users.map((user, index) => (
                 <Draggable
@@ -74,6 +74,7 @@ const MobstersList = ({
                         </p>
                         <p
                           className={styles.githubName}
+                          data-e2e={`mobsterslist-githubName-${index}`}
                           data-testid={`mobsterslist-githubName-${index}`}
                         >
                           {user.githubName}
