@@ -54,6 +54,8 @@ You can also run e2e tests using [Testcafe](https://devexpress.github.io/testcaf
 
 ```bash
 $ yarn build-and-test-e2e
+// OR
+$ yarn build-and-test-e2e-headless // runs in headless mode - faster
 ```
 
 ## Packaging
