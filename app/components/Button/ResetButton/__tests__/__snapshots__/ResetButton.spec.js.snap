@@ -3,6 +3,7 @@
 exports[`components/Button/ResetButton renders 1`] = `
 <button
   class="resetButton"
+  data-e2e="resetBreak"
   type="button"
 >
   <span>

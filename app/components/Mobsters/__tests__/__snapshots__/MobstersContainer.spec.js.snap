@@ -122,7 +122,7 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         style="background-color: rgb(17, 6, 54);"
       >
         <ul
-          data-e2e="mobsters-list-draggable-wrapper"
+          data-e2e="mobsters-list-draggable-wrapper-activeUsers"
         >
           <li>
             Listan är tom
@@ -140,7 +140,7 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
         style="background-color: rgb(17, 6, 54);"
       >
         <ul
-          data-e2e="mobsters-list-draggable-wrapper"
+          data-e2e="mobsters-list-draggable-wrapper-inactiveUsers"
         >
           <li>
             Listan är tom

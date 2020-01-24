@@ -1,29 +1,50 @@
 import { ClientFunction, Selector } from 'testcafe'
-import { ReactSelector, waitForReact } from 'testcafe-react-selectors'
-import { getPageUrl } from './helpers'
+import { waitForReact } from 'testcafe-react-selectors'
+import { en, sv } from '../../app/translations.json'
 
-// TODO: Remove. Using for reference until more tests have been added
-const getPageTitle = ClientFunction(() => document.title)
-const counterSelector = Selector('[data-tid="counter"]')
-const buttonsSelector = Selector('[data-tclass="btn"]')
-const clickToCounterLink = t =>
-  t.click(Selector('a').withExactText('to Counter'))
-const incrementButton = buttonsSelector.nth(0)
-const decrementButton = buttonsSelector.nth(1)
-const oddButton = buttonsSelector.nth(2)
-const asyncButton = buttonsSelector.nth(3)
-const getCounterText = () => counterSelector().innerText
-const assertNoConsoleErrors = async t => {
-  const { error } = await t.getBrowserConsoleMessages()
-  await t.expect(error).eql([])
-}
+/**
+ * CONSTANTS
+ */
+const EMPTY_LIST = sv.noMobstersListItem
+const MOBSTER_NAME = 'Vito Corleone'
+const GITHUB_USERNAME = 'AElmoznino'
+const GITHUB_FULLNAME = 'André Elmoznino Laufer'
 
+/**
+ * SELECTORS
+ */
 const mobsterInput = Selector('[data-e2e="mobsters-add-input"]')
 const mobsterSelector = Selector('[data-e2e="mobsterslist-name-0"]')
 const getMobsterName = () => mobsterSelector().innerText
 
 const mobsterGitHubSelector = Selector('[data-e2e="mobsterslist-githubName-0"]')
 const getMobsterGitHub = () => mobsterGitHubSelector().innerText
+
+const mobstersList = Selector(
+  '[data-e2e="mobsters-list-draggable-wrapper-activeUsers"]'
+)
+
+const inactiveMobstersList = Selector(
+  '[data-e2e="mobsters-list-draggable-wrapper-inactiveUsers"]'
+)
+
+const startButton = Selector('[data-e2e="startButton"]')
+const pauseButton = Selector('[data-e2e="pauseButton"]')
+const resetButton = Selector('[data-e2e="resetButton"]')
+const timeLeft = Selector('[data-e2e="duration-time-left"]')
+const getTimeLeft = () => timeLeft().innerText
+
+const settingsToggle = Selector('[data-e2e="settings-toggle-button"]')
+
+/**
+ * HELPERS
+ */
+const getPageTitle = ClientFunction(() => document.title)
+
+const assertNoConsoleErrors = async t => {
+  const { error } = await t.getBrowserConsoleMessages()
+  await t.expect(error).eql([])
+}
 
 const removeAllUsers = async t => {
   const editButton = Selector('[data-e2e="mobsters-edit-button"]')
@@ -42,16 +63,19 @@ const removeAllUsers = async t => {
     }
   }
 
-  const mobstersList = Selector('[data-e2e="mobsters-list-draggable-wrapper"]')
-
-  await t.expect(mobstersList().innerText).eql('Listan är tom')
+  await t.expect(mobstersList().innerText).eql(EMPTY_LIST)
+  await t.expect(inactiveMobstersList().innerText).eql(EMPTY_LIST)
 }
 
 const resetTimer = async (t, timer) => {
-  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
+  await t.click(settingsToggle)
 
   await t.click(Selector(`[data-e2e="decrease-${timer}"]`))
 }
+
+/**
+ * TESTS
+ */
 
 fixture`Home Page`
   .page('../../app/app.html')
@@ -64,20 +88,22 @@ test('should open window and set correct page title', async t => {
 
 test("should haven't any logs in console of main window", assertNoConsoleErrors)
 
-test('should be able to add new user by name', async t => {
-  const MOBSTER_NAME = 'Vito Corleone'
-
+test('should be able to add new user by name and drag user to inactive list', async t => {
   await t.typeText(mobsterInput, MOBSTER_NAME)
 
   await t.click(Selector('[data-e2e="mobsters-add-by-name"]'))
 
   await t.expect(getMobsterName()).eql(MOBSTER_NAME)
+
+  await t.expect(inactiveMobstersList().innerText).eql(EMPTY_LIST)
+
+  await t.dragToElement(mobsterSelector, inactiveMobstersList)
+
+  await t.expect(mobstersList().innerText).eql(EMPTY_LIST)
+  await t.expect(inactiveMobstersList().innerText).eql(MOBSTER_NAME)
 })
 
 test('should be able to add new user by GitHub username', async t => {
-  const GITHUB_USERNAME = 'AElmoznino'
-  const GITHUB_FULLNAME = 'André Elmoznino Laufer'
-
   await t.typeText(mobsterInput, GITHUB_USERNAME)
 
   await t.click(Selector('[data-e2e="mobsters-add-by-github-username"]'))
@@ -87,30 +113,41 @@ test('should be able to add new user by GitHub username', async t => {
 })
 
 test('should be able to access settings panel and toggle language', async t => {
-  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
+  await t.click(settingsToggle)
 
   const settingsHeader = Selector('[data-e2e="settings-header"]')
 
-  await t.expect(settingsHeader().innerText).eql('Mobster-inställningar')
+  await t.expect(settingsHeader().innerText).eql(sv.settingsHeader)
 
   await t.click(Selector('[data-e2e="settings-toggle-en"]'))
 
-  await t.expect(settingsHeader().innerText).eql('Mobster Settings')
+  await t.expect(settingsHeader().innerText).eql(en.settingsHeader)
 
   await t.click(Selector('[data-e2e="settings-toggle-sv"]'))
 })
 
 test('should be able to update duration', async t => {
-  const durationTimeLeft = Selector('[data-e2e="duration-time-left"]')
-  await t.expect(durationTimeLeft().innerText).eql('Tid kvar: 05:00')
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 05:00`)
 
-  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
+  await t.click(settingsToggle)
 
   await t.click(Selector('[data-e2e="increase-duration"]'))
 
-  await t.click(Selector('[data-e2e="settings-toggle-button"]'))
+  await t.click(settingsToggle)
 
-  await t.expect(durationTimeLeft().innerText).eql('Tid kvar: 10:00')
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 10:00`)
 
   await resetTimer(t, 'duration')
+})
+
+test('should handle starting, pausing and resetting the timer', async t => {
+  await t.click(startButton)
+
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 04:59`)
+
+  await t.click(pauseButton)
+
+  await t.click(resetButton)
+
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 05:00`)
 })

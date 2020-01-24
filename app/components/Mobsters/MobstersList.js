@@ -35,7 +35,7 @@ const MobstersList = ({
           }}
           ref={provided.innerRef}
         >
-          <ul data-e2e="mobsters-list-draggable-wrapper">
+          <ul data-e2e={`mobsters-list-draggable-wrapper-${droppableId}`}>
             {users && !!users.length ? (
               users.map((user, index) => (
                 <Draggable

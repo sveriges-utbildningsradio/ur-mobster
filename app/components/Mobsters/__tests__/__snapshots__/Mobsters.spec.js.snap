@@ -36,7 +36,7 @@ exports[`components/Mobsters renders 1`] = `
         style="background-color: rgb(17, 6, 54);"
       >
         <ul
-          data-e2e="mobsters-list-draggable-wrapper"
+          data-e2e="mobsters-list-draggable-wrapper-activeUsers"
         >
           <li
             aria-roledescription="Draggable item. Press space bar to lift"
@@ -123,7 +123,7 @@ exports[`components/Mobsters renders 1`] = `
         style="background-color: rgb(17, 6, 54);"
       >
         <ul
-          data-e2e="mobsters-list-draggable-wrapper"
+          data-e2e="mobsters-list-draggable-wrapper-inactiveUsers"
         >
           <li
             aria-roledescription="Draggable item. Press space bar to lift"

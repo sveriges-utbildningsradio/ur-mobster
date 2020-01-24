@@ -10,7 +10,12 @@ type ResetButtonProps = {
 }
 
 const ResetButton = ({ handleClick, id }: ResetButtonProps) => (
-  <button className={styles.resetButton} onClick={handleClick} type="button">
+  <button
+    className={styles.resetButton}
+    data-e2e={id}
+    onClick={handleClick}
+    type="button"
+  >
     <FormattedMessage id={id} />
   </button>
 )
