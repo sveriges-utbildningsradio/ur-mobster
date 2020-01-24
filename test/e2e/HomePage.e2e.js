@@ -143,7 +143,7 @@ test('should be able to update duration', async t => {
 test('should handle starting, pausing and resetting the timer', async t => {
   await t.click(startButton)
 
-  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 04:59`)
+  await t.expect(getTimeLeft()).contains(`${sv.timeLeft}: 04:5`)
 
   await t.click(pauseButton)
 
