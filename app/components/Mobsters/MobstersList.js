@@ -35,7 +35,7 @@ const MobstersList = ({
           }}
           ref={provided.innerRef}
         >
-          <ul>
+          <ul data-e2e={`mobsters-list-draggable-wrapper-${droppableId}`}>
             {users && !!users.length ? (
               users.map((user, index) => (
                 <Draggable
@@ -67,12 +67,14 @@ const MobstersList = ({
                       <div>
                         <p
                           className={styles.name}
+                          data-e2e={`mobsterslist-name-${index}`}
                           data-testid={`mobsterslist-name-${index}`}
                         >
                           {user.name}
                         </p>
                         <p
                           className={styles.githubName}
+                          data-e2e={`mobsterslist-githubName-${index}`}
                           data-testid={`mobsterslist-githubName-${index}`}
                         >
                           {user.githubName}
@@ -83,6 +85,7 @@ const MobstersList = ({
                         <input
                           alt={`Remove user from ${droppableId}`}
                           className={styles.editButton}
+                          data-e2e="mobsterslist-remove-user"
                           data-testid={`mobsterslist-remove-${index}`}
                           onClick={() =>
                             clickRemoveUser(user.name, droppableId)

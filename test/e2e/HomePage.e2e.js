@@ -1,99 +1,153 @@
 import { ClientFunction, Selector } from 'testcafe'
-import { ReactSelector, waitForReact } from 'testcafe-react-selectors'
-import { getPageUrl } from './helpers'
+import { waitForReact } from 'testcafe-react-selectors'
+import { en, sv } from '../../app/translations.json'
 
+/**
+ * CONSTANTS
+ */
+const EMPTY_LIST = sv.noMobstersListItem
+const MOBSTER_NAME = 'Vito Corleone'
+const GITHUB_USERNAME = 'AElmoznino'
+const GITHUB_FULLNAME = 'André Elmoznino Laufer'
+
+/**
+ * SELECTORS
+ */
+const mobsterInput = Selector('[data-e2e="mobsters-add-input"]')
+const mobsterSelector = Selector('[data-e2e="mobsterslist-name-0"]')
+const getMobsterName = () => mobsterSelector().innerText
+
+const mobsterGitHubSelector = Selector('[data-e2e="mobsterslist-githubName-0"]')
+const getMobsterGitHub = () => mobsterGitHubSelector().innerText
+
+const mobstersList = Selector(
+  '[data-e2e="mobsters-list-draggable-wrapper-activeUsers"]'
+)
+
+const inactiveMobstersList = Selector(
+  '[data-e2e="mobsters-list-draggable-wrapper-inactiveUsers"]'
+)
+
+const startButton = Selector('[data-e2e="startButton"]')
+const pauseButton = Selector('[data-e2e="pauseButton"]')
+const resetButton = Selector('[data-e2e="resetButton"]')
+const timeLeft = Selector('[data-e2e="duration-time-left"]')
+const getTimeLeft = () => timeLeft().innerText
+
+const settingsToggle = Selector('[data-e2e="settings-toggle-button"]')
+
+/**
+ * HELPERS
+ */
 const getPageTitle = ClientFunction(() => document.title)
-const counterSelector = Selector('[data-tid="counter"]')
-const buttonsSelector = Selector('[data-tclass="btn"]')
-const clickToCounterLink = t =>
-  t.click(Selector('a').withExactText('to Counter'))
-const incrementButton = buttonsSelector.nth(0)
-const decrementButton = buttonsSelector.nth(1)
-const oddButton = buttonsSelector.nth(2)
-const asyncButton = buttonsSelector.nth(3)
-const getCounterText = () => counterSelector().innerText
+
 const assertNoConsoleErrors = async t => {
   const { error } = await t.getBrowserConsoleMessages()
   await t.expect(error).eql([])
 }
 
-fixture`Home Page`.page('../../app/app.html').afterEach(assertNoConsoleErrors)
+const removeAllUsers = async t => {
+  const editButton = Selector('[data-e2e="mobsters-edit-button"]')
+  if (!editButton) return
 
-test('e2e', async t => {
-  await t.expect(getPageTitle()).eql('Hello Electron React!')
-})
+  await t.click(editButton)
 
-test('should open window', async t => {
-  await t.expect(getPageTitle()).eql('Hello Electron React!')
+  await waitForReact()
+
+  const removeUserButtons = Selector('[data-e2e="mobsterslist-remove-user"]')
+  const count = await removeUserButtons.count
+
+  if (count) {
+    for (var i = 0; i < count; i++) {
+      await t.click(removeUserButtons.nth(i))
+    }
+  }
+
+  await t.expect(mobstersList().innerText).eql(EMPTY_LIST)
+  await t.expect(inactiveMobstersList().innerText).eql(EMPTY_LIST)
+}
+
+const resetTimer = async (t, timer) => {
+  await t.click(settingsToggle)
+
+  await t.click(Selector(`[data-e2e="decrease-${timer}"]`))
+}
+
+/**
+ * TESTS
+ */
+
+fixture`Home Page`
+  .page('../../app/app.html')
+  .beforeEach(removeAllUsers)
+  .afterEach(assertNoConsoleErrors)
+
+test('should open window and set correct page title', async t => {
+  await t.expect(getPageTitle()).eql('UR Mobster')
 })
 
 test("should haven't any logs in console of main window", assertNoConsoleErrors)
 
-test('should to Counter with click "to Counter" link', async t => {
-  await t
-    .click('[data-tid=container] > a')
-    .expect(getCounterText())
-    .eql('0')
+test('should be able to add new user by name and drag user to inactive list', async t => {
+  await t.typeText(mobsterInput, MOBSTER_NAME)
+
+  await t.click(Selector('[data-e2e="mobsters-add-by-name"]'))
+
+  await t.expect(getMobsterName()).eql(MOBSTER_NAME)
+
+  await t.expect(inactiveMobstersList().innerText).eql(EMPTY_LIST)
+
+  await t.dragToElement(mobsterSelector, inactiveMobstersList)
+
+  await t.expect(mobstersList().innerText).eql(EMPTY_LIST)
+  await t.expect(inactiveMobstersList().innerText).eql(MOBSTER_NAME)
 })
 
-test('should navgiate to /counter', async t => {
-  await waitForReact()
-  await t
-    .click(
-      ReactSelector('Link').withProps({
-        to: '/counter'
-      })
-    )
-    .expect(getPageUrl())
-    .contains('/counter')
+test('should be able to add new user by GitHub username', async t => {
+  await t.typeText(mobsterInput, GITHUB_USERNAME)
+
+  await t.click(Selector('[data-e2e="mobsters-add-by-github-username"]'))
+
+  await t.expect(getMobsterName()).eql(GITHUB_FULLNAME)
+  await t.expect(getMobsterGitHub()).eql(GITHUB_USERNAME)
 })
 
-fixture`Counter Tests`
-  .page('../../app/app.html')
-  .beforeEach(clickToCounterLink)
-  .afterEach(assertNoConsoleErrors)
+test('should be able to access settings panel and toggle language', async t => {
+  await t.click(settingsToggle)
 
-test('should display updated count after increment button click', async t => {
-  await t
-    .click(incrementButton)
-    .expect(getCounterText())
-    .eql('1')
+  const settingsHeader = Selector('[data-e2e="settings-header"]')
+
+  await t.expect(settingsHeader().innerText).eql(sv.settingsHeader)
+
+  await t.click(Selector('[data-e2e="settings-toggle-en"]'))
+
+  await t.expect(settingsHeader().innerText).eql(en.settingsHeader)
+
+  await t.click(Selector('[data-e2e="settings-toggle-sv"]'))
 })
 
-test('should display updated count after descrement button click', async t => {
-  await t
-    .click(decrementButton)
-    .expect(getCounterText())
-    .eql('-1')
+test('should be able to update duration', async t => {
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 05:00`)
+
+  await t.click(settingsToggle)
+
+  await t.click(Selector('[data-e2e="increase-duration"]'))
+
+  await t.click(settingsToggle)
+
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 10:00`)
+
+  await resetTimer(t, 'duration')
 })
 
-test('should not change if even and if odd button clicked', async t => {
-  await t
-    .click(oddButton)
-    .expect(getCounterText())
-    .eql('0')
-})
+test('should handle starting, pausing and resetting the timer', async t => {
+  await t.click(startButton)
 
-test('should change if odd and if odd button clicked', async t => {
-  await t
-    .click(incrementButton)
-    .click(oddButton)
-    .expect(getCounterText())
-    .eql('2')
-})
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 04:59`)
 
-test('should change if async button clicked and a second later', async t => {
-  await t
-    .click(asyncButton)
-    .expect(getCounterText())
-    .eql('0')
-    .expect(getCounterText())
-    .eql('1')
-})
+  await t.click(pauseButton)
 
-test('should back to home if back button clicked', async t => {
-  await t
-    .click('[data-tid="backButton"] > a')
-    .expect(Selector('[data-tid="container"]').visible)
-    .ok()
+  await t.click(resetButton)
+
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 05:00`)
 })

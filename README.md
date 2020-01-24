@@ -1,10 +1,13 @@
 # UR Mobster
 
 **Description**: Mob programming app that helps you keep track of time, breaks and whose turn it is.
+
 **Technology stack**: Based on [Electron React Boilerplate](https://github.com/electron-react-boilerplate/electron-react-boilerplate), so in other words, built with [React](https://github.com/facebook/react) inside an [Electron](https://github.com/electron/electron) app.
+
 **Download**: Get the latest macOS [release](https://github.com/sveriges-utbildningsradio/ur-mobster/releases), or clone and build for your OS (instructions below under the heading **Packaging**).
 
 **Demo**:
+
 ![](demo.gif)
 
 ## Install
@@ -45,6 +48,14 @@ $ yarn test
 
 # Alternatively, run tests in watch mode - press U to upgrade snapshots
 $ yarn jest --watch
+```
+
+You can also run e2e tests using [Testcafe](https://devexpress.github.io/testcafe/) by running:
+
+```bash
+$ yarn build-and-test-e2e
+// OR
+$ yarn build-and-test-e2e-headless // runs in headless mode - faster
 ```
 
 ## Packaging

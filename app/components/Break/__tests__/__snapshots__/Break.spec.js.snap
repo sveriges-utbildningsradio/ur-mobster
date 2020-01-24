@@ -558,6 +558,7 @@ exports[`components/Break renders 1`] = `
     </p>
     <button
       class="resetButton"
+      data-e2e="resetBreak"
       type="button"
     >
       <span>

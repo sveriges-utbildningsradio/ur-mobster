@@ -10,12 +10,16 @@ import { SettingsStoreContext } from '../../../../store/store'
 import { FIVE_MINUTES } from '../../../../constants'
 
 type SettingsToggleProps = {
+  dataE2EDecrease: string,
+  dataE2EIncrease: string,
   prefixLabel?: string,
   time: number,
   updaterFn: (time: number) => void
 }
 
 const SettingsDuration = ({
+  dataE2EDecrease,
+  dataE2EIncrease,
   prefixLabel,
   time,
   updaterFn
@@ -42,6 +46,7 @@ const SettingsDuration = ({
         {/* eslint-disable no-return-assign */}
         <button
           className={styles.button}
+          data-e2e={dataE2EIncrease}
           onClick={() => handleClickIncrease()}
           onKeyPress={() => handleClickIncrease()}
           type="button"
@@ -65,6 +70,7 @@ const SettingsDuration = ({
           <img
             alt="Decrease time 5 minutes"
             className={styles.icon}
+            data-e2e={dataE2EDecrease}
             onBlur={e => (e.currentTarget.src = Remove)}
             onFocus={e => (e.currentTarget.src = RemoveActive)}
             onMouseOut={e => (e.currentTarget.src = Remove)}

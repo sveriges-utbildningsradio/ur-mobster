@@ -38,7 +38,7 @@ const Home = ({
       <Settings />
       {isOnBreak && <Break resetBreak={resetBreak} />}
       <h2 className={styles.header}>UR Mob</h2>
-      <h3 className={styles.timeLeft}>
+      <h3 className={styles.timeLeft} data-e2e="duration-time-left">
         <FormattedMessage id="timeLeft" />: {formatTime(count)}
       </h3>
 

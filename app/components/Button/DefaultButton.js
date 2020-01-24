@@ -8,7 +8,12 @@ type DefaultButtonProps = {
 }
 
 const DefaultButton = ({ handleClick, textId }: DefaultButtonProps) => (
-  <button className={styles.defaultButton} onClick={handleClick} type="button">
+  <button
+    className={styles.defaultButton}
+    data-e2e={textId}
+    onClick={handleClick}
+    type="button"
+  >
     <FormattedMessage id={textId} />
   </button>
 )

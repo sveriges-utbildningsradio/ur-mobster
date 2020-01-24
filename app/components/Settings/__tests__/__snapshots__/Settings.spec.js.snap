@@ -4,6 +4,7 @@ exports[`components/Settings closes when clicking the Done button 1`] = `
 <div>
   <button
     class="buttonWrap"
+    data-e2e="settings-toggle-button"
     type="button"
   >
     <img
@@ -19,6 +20,7 @@ exports[`components/Settings renders just the button when closed 1`] = `
 <div>
   <button
     class="buttonWrap"
+    data-e2e="settings-toggle-button"
     type="button"
   >
     <img
@@ -34,6 +36,7 @@ exports[`components/Settings renders when open 1`] = `
 <div>
   <button
     class="buttonWrap"
+    data-e2e="settings-toggle-button"
     type="button"
   >
     <span
@@ -58,6 +61,7 @@ exports[`components/Settings renders when open 1`] = `
       >
         <h2
           class="header"
+          data-e2e="settings-header"
         >
           <span>
             Mobster-inställningar
@@ -95,6 +99,7 @@ exports[`components/Settings renders when open 1`] = `
               >
                 <button
                   class="button"
+                  data-e2e="increase-duration"
                   type="button"
                 >
                   <img
@@ -110,6 +115,7 @@ exports[`components/Settings renders when open 1`] = `
                   <img
                     alt="Decrease time 5 minutes"
                     class="icon"
+                    data-e2e="decrease-duration"
                     src="test-file-stub"
                   />
                 </button>
@@ -146,6 +152,7 @@ exports[`components/Settings renders when open 1`] = `
               >
                 <button
                   class="button"
+                  data-e2e="increase-break-duration"
                   type="button"
                 >
                   <img
@@ -161,6 +168,7 @@ exports[`components/Settings renders when open 1`] = `
                   <img
                     alt="Decrease time 5 minutes"
                     class="icon"
+                    data-e2e="decrease-break-duration"
                     src="test-file-stub"
                   />
                 </button>
@@ -181,6 +189,7 @@ exports[`components/Settings renders when open 1`] = `
               >
                 <button
                   class="button"
+                  data-e2e="increase-break-frequency"
                   type="button"
                 >
                   <img
@@ -196,6 +205,7 @@ exports[`components/Settings renders when open 1`] = `
                   <img
                     alt="Decrease time 5 minutes"
                     class="icon"
+                    data-e2e="decrease-break-frequency"
                     src="test-file-stub"
                   />
                 </button>
@@ -222,6 +232,7 @@ exports[`components/Settings renders when open 1`] = `
             >
               <li
                 class="sc-bwzfXH lkHdtP"
+                data-e2e="settings-toggle-sv"
               >
                 Svenska
                 <img
@@ -231,6 +242,7 @@ exports[`components/Settings renders when open 1`] = `
               </li>
               <li
                 class="sc-bwzfXH akcDY"
+                data-e2e="settings-toggle-en"
               >
                 English
               </li>
@@ -239,6 +251,7 @@ exports[`components/Settings renders when open 1`] = `
         </ul>
         <button
           class="defaultButton"
+          data-e2e="doneButton"
           type="button"
         >
           <span>

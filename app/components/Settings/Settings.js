@@ -40,6 +40,7 @@ const Settings = () => {
       <button
         className={styles.buttonWrap}
         onClick={() => toggleShowingSettings(!showingSettings)}
+        data-e2e="settings-toggle-button"
         type="button"
       >
         {showingSettings ? (
@@ -63,7 +64,7 @@ const Settings = () => {
         <div className={styles.pageWrap}>
           <div>
             <div className={styles.innerWrap}>
-              <h2 className={styles.header}>
+              <h2 className={styles.header} data-e2e="settings-header">
                 <FormattedMessage id="settingsHeader" />
               </h2>
               <ul className={styles.settingsWrap}>
@@ -77,6 +78,8 @@ const Settings = () => {
                     <FormattedMessage id="time" />
                   </span>
                   <SettingsDuration
+                    dataE2EDecrease="decrease-duration"
+                    dataE2EIncrease="increase-duration"
                     time={duration}
                     updaterFn={updateDuration}
                   />
@@ -93,6 +96,8 @@ const Settings = () => {
                   <FormattedMessage id="length">
                     {msg => (
                       <SettingsDuration
+                        dataE2EDecrease="decrease-break-duration"
+                        dataE2EIncrease="increase-break-duration"
                         prefixLabel={`${msg} `}
                         time={breakDuration}
                         updaterFn={updateBreakDuration}
@@ -103,6 +108,8 @@ const Settings = () => {
                   <FormattedMessage id="interval">
                     {msg => (
                       <SettingsDuration
+                        dataE2EDecrease="decrease-break-frequency"
+                        dataE2EIncrease="increase-break-frequency"
                         prefixLabel={`${msg} `}
                         time={breakFrequency}
                         updaterFn={updateBreakFrequency}

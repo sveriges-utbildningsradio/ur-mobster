@@ -54,6 +54,7 @@ const Mobsters = ({
           <input
             alt={isEditing ? 'Stop editing mobsters' : 'Edit mobsters'}
             className={styles.editButton}
+            data-e2e="mobsters-edit-button"
             data-testid="mobsters-edit-button"
             onClick={clickEditButton}
             onKeyDown={e => e.keyCode === 13 && clickEditButton()}
@@ -87,6 +88,7 @@ const Mobsters = ({
             {msg => (
               <input
                 className={styles.userInput}
+                data-e2e="mobsters-add-input"
                 onChange={e => setUsername(e.target.value)}
                 placeholder={msg}
                 value={username}
@@ -97,6 +99,7 @@ const Mobsters = ({
           <input
             alt="Add user as guest"
             className={styles.addButton}
+            data-e2e="mobsters-add-by-name"
             disabled={!username.length}
             onClick={clickGuestButton}
             onKeyDown={e => e.keyCode === 13 && clickGuestButton()}
@@ -106,6 +109,7 @@ const Mobsters = ({
           <input
             alt="Add user from GitHub"
             className={styles.addButton}
+            data-e2e="mobsters-add-by-github-username"
             disabled={!username.length}
             onClick={clickGitHubButton}
             onKeyDown={e => e.keyCode === 13 && clickGitHubButton()}
