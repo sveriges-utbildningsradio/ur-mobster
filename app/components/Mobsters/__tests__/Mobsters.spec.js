@@ -17,9 +17,43 @@ describe('components/Mobsters', () => {
         clickGuestButton={jest.fn()}
         clickRemoveUser={jest.fn()}
         inactiveUsers={inactiveUsers}
-        isEditing={false}
         onDragEnd={jest.fn()}
         setUsername={jest.fn()}
+      />
+    )
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('renders when the user is editing the list', () => {
+    const { container } = renderWithReactIntl(
+      <Mobsters
+        activeUsers={activeUsers}
+        clickEditButton={jest.fn()}
+        clickGitHubButton={jest.fn()}
+        clickGuestButton={jest.fn()}
+        clickRemoveUser={jest.fn()}
+        inactiveUsers={inactiveUsers}
+        isEditing={true}
+        onDragEnd={jest.fn()}
+        setUsername={jest.fn()}
+      />
+    )
+    expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('renders when there is a username', () => {
+    const { container } = renderWithReactIntl(
+      <Mobsters
+        activeUsers={activeUsers}
+        clickEditButton={jest.fn()}
+        clickGitHubButton={jest.fn()}
+        clickGuestButton={jest.fn()}
+        clickRemoveUser={jest.fn()}
+        inactiveUsers={inactiveUsers}
+        isEditing={true}
+        onDragEnd={jest.fn()}
+        setUsername={jest.fn()}
+        username="Some user"
       />
     )
     expect(container.firstChild).toMatchSnapshot()

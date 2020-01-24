@@ -8,29 +8,8 @@ import persistToStore from '../../utils/persistToStore'
 import Mobsters from './Mobsters'
 import generateMobsterName from '../../utils/generateMobsterName'
 import { move, reorder } from '../../utils/listHelpers'
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'ADD_ACTIVEUSER':
-      persistToStore('activeUsers', [...state.activeUsers, action.payload])
-      return { ...state, activeUsers: [...state.activeUsers, action.payload] }
-    case 'UPDATE_ACTIVEUSERS':
-      persistToStore('activeUsers', action.payload)
-      return { ...state, activeUsers: action.payload }
-    case 'UPDATE_INACTIVEUSERS':
-      persistToStore('inactiveUsers', action.payload)
-      return { ...state, inactiveUsers: action.payload }
-    case 'SET_FROM_STORAGE':
-      return { ...action.payload }
-    default:
-      throw new Error()
-  }
-}
-
-const initialState = {
-  activeUsers: [],
-  inactiveUsers: []
-}
+import { initialState, reducer } from './store/reducer'
+import * as types from './store/actionTypes'
 
 const MobstersContainer = ({ reachedEnd }: boolean) => {
   const init = ({ activeUsers, inactiveUsers }) => {
@@ -40,7 +19,7 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
       }
 
       dispatch({
-        type: 'SET_FROM_STORAGE',
+        type: types.SET_FROM_STORAGE,
         payload: {
           activeUsers: data.activeUsers ? data.activeUsers : [],
           inactiveUsers: data.inactiveUsers ? data.inactiveUsers : []
@@ -55,17 +34,14 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
   const [username, setUsername] = useState('')
   const [isEditing, setIsEditing] = useState(false)
 
-  useEffect(
-    () => {
-      if (reachedEnd === true) {
-        const { activeUsers } = state
-        const newMobsterOrder = activeUsers.concat(activeUsers.splice(0, 1))
+  useEffect(() => {
+    if (reachedEnd === true) {
+      const { activeUsers } = state
+      const newMobsterOrder = activeUsers.concat(activeUsers.splice(0, 1))
 
-        dispatch({ type: 'UPDATE_ACTIVEUSERS', payload: newMobsterOrder })
-      }
-    },
-    [reachedEnd]
-  )
+      dispatch({ type: types.UPDATE_ACTIVEUSERS, payload: newMobsterOrder })
+    }
+  }, [reachedEnd])
 
   const getGitHubInfo = async () => {
     try {
@@ -81,7 +57,7 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
       }
 
       dispatch({
-        type: 'ADD_ACTIVEUSER',
+        type: types.ADD_ACTIVEUSER,
         payload
       })
     } catch (error) {
@@ -127,7 +103,7 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
       name: username
     }
 
-    dispatch({ type: 'ADD_ACTIVEUSER', payload })
+    dispatch({ type: types.ADD_ACTIVEUSER, payload })
 
     setUsername('')
   }
@@ -143,12 +119,12 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
 
     if (list === 'activeUsers') {
       dispatch({
-        type: 'UPDATE_ACTIVEUSERS',
+        type: types.UPDATE_ACTIVEUSERS,
         payload: remainingUsers
       })
     } else {
       dispatch({
-        type: 'UPDATE_INACTIVEUSERS',
+        type: types.UPDATE_INACTIVEUSERS,
         payload: remainingUsers
       })
     }
@@ -182,12 +158,12 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
 
       if (source.droppableId === 'inactiveUsers') {
         dispatch({
-          type: 'UPDATE_INACTIVEUSERS',
+          type: types.UPDATE_INACTIVEUSERS,
           payload: items
         })
       } else {
         dispatch({
-          type: 'UPDATE_ACTIVEUSERS',
+          type: types.UPDATE_ACTIVEUSERS,
           payload: items
         })
       }
@@ -200,11 +176,11 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
       )
 
       dispatch({
-        type: 'UPDATE_ACTIVEUSERS',
+        type: types.UPDATE_ACTIVEUSERS,
         payload: sorted.activeUsers
       })
       dispatch({
-        type: 'UPDATE_INACTIVEUSERS',
+        type: types.UPDATE_INACTIVEUSERS,
         payload: sorted.inactiveUsers
       })
     }

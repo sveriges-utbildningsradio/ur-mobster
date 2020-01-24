@@ -241,3 +241,549 @@ exports[`components/Mobsters renders 1`] = `
   </div>
 </div>
 `;
+
+exports[`components/Mobsters renders when the user is editing the list 1`] = `
+<div
+  class="wrap"
+>
+  <div>
+    <div>
+      <div
+        class="headerWrap"
+      >
+        <h4>
+          Mobsters
+        </h4>
+        <span
+          class="editLabel"
+        >
+          <span>
+            Spara
+          </span>
+        </span>
+        <input
+          alt="Stop editing mobsters"
+          class="editButton"
+          data-e2e="mobsters-edit-button"
+          data-testid="mobsters-edit-button"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+    </div>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="1"
+        style="background-color: rgb(17, 6, 54);"
+      >
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper-activeUsers"
+        >
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="1"
+            data-react-beautiful-dnd-draggable="1"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Active 1 Name"
+                class="avatar"
+                src="https://avatars1.githubusercontent.com/u/test"
+              />
+              <span
+                class="driverDot"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-0"
+                data-testid="mobsterslist-name-0"
+              >
+                Active 1 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-0"
+                data-testid="mobsterslist-githubName-0"
+              >
+                Active 1 Githubname
+              </p>
+            </div>
+            <input
+              alt="Remove user from activeUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-0"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="1"
+            data-react-beautiful-dnd-draggable="1"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Active 2 Name"
+                class="avatar"
+                src="test-file-stub"
+              />
+              <span
+                class="navigatorDot"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-1"
+                data-testid="mobsterslist-name-1"
+              >
+                Active 2 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-1"
+                data-testid="mobsterslist-githubName-1"
+              />
+            </div>
+            <input
+              alt="Remove user from activeUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-1"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+        </ul>
+      </div>
+    </ul>
+    <h4>
+      Inaktiva mobsters
+    </h4>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="1"
+        style="background-color: rgb(17, 6, 54);"
+      >
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper-inactiveUsers"
+        >
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="1"
+            data-react-beautiful-dnd-draggable="1"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Inactive 2 Name"
+                class="avatar"
+                src="https://avatars1.githubusercontent.com/u/inactivetest"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-0"
+                data-testid="mobsterslist-name-0"
+              >
+                Inactive 2 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-0"
+                data-testid="mobsterslist-githubName-0"
+              >
+                Inactive 1 Githubname
+              </p>
+            </div>
+            <input
+              alt="Remove user from inactiveUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-0"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="1"
+            data-react-beautiful-dnd-draggable="1"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Inactive 2 Name"
+                class="avatar"
+                src="test-file-stub"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-1"
+                data-testid="mobsterslist-name-1"
+              >
+                Inactive 2 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-1"
+                data-testid="mobsterslist-githubName-1"
+              />
+            </div>
+            <input
+              alt="Remove user from inactiveUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-1"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <div
+    class="addWrap"
+  >
+    <img
+      alt="Default avatar"
+      class="avatar"
+      src="test-file-stub"
+    />
+    <div>
+      <div
+        class="inputWrap"
+      >
+        <input
+          class="userInput"
+          data-e2e="mobsters-add-input"
+          placeholder="Lägg till mobster"
+          value=""
+        />
+        <input
+          alt="Add user as guest"
+          class="addButton"
+          data-e2e="mobsters-add-by-name"
+          disabled=""
+          src="test-file-stub"
+          type="image"
+        />
+        <input
+          alt="Add user from GitHub"
+          class="addButton"
+          data-e2e="mobsters-add-by-github-username"
+          disabled=""
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+      <p
+        class="githubName"
+      >
+        <span>
+          Skriv namn eller GitHub-användarnamn
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`components/Mobsters renders when there is a username 1`] = `
+<div
+  class="wrap"
+>
+  <div>
+    <div>
+      <div
+        class="headerWrap"
+      >
+        <h4>
+          Mobsters
+        </h4>
+        <span
+          class="editLabel"
+        >
+          <span>
+            Spara
+          </span>
+        </span>
+        <input
+          alt="Stop editing mobsters"
+          class="editButton"
+          data-e2e="mobsters-edit-button"
+          data-testid="mobsters-edit-button"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+    </div>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="2"
+        style="background-color: rgb(17, 6, 54);"
+      >
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper-activeUsers"
+        >
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="2"
+            data-react-beautiful-dnd-draggable="2"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Active 1 Name"
+                class="avatar"
+                src="https://avatars1.githubusercontent.com/u/test"
+              />
+              <span
+                class="driverDot"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-0"
+                data-testid="mobsterslist-name-0"
+              >
+                Active 1 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-0"
+                data-testid="mobsterslist-githubName-0"
+              >
+                Active 1 Githubname
+              </p>
+            </div>
+            <input
+              alt="Remove user from activeUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-0"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="2"
+            data-react-beautiful-dnd-draggable="2"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Active 2 Name"
+                class="avatar"
+                src="test-file-stub"
+              />
+              <span
+                class="navigatorDot"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-1"
+                data-testid="mobsterslist-name-1"
+              >
+                Active 2 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-1"
+                data-testid="mobsterslist-githubName-1"
+              />
+            </div>
+            <input
+              alt="Remove user from activeUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-1"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+        </ul>
+      </div>
+    </ul>
+    <h4>
+      Inaktiva mobsters
+    </h4>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="2"
+        style="background-color: rgb(17, 6, 54);"
+      >
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper-inactiveUsers"
+        >
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="2"
+            data-react-beautiful-dnd-draggable="2"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Inactive 2 Name"
+                class="avatar"
+                src="https://avatars1.githubusercontent.com/u/inactivetest"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-0"
+                data-testid="mobsterslist-name-0"
+              >
+                Inactive 2 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-0"
+                data-testid="mobsterslist-githubName-0"
+              >
+                Inactive 1 Githubname
+              </p>
+            </div>
+            <input
+              alt="Remove user from inactiveUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-0"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+          <li
+            aria-roledescription="Draggable item. Press space bar to lift"
+            class="mobster"
+            data-react-beautiful-dnd-drag-handle="2"
+            data-react-beautiful-dnd-draggable="2"
+            draggable="false"
+            tabindex="0"
+          >
+            <div
+              class="avatarWrap"
+            >
+              <img
+                alt="Inactive 2 Name"
+                class="avatar"
+                src="test-file-stub"
+              />
+            </div>
+            <div>
+              <p
+                class="name"
+                data-e2e="mobsterslist-name-1"
+                data-testid="mobsterslist-name-1"
+              >
+                Inactive 2 Name
+              </p>
+              <p
+                class="githubName"
+                data-e2e="mobsterslist-githubName-1"
+                data-testid="mobsterslist-githubName-1"
+              />
+            </div>
+            <input
+              alt="Remove user from inactiveUsers"
+              class="editButton"
+              data-e2e="mobsterslist-remove-user"
+              data-testid="mobsterslist-remove-1"
+              src="test-file-stub"
+              type="image"
+            />
+          </li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <div
+    class="addWrap"
+  >
+    <img
+      alt="Default avatar"
+      class="avatar"
+      src="test-file-stub"
+    />
+    <div>
+      <div
+        class="inputWrap"
+      >
+        <input
+          class="userInput"
+          data-e2e="mobsters-add-input"
+          placeholder="Lägg till mobster"
+          value="Some user"
+        />
+        <input
+          alt="Add user as guest"
+          class="addButton"
+          data-e2e="mobsters-add-by-name"
+          src="test-file-stub"
+          type="image"
+        />
+        <input
+          alt="Add user from GitHub"
+          class="addButton"
+          data-e2e="mobsters-add-by-github-username"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+      <p
+        class="githubName"
+      >
+        <span>
+          Skriv namn eller GitHub-användarnamn
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;
