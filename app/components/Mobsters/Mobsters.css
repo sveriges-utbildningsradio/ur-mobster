@@ -42,8 +42,22 @@ h4 {
 }
 
 .addButton {
+  align-items: center;
+  background: none;
+  border: none;
   cursor: pointer;
+  display: flex;
+  height: 28px;
+  justify-content: center;
   margin-left: 12px;
+  width: 28px;
+}
+
+.addButton:focus {
+  outline: 2px solid #2cdbec;
+}
+
+.addButtonImage {
   height: 24px;
   width: 24px;
 }

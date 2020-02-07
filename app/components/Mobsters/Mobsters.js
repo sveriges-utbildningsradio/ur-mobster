@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react'
+import React, { useRef } from 'react'
 import { DragDropContext } from 'react-beautiful-dnd'
 import type { OnDragEndResponder } from 'react-beautiful-dnd'
 import { FormattedMessage } from 'react-intl'
@@ -37,93 +37,111 @@ const Mobsters = ({
   onDragEnd,
   setUsername,
   username = ''
-}: MobstersProps) => (
-  <div className={styles.wrap}>
-    <div>
-      <div>
-        <div className={styles.headerWrap}>
-          <h4>Mobsters</h4>
-          <span className={styles.editLabel}>
-            {isEditing ? (
-              <FormattedMessage id="save" />
-            ) : (
-              <FormattedMessage id="edit" />
-            )}
-          </span>
+}: MobstersProps) => {
+  const inputElement = useRef(null)
 
-          <input
-            alt={isEditing ? 'Stop editing mobsters' : 'Edit mobsters'}
-            className={styles.editButton}
-            data-e2e="mobsters-edit-button"
-            data-testid="mobsters-edit-button"
-            onClick={clickEditButton}
-            onKeyDown={e => e.keyCode === 13 && clickEditButton()}
-            src={isEditing ? stopEditButton : editButton}
-            type="image"
+  const handleGuestButton = () => {
+    clickGuestButton()
+    inputElement.current.focus()
+  }
+
+  const handleGitHubButton = () => {
+    clickGitHubButton()
+    inputElement.current.focus()
+  }
+
+  return (
+    <div className={styles.wrap}>
+      <div>
+        <div>
+          <div className={styles.headerWrap}>
+            <h4>Mobsters</h4>
+            <span className={styles.editLabel}>
+              {isEditing ? (
+                <FormattedMessage id="save" />
+              ) : (
+                <FormattedMessage id="edit" />
+              )}
+            </span>
+
+            <input
+              alt={isEditing ? 'Stop editing mobsters' : 'Edit mobsters'}
+              className={styles.editButton}
+              data-e2e="mobsters-edit-button"
+              data-testid="mobsters-edit-button"
+              onClick={clickEditButton}
+              onKeyDown={e => e.keyCode === 13 && clickEditButton()}
+              src={isEditing ? stopEditButton : editButton}
+              type="image"
+            />
+          </div>
+        </div>
+        <DragDropContext onDragEnd={onDragEnd}>
+          <MobstersList
+            clickRemoveUser={clickRemoveUser}
+            droppableId="activeUsers"
+            isEditing={isEditing}
+            users={activeUsers}
           />
+          <FormattedMessage id="inactiveMobsters" tagName="h4" />
+          <MobstersList
+            clickRemoveUser={clickRemoveUser}
+            droppableId="inactiveUsers"
+            isEditing={isEditing}
+            users={inactiveUsers}
+          />
+        </DragDropContext>
+      </div>
+
+      <div className={styles.addWrap}>
+        <img alt="Default avatar" className={styles.avatar} src={avatarImage} />
+        <div>
+          <div className={styles.inputWrap}>
+            <FormattedMessage id="addMobsterPlaceholder">
+              {msg => (
+                <input
+                  className={styles.userInput}
+                  data-e2e="mobsters-add-input"
+                  onChange={e => setUsername(e.target.value)}
+                  placeholder={msg}
+                  ref={inputElement}
+                  value={username}
+                />
+              )}
+            </FormattedMessage>
+
+            <button
+              alt="Add user as guest"
+              className={styles.addButton}
+              data-e2e="mobsters-add-by-name"
+              disabled={!username.length}
+              onClick={() => handleGuestButton()}
+              onKeyDown={e => e.keyCode === 13 && handleGuestButton()}
+              type="image"
+            >
+              <img className={styles.addButtonImage} src={addButton} />
+            </button>
+            <button
+              alt="Add user from GitHub"
+              className={styles.addButton}
+              data-e2e="mobsters-add-by-github-username"
+              disabled={!username.length}
+              onClick={() => handleGitHubButton()}
+              onKeyDown={e => e.keyCode === 13 && handleGitHubButton()}
+              src={githubButton}
+              type="image"
+            >
+              <img className={styles.addButtonImage} src={githubButton} />
+            </button>
+          </div>
+          <p className={styles.githubName}>
+            <FormattedMessage id="addMobsterLabel" />
+          </p>
         </div>
       </div>
-      <DragDropContext onDragEnd={onDragEnd}>
-        <MobstersList
-          clickRemoveUser={clickRemoveUser}
-          droppableId="activeUsers"
-          isEditing={isEditing}
-          users={activeUsers}
-        />
-        <FormattedMessage id="inactiveMobsters" tagName="h4" />
-        <MobstersList
-          clickRemoveUser={clickRemoveUser}
-          droppableId="inactiveUsers"
-          isEditing={isEditing}
-          users={inactiveUsers}
-        />
-      </DragDropContext>
     </div>
-
-    <div className={styles.addWrap}>
-      <img alt="Default avatar" className={styles.avatar} src={avatarImage} />
-      <div>
-        <div className={styles.inputWrap}>
-          <FormattedMessage id="addMobsterPlaceholder">
-            {msg => (
-              <input
-                className={styles.userInput}
-                data-e2e="mobsters-add-input"
-                onChange={e => setUsername(e.target.value)}
-                placeholder={msg}
-                value={username}
-              />
-            )}
-          </FormattedMessage>
-
-          <input
-            alt="Add user as guest"
-            className={styles.addButton}
-            data-e2e="mobsters-add-by-name"
-            disabled={!username.length}
-            onClick={clickGuestButton}
-            onKeyDown={e => e.keyCode === 13 && clickGuestButton()}
-            src={addButton}
-            type="image"
-          />
-          <input
-            alt="Add user from GitHub"
-            className={styles.addButton}
-            data-e2e="mobsters-add-by-github-username"
-            disabled={!username.length}
-            onClick={clickGitHubButton}
-            onKeyDown={e => e.keyCode === 13 && clickGitHubButton()}
-            src={githubButton}
-            type="image"
-          />
-        </div>
-        <p className={styles.githubName}>
-          <FormattedMessage id="addMobsterLabel" />
-        </p>
-      </div>
-    </div>
-  </div>
-)
+  )
+}
 
 Mobsters.defaultProps = {
   username: ''

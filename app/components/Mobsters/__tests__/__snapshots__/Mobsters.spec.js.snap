@@ -213,22 +213,31 @@ exports[`components/Mobsters renders 1`] = `
           placeholder="Lägg till mobster"
           value=""
         />
-        <input
+        <button
           alt="Add user as guest"
           class="addButton"
           data-e2e="mobsters-add-by-name"
           disabled=""
-          src="test-file-stub"
           type="image"
-        />
-        <input
+        >
+          <img
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
+        <button
           alt="Add user from GitHub"
           class="addButton"
           data-e2e="mobsters-add-by-github-username"
           disabled=""
           src="test-file-stub"
           type="image"
-        />
+        >
+          <img
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
       </div>
       <p
         class="githubName"
@@ -487,22 +496,31 @@ exports[`components/Mobsters renders when the user is editing the list 1`] = `
           placeholder="Lägg till mobster"
           value=""
         />
-        <input
+        <button
           alt="Add user as guest"
           class="addButton"
           data-e2e="mobsters-add-by-name"
           disabled=""
-          src="test-file-stub"
           type="image"
-        />
-        <input
+        >
+          <img
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
+        <button
           alt="Add user from GitHub"
           class="addButton"
           data-e2e="mobsters-add-by-github-username"
           disabled=""
           src="test-file-stub"
           type="image"
-        />
+        >
+          <img
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
       </div>
       <p
         class="githubName"
@@ -761,20 +779,29 @@ exports[`components/Mobsters renders when there is a username 1`] = `
           placeholder="Lägg till mobster"
           value="Some user"
         />
-        <input
+        <button
           alt="Add user as guest"
           class="addButton"
           data-e2e="mobsters-add-by-name"
-          src="test-file-stub"
           type="image"
-        />
-        <input
+        >
+          <img
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
+        <button
           alt="Add user from GitHub"
           class="addButton"
           data-e2e="mobsters-add-by-github-username"
           src="test-file-stub"
           type="image"
-        />
+        >
+          <img
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
       </div>
       <p
         class="githubName"
