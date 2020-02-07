@@ -59,6 +59,8 @@ app.on('window-all-closed', () => {
   }
 })
 
+let timerIsRunning = false
+
 app.on('ready', async () => {
   if (
     process.env.NODE_ENV === 'development' ||
@@ -81,12 +83,14 @@ app.on('ready', async () => {
   })
 
   const setWindowActive = () => {
+    timerIsRunning = false
     mainWindow.restore() // restore from minimized state
     mainWindow.show()
     mainWindow.setVisibleOnAllWorkspaces(true) // put the window on all screens
   }
 
   const setWindowHidden = () => {
+    timerIsRunning = true
     mainWindow.minimize()
   }
 
@@ -101,6 +105,22 @@ app.on('ready', async () => {
   and then just use by calling, e.g.: setWindowHidden() or setWindowActive()
   */
   global.windowUtils = { setWindowActive, setWindowHidden }
+
+  /* If the user blurs the window without starting the timer, the app will repatedly pop up again every minute */
+  app.on('browser-window-blur', () => {
+    if (!timerIsRunning) {
+      setTimeout(() => {
+        if (!timerIsRunning) {
+          /* Since the timer started 1 minute ago, at this specific point in time, 
+             the "Start mobbing" button might have been clicked already.
+             Checking for it before setting the window to active again to prevent disturbing a session
+          */
+
+          setWindowActive()
+        }
+      }, 60000)
+    }
+  })
 
   mainWindow.loadURL(`file://${__dirname}/app.html`)
 
