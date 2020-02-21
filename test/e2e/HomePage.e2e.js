@@ -46,7 +46,12 @@ const assertNoConsoleErrors = async t => {
   await t.expect(error).eql([])
 }
 
-const removeAllUsers = async t => {
+const resetApp = async t => {
+  // Reset to Swedish
+  await t.click(settingsToggle)
+  await t.click(Selector('[data-e2e="settings-toggle-sv"]'))
+  await t.click(settingsToggle)
+
   const editButton = Selector('[data-e2e="mobsters-edit-button"]')
   if (!editButton) return
 
@@ -79,7 +84,7 @@ const resetTimer = async (t, timer) => {
 
 fixture`Home Page`
   .page('../../app/app.html')
-  .beforeEach(removeAllUsers)
+  .beforeEach(resetApp)
   .afterEach(assertNoConsoleErrors)
 
 test('should open window and set correct page title', async t => {
