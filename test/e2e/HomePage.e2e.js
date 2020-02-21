@@ -140,7 +140,7 @@ test('should be able to update duration', async t => {
 
   await t.click(settingsToggle)
 
-  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 10:00`)
+  await t.expect(getTimeLeft()).eql(`${sv.timeLeft}: 06:00`)
 
   await resetTimer(t, 'duration')
 })

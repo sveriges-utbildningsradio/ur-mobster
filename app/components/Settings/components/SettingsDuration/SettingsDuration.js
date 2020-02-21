@@ -7,14 +7,15 @@ import AddActive from '../../../../assets/plus-active.png'
 import Remove from '../../../../assets/minus-default.png'
 import RemoveActive from '../../../../assets/minus-active.png'
 import { SettingsStoreContext } from '../../../../store/store'
-import { FIVE_MINUTES } from '../../../../constants'
+import { FIVE_MINUTES, ONE_MINUTE } from '../../../../constants'
 
 type SettingsToggleProps = {
   dataE2EDecrease: string,
   dataE2EIncrease: string,
   prefixLabel?: string,
   time: number,
-  updaterFn: (time: number) => void
+  updaterFn: (time: number) => void,
+  updateByMinute: boolean
 }
 
 const SettingsDuration = ({
@@ -22,17 +23,29 @@ const SettingsDuration = ({
   dataE2EIncrease,
   prefixLabel,
   time,
-  updaterFn
+  updaterFn,
+  updateByMinute = false
 }: SettingsToggleProps) => {
   const { dispatch } = useContext(SettingsStoreContext)
 
   const handleClickDecrease = () => {
+    if (updateByMinute) {
+      if (time === ONE_MINUTE) return
+
+      dispatch(updaterFn(time - ONE_MINUTE))
+      return
+    }
     if (time === FIVE_MINUTES) return
 
     dispatch(updaterFn(time - FIVE_MINUTES))
   }
 
   const handleClickIncrease = () => {
+    if (updateByMinute) {
+      dispatch(updaterFn(time + ONE_MINUTE))
+      return
+    }
+
     dispatch(updaterFn(time + FIVE_MINUTES))
   }
 

@@ -56,10 +56,10 @@
   align-items: center;
   border-top: 2px solid #caf5ff;
   display: grid;
-  grid-template-columns: 80px auto 210px 190px;
-  grid-column-gap: 60px;
+  grid-template-columns: 80px 200px 220px 235px;
+  grid-column-gap: 40px;
   max-width: 927px;
-  padding: 30px 0 30px 100px;
+  padding: 30px 0 30px 60px;
 }
 
 .icon {

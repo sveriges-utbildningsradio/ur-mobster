@@ -82,6 +82,7 @@ const Settings = () => {
                     dataE2EIncrease="increase-duration"
                     time={duration}
                     updaterFn={updateDuration}
+                    updateByMinute
                   />
                 </li>
                 <li className={styles.settingWrap}>
