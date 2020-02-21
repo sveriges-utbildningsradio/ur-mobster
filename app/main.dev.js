@@ -61,6 +61,7 @@ app.on('window-all-closed', () => {
 
 let reminderTimerIsRunning = false
 
+// eslint-disable-next-line no-return-assign
 const setReminderTimerIsActive = setReminderTimerTo =>
   (reminderTimerIsRunning = setReminderTimerTo)
 
