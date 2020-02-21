@@ -1,4 +1,4 @@
-import formatTime from '../formatTime'
+import { formatTime } from '../formatTime'
 
 describe('utils/formatTime', () => {
   it('should format seconds as MM:SS given whole minutes', () => {

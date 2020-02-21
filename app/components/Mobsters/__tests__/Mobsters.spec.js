@@ -33,7 +33,7 @@ describe('components/Mobsters', () => {
         clickGuestButton={jest.fn()}
         clickRemoveUser={jest.fn()}
         inactiveUsers={inactiveUsers}
-        isEditing={true}
+        isEditing
         onDragEnd={jest.fn()}
         setUsername={jest.fn()}
       />
@@ -50,7 +50,7 @@ describe('components/Mobsters', () => {
         clickGuestButton={jest.fn()}
         clickRemoveUser={jest.fn()}
         inactiveUsers={inactiveUsers}
-        isEditing={true}
+        isEditing
         onDragEnd={jest.fn()}
         setUsername={jest.fn()}
         username="Some user"

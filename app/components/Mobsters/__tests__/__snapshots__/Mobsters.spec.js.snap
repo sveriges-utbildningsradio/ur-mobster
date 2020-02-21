@@ -214,26 +214,26 @@ exports[`components/Mobsters renders 1`] = `
           value=""
         />
         <button
-          alt="Add user as guest"
           class="addButton"
           data-e2e="mobsters-add-by-name"
           disabled=""
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster som gäst"
             class="addButtonImage"
             src="test-file-stub"
           />
         </button>
         <button
-          alt="Add user from GitHub"
           class="addButton"
           data-e2e="mobsters-add-by-github-username"
           disabled=""
           src="test-file-stub"
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster med GitHub-konto"
             class="addButtonImage"
             src="test-file-stub"
           />
@@ -497,26 +497,26 @@ exports[`components/Mobsters renders when the user is editing the list 1`] = `
           value=""
         />
         <button
-          alt="Add user as guest"
           class="addButton"
           data-e2e="mobsters-add-by-name"
           disabled=""
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster som gäst"
             class="addButtonImage"
             src="test-file-stub"
           />
         </button>
         <button
-          alt="Add user from GitHub"
           class="addButton"
           data-e2e="mobsters-add-by-github-username"
           disabled=""
           src="test-file-stub"
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster med GitHub-konto"
             class="addButtonImage"
             src="test-file-stub"
           />
@@ -780,24 +780,24 @@ exports[`components/Mobsters renders when there is a username 1`] = `
           value="Some user"
         />
         <button
-          alt="Add user as guest"
           class="addButton"
           data-e2e="mobsters-add-by-name"
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster som gäst"
             class="addButtonImage"
             src="test-file-stub"
           />
         </button>
         <button
-          alt="Add user from GitHub"
           class="addButton"
           data-e2e="mobsters-add-by-github-username"
           src="test-file-stub"
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster med GitHub-konto"
             class="addButtonImage"
             src="test-file-stub"
           />

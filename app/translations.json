@@ -1,6 +1,8 @@
 {
   "en": {
     "addMobsterPlaceholder": "Add mobster",
+    "addMobsterGitHubAlt": "Add user by GitHub account",
+    "addMobsterGuestAlt": "Add user as guest",
     "addMobsterLabel": "Enter name or GitHub username",
     "break": "Break",
     "close": "Close",
@@ -23,6 +25,8 @@
   },
   "sv": {
     "addMobsterPlaceholder": "Lägg till mobster",
+    "addMobsterGitHubAlt": "Lägg till mobster med GitHub-konto",
+    "addMobsterGuestAlt": "Lägg till mobster som gäst",
     "addMobsterLabel": "Skriv namn eller GitHub-användarnamn",
     "break": "Rast",
     "close": "Stäng",
