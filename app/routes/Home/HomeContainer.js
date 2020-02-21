@@ -5,6 +5,7 @@ import useInterval from '../../utils/useInterval'
 import { SettingsStoreContext } from '../../store/store'
 
 const {
+  setReminderTimerIsActive,
   setWindowActive,
   setWindowHidden
 } = require('electron').remote.getGlobal('windowUtils')
@@ -51,6 +52,7 @@ const HomeContainer = () => {
     dispatch(updateBreakTimeLeft(breakDuration))
     setIsOnBreak(false)
     setTimeSinceBreak(0)
+    setWindowActive()
   }
 
   // Break logic
@@ -67,6 +69,7 @@ const HomeContainer = () => {
 
   useEffect(() => {
     if (timeSinceBreak >= breakFrequency) {
+      setReminderTimerIsActive(true)
       setIsOnBreak(true)
     }
   }, [timeSinceBreak])
