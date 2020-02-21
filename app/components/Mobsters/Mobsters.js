@@ -111,27 +111,41 @@ const Mobsters = ({
             </FormattedMessage>
 
             <button
-              alt="Add user as guest"
               className={styles.addButton}
               data-e2e="mobsters-add-by-name"
               disabled={!username.length}
               onClick={() => handleGuestButton()}
               onKeyDown={e => e.keyCode === 13 && handleGuestButton()}
-              type="image"
+              type="button"
             >
-              <img className={styles.addButtonImage} src={addButton} />
+              <FormattedMessage id="addMobsterGuestAlt">
+                {msg => (
+                  <img
+                    alt={msg}
+                    className={styles.addButtonImage}
+                    src={addButton}
+                  />
+                )}
+              </FormattedMessage>
             </button>
             <button
-              alt="Add user from GitHub"
               className={styles.addButton}
               data-e2e="mobsters-add-by-github-username"
               disabled={!username.length}
               onClick={() => handleGitHubButton()}
               onKeyDown={e => e.keyCode === 13 && handleGitHubButton()}
               src={githubButton}
-              type="image"
+              type="button"
             >
-              <img className={styles.addButtonImage} src={githubButton} />
+              <FormattedMessage id="addMobsterGitHubAlt">
+                {msg => (
+                  <img
+                    alt={msg}
+                    className={styles.addButtonImage}
+                    src={githubButton}
+                  />
+                )}
+              </FormattedMessage>
             </button>
           </div>
           <p className={styles.githubName}>

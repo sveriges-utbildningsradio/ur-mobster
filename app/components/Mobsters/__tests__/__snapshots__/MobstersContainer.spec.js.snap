@@ -168,26 +168,26 @@ exports[`components/MobstersContainer renders given no activeUsers nor inactiveU
           value=""
         />
         <button
-          alt="Add user as guest"
           class="addButton"
           data-e2e="mobsters-add-by-name"
           disabled=""
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster som gäst"
             class="addButtonImage"
             src="test-file-stub"
           />
         </button>
         <button
-          alt="Add user from GitHub"
           class="addButton"
           data-e2e="mobsters-add-by-github-username"
           disabled=""
           src="test-file-stub"
-          type="image"
+          type="button"
         >
           <img
+            alt="Lägg till mobster med GitHub-konto"
             class="addButtonImage"
             src="test-file-stub"
           />
