@@ -107,8 +107,7 @@ import './app.global.scss'
 
 ## Static Type Checking
 
-This project comes with Flow support out of the box! You can annotate your code with types, [get Flow errors as ESLint errors](https://github.com/amilajack/eslint-plugin-flowtype-errors), and get [type errors during runtime](https://github.com/codemix/flow-runtime) during development. Types are completely optional.
-However, the flow process seems to work so-so (@aelmoznino's comment).
+This project comes with TypeScript support.
 
 ## Getting help
 
