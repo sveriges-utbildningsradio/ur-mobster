@@ -1,7 +1,7 @@
 {
   "name": "ur-mobster",
   "productName": "UR Mobster",
-  "version": "1.5.1",
+  "version": "2.0.0",
   "description": "Mobprogramming timer",
   "main": "./main.prod.js",
   "author": {
