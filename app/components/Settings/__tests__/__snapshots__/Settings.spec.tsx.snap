@@ -218,23 +218,36 @@ exports[`components/Settings renders when open 1`] = `
               Språk
             </span>
             <ul
-              class="sc-bdVaJa imDAUP"
+              class="wrapper"
             >
               <li
-                class="sc-bwzfXH lkHdtP"
-                data-e2e="settings-toggle-sv"
+                class="option"
               >
-                Svenska
-                <img
-                  class="sc-htpNat cfdZzv"
-                  src="test-file-stub"
-                />
+                <button
+                  class="button"
+                  data-e2e="settings-toggle-sv"
+                  style="color: rgb(44, 219, 236);"
+                  type="button"
+                >
+                  Svenska
+                  <img
+                    alt="Dot"
+                    class="dot"
+                    src="test-file-stub"
+                  />
+                </button>
               </li>
               <li
-                class="sc-bwzfXH akcDY"
-                data-e2e="settings-toggle-en"
+                class="option"
               >
-                English
+                <button
+                  class="button"
+                  data-e2e="settings-toggle-en"
+                  style="color: rgb(255, 255, 255);"
+                  type="button"
+                >
+                  English
+                </button>
               </li>
             </ul>
           </li>

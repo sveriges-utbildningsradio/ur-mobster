@@ -2,19 +2,31 @@
 
 exports[`components/Settings/SettingsToggle renders 1`] = `
 <ul
-  class="sc-bdVaJa imDAUP"
+  class="wrapper"
 >
   <li
-    class="sc-bwzfXH akcDY"
-    data-e2e="settings-toggle-sv"
+    class="option"
   >
-    Svenska
+    <button
+      class="button"
+      data-e2e="settings-toggle-sv"
+      style="color: rgb(255, 255, 255);"
+      type="button"
+    >
+      Svenska
+    </button>
   </li>
   <li
-    class="sc-bwzfXH akcDY"
-    data-e2e="settings-toggle-en"
+    class="option"
   >
-    English
+    <button
+      class="button"
+      data-e2e="settings-toggle-en"
+      style="color: rgb(255, 255, 255);"
+      type="button"
+    >
+      English
+    </button>
   </li>
 </ul>
 `;

@@ -1,28 +1,7 @@
 import React, { useContext } from 'react'
-import styled from 'styled-components'
 import dot from '../../../../assets/dot-blue.png'
 import { SettingsStoreContext } from '../../../../store/store'
-
-const Wrap = styled.ul`
-  display: flex;
-  justify-content: space-around;
-`
-
-const Option = styled.li`
-  align-items: center;
-  color: ${({ active }) => (active ? '#2cdbec' : '#fff')};
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto', sans-serif;
-  font-size: 26px;
-  font-weight: 500;
-`
-
-const Dot = styled.img`
-  margin-top: 20px;
-  width: 14px;
-`
+import styles from './SettingsToggle.css'
 
 type OptionType = {
   label: string
@@ -38,23 +17,26 @@ const SettingsToggle = ({ active, options }: SettingsToggleProps) => {
   const { dispatch, updateLanguage } = useContext(SettingsStoreContext)
 
   return (
-    <Wrap>
+    <ul className={styles.wrapper}>
       {options.map(option => {
         const isActive = active === option.value
 
         return (
-          <Option
-            active={isActive}
-            data-e2e={`settings-toggle-${option.value}`}
-            onClick={() => dispatch(updateLanguage(option.value))}
-            key={option.value}
-          >
-            {option.label}
-            {!!isActive && <Dot src={dot} />}
-          </Option>
+          <li className={styles.option} key={option.value}>
+            <button
+              className={styles.button}
+              data-e2e={`settings-toggle-${option.value}`}
+              onClick={() => dispatch(updateLanguage(option.value))}
+              style={{ color: isActive ? '#2cdbec' : '#fff' }}
+              type="button"
+            >
+              {option.label}
+              {!!isActive && <img alt="Dot" className={styles.dot} src={dot} />}
+            </button>
+          </li>
         )
       })}
-    </Wrap>
+    </ul>
   )
 }
 
