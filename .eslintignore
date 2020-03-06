@@ -30,10 +30,6 @@ node_modules
 # OSX
 .DS_Store
 
-# flow-typed
-flow-typed/npm/*
-!flow-typed/npm/module_vx.x.x.js
-
 # App packaged
 release
 app/main.prod.js
@@ -53,3 +49,7 @@ __snapshots__
 
 # Package.json
 package.json
+*.css.d.ts
+*.sass.d.ts
+*.scss.d.ts
+test

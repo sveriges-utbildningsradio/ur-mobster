@@ -1,0 +1,24 @@
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.button {
+  background: none;
+  border: none;
+}
+
+.dot {
+  margin-top: 20px;
+  width: 14px;
+}

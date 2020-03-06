@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Button/ResetButton renders 1`] = `
+<button
+  class="resetButton"
+  data-e2e="resetBreak"
+  type="button"
+>
+  Avsluta rast
+</button>
+`;

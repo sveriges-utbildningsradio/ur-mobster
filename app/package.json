@@ -1,0 +1,17 @@
+{
+  "name": "ur-mobster",
+  "productName": "UR Mobster",
+  "version": "1.5.1",
+  "description": "Mobprogramming timer",
+  "main": "./main.prod.js",
+  "author": {
+    "name": "André Elmoznino Laufer",
+    "email": "andre.elmoznino@valtech.com"
+  },
+  "scripts": {
+    "electron-rebuild": "node -r ../internals/scripts/BabelRegister.js ../internals/scripts/ElectronRebuild.js",
+    "postinstall": "yarn electron-rebuild"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}

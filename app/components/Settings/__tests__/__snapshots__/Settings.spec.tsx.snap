@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/Settings closes when clicking the Done button 1`] = `
+<div>
+  <button
+    class="buttonWrap"
+    data-e2e="settings-toggle-button"
+    type="button"
+  >
+    <img
+      alt="Settings page"
+      class="settingsButton"
+      src="test-file-stub"
+    />
+  </button>
+</div>
+`;
+
+exports[`components/Settings renders just the button when closed 1`] = `
+<div>
+  <button
+    class="buttonWrap"
+    data-e2e="settings-toggle-button"
+    type="button"
+  >
+    <img
+      alt="Settings page"
+      class="settingsButton"
+      src="test-file-stub"
+    />
+  </button>
+</div>
+`;
+
+exports[`components/Settings renders when open 1`] = `
+<div>
+  <button
+    class="buttonWrap"
+    data-e2e="settings-toggle-button"
+    type="button"
+  >
+    <span
+      class="settingsButtonWrapper"
+    >
+      Stäng
+      <img
+        alt="Close settings"
+        class="settingsButton"
+        src="test-file-stub"
+      />
+    </span>
+  </button>
+  <div
+    class="pageWrap"
+  >
+    <div>
+      <div
+        class="innerWrap"
+      >
+        <h2
+          class="header"
+          data-e2e="settings-header"
+        >
+          Mobster-inställningar
+        </h2>
+        <ul
+          class="settingsWrap"
+        >
+          <li
+            class="settingWrap"
+          >
+            <img
+              alt="Duration settings"
+              class="icon"
+              src="test-file-stub"
+            />
+            <span
+              class="settingLabel"
+            >
+              Tid
+            </span>
+            <div
+              class="wrap"
+            >
+              <p
+                class="time"
+              >
+                10
+                 min
+              </p>
+              <div
+                class="buttonsWrap"
+              >
+                <button
+                  class="button"
+                  data-e2e="increase-duration"
+                  type="button"
+                >
+                  <img
+                    alt="Increase time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Decrease time 5 minutes"
+                    class="icon"
+                    data-e2e="decrease-duration"
+                    src="test-file-stub"
+                  />
+                </button>
+              </div>
+            </div>
+          </li>
+          <li
+            class="settingWrap"
+          >
+            <img
+              alt="Pause settings"
+              class="icon"
+              src="test-file-stub"
+            />
+            <span
+              class="settingLabel"
+            >
+              Rast
+            </span>
+            <div
+              class="wrap"
+            >
+              <p
+                class="time"
+              >
+                Längd 
+                5
+                 min
+              </p>
+              <div
+                class="buttonsWrap"
+              >
+                <button
+                  class="button"
+                  data-e2e="increase-break-duration"
+                  type="button"
+                >
+                  <img
+                    alt="Increase time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Decrease time 5 minutes"
+                    class="icon"
+                    data-e2e="decrease-break-duration"
+                    src="test-file-stub"
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              class="wrap"
+            >
+              <p
+                class="time"
+              >
+                Intervall 
+                50
+                 min
+              </p>
+              <div
+                class="buttonsWrap"
+              >
+                <button
+                  class="button"
+                  data-e2e="increase-break-frequency"
+                  type="button"
+                >
+                  <img
+                    alt="Increase time 5 minutes"
+                    class="icon"
+                    src="test-file-stub"
+                  />
+                </button>
+                <button
+                  class="button"
+                  type="button"
+                >
+                  <img
+                    alt="Decrease time 5 minutes"
+                    class="icon"
+                    data-e2e="decrease-break-frequency"
+                    src="test-file-stub"
+                  />
+                </button>
+              </div>
+            </div>
+          </li>
+          <li
+            class="settingWrap"
+          >
+            <img
+              alt="Language settings"
+              class="icon"
+              src="test-file-stub"
+            />
+            <span
+              class="settingLabel"
+            >
+              Språk
+            </span>
+            <ul
+              class="wrapper"
+            >
+              <li
+                class="option"
+              >
+                <button
+                  class="button"
+                  data-e2e="settings-toggle-sv"
+                  style="color: rgb(44, 219, 236);"
+                  type="button"
+                >
+                  Svenska
+                  <img
+                    alt="Dot"
+                    class="dot"
+                    src="test-file-stub"
+                  />
+                </button>
+              </li>
+              <li
+                class="option"
+              >
+                <button
+                  class="button"
+                  data-e2e="settings-toggle-en"
+                  style="color: rgb(255, 255, 255);"
+                  type="button"
+                >
+                  English
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <button
+          class="defaultButton"
+          data-e2e="doneButton"
+          type="button"
+        >
+          Klar!
+        </button>
+      </div>
+    </div>
+    <div>
+      Skapat av 
+      <a
+        href="https://github.com/Aelmoznino"
+      >
+        @Aelmoznino
+      </a>
+       och 
+      <a
+        href="https://github.com/agnesforsell"
+      >
+        @AgnesForsell
+      </a>
+       för Sveriges Utbildningsradio AB
+    </div>
+  </div>
+</div>
+`;
