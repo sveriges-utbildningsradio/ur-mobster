@@ -561,9 +561,7 @@ exports[`components/Break renders 1`] = `
       data-e2e="resetBreak"
       type="button"
     >
-      <span>
-        Avsluta rast
-      </span>
+      Avsluta rast
     </button>
   </div>
 </div>

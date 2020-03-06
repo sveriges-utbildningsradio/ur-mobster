@@ -140,6 +140,7 @@ const Settings = () => {
           </div>
           <FormattedMessage
             id="createdBy"
+            tagName="div"
             values={{
               andre: <a href="https://github.com/Aelmoznino">@Aelmoznino</a>,
               agnes: <a href="https://github.com/agnesforsell">@AgnesForsell</a>

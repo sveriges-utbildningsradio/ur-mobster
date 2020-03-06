@@ -42,9 +42,7 @@ exports[`components/Settings renders when open 1`] = `
     <span
       class="settingsButtonWrapper"
     >
-      <span>
-        Stäng
-      </span>
+      Stäng
       <img
         alt="Close settings"
         class="settingsButton"
@@ -63,9 +61,7 @@ exports[`components/Settings renders when open 1`] = `
           class="header"
           data-e2e="settings-header"
         >
-          <span>
-            Mobster-inställningar
-          </span>
+          Mobster-inställningar
         </h2>
         <ul
           class="settingsWrap"
@@ -81,9 +77,7 @@ exports[`components/Settings renders when open 1`] = `
             <span
               class="settingLabel"
             >
-              <span>
-                Tid
-              </span>
+              Tid
             </span>
             <div
               class="wrap"
@@ -133,9 +127,7 @@ exports[`components/Settings renders when open 1`] = `
             <span
               class="settingLabel"
             >
-              <span>
-                Rast
-              </span>
+              Rast
             </span>
             <div
               class="wrap"
@@ -223,9 +215,7 @@ exports[`components/Settings renders when open 1`] = `
             <span
               class="settingLabel"
             >
-              <span>
-                Språk
-              </span>
+              Språk
             </span>
             <ul
               class="sc-bdVaJa imDAUP"
@@ -254,13 +244,11 @@ exports[`components/Settings renders when open 1`] = `
           data-e2e="doneButton"
           type="button"
         >
-          <span>
-            Klar!
-          </span>
+          Klar!
         </button>
       </div>
     </div>
-    <span>
+    <div>
       Skapat av 
       <a
         href="https://github.com/Aelmoznino"
@@ -274,7 +262,7 @@ exports[`components/Settings renders when open 1`] = `
         @AgnesForsell
       </a>
        för Sveriges Utbildningsradio AB
-    </span>
+    </div>
   </div>
 </div>
 `;

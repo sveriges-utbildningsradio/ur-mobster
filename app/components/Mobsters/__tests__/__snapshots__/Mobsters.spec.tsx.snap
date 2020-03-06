@@ -15,9 +15,7 @@ exports[`components/Mobsters renders 1`] = `
         <span
           class="editLabel"
         >
-          <span>
-            Redigera
-          </span>
+          Redigera
         </span>
         <input
           alt="Edit mobsters"
@@ -242,9 +240,7 @@ exports[`components/Mobsters renders 1`] = `
       <p
         class="githubName"
       >
-        <span>
-          Skriv namn eller GitHub-användarnamn
-        </span>
+        Skriv namn eller GitHub-användarnamn
       </p>
     </div>
   </div>
@@ -266,9 +262,7 @@ exports[`components/Mobsters renders when the user is editing the list 1`] = `
         <span
           class="editLabel"
         >
-          <span>
-            Spara
-          </span>
+          Spara
         </span>
         <input
           alt="Stop editing mobsters"
@@ -525,9 +519,7 @@ exports[`components/Mobsters renders when the user is editing the list 1`] = `
       <p
         class="githubName"
       >
-        <span>
-          Skriv namn eller GitHub-användarnamn
-        </span>
+        Skriv namn eller GitHub-användarnamn
       </p>
     </div>
   </div>
@@ -549,9 +541,7 @@ exports[`components/Mobsters renders when there is a username 1`] = `
         <span
           class="editLabel"
         >
-          <span>
-            Spara
-          </span>
+          Spara
         </span>
         <input
           alt="Stop editing mobsters"
@@ -806,9 +796,7 @@ exports[`components/Mobsters renders when there is a username 1`] = `
       <p
         class="githubName"
       >
-        <span>
-          Skriv namn eller GitHub-användarnamn
-        </span>
+        Skriv namn eller GitHub-användarnamn
       </p>
     </div>
   </div>
