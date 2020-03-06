@@ -1,0 +1,120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/MobstersContainer renders given no activeUsers nor inactiveUsers 1`] = `
+<div
+  class="wrap"
+>
+  <div>
+    <div>
+      <div
+        class="headerWrap"
+      >
+        <h4>
+          Mobsters
+        </h4>
+        <span
+          class="editLabel"
+        >
+          <span>
+            Redigera
+          </span>
+        </span>
+        <input
+          alt="Edit mobsters"
+          class="editButton"
+          data-e2e="mobsters-edit-button"
+          data-testid="mobsters-edit-button"
+          src="test-file-stub"
+          type="image"
+        />
+      </div>
+    </div>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="0"
+        style="background-color: rgb(17, 6, 54);"
+      >
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper-activeUsers"
+        >
+          <li>
+            Listan är tom
+          </li>
+        </ul>
+      </div>
+    </ul>
+    <h4>
+      Inaktiva mobsters
+    </h4>
+    <ul>
+      <div
+        class="droppableWrap"
+        data-react-beautiful-dnd-droppable="0"
+        style="background-color: rgb(17, 6, 54);"
+      >
+        <ul
+          data-e2e="mobsters-list-draggable-wrapper-inactiveUsers"
+        >
+          <li>
+            Listan är tom
+          </li>
+        </ul>
+      </div>
+    </ul>
+  </div>
+  <div
+    class="addWrap"
+  >
+    <img
+      alt="Default avatar"
+      class="avatar"
+      src="test-file-stub"
+    />
+    <div>
+      <div
+        class="inputWrap"
+      >
+        <input
+          class="userInput"
+          data-e2e="mobsters-add-input"
+          placeholder="Lägg till mobster"
+          value=""
+        />
+        <button
+          class="addButton"
+          data-e2e="mobsters-add-by-name"
+          disabled=""
+          type="button"
+        >
+          <img
+            alt="Lägg till mobster som gäst"
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
+        <button
+          class="addButton"
+          data-e2e="mobsters-add-by-github-username"
+          disabled=""
+          src="test-file-stub"
+          type="button"
+        >
+          <img
+            alt="Lägg till mobster med GitHub-konto"
+            class="addButtonImage"
+            src="test-file-stub"
+          />
+        </button>
+      </div>
+      <p
+        class="githubName"
+      >
+        <span>
+          Skriv namn eller GitHub-användarnamn
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;
