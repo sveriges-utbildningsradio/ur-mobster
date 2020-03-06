@@ -1,6 +1,6 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { AppContainer } from 'react-hot-loader'
+import { AppContainer as ReactHotAppContainer } from 'react-hot-loader'
 import { shell } from 'electron'
 import Store from './store'
 import LanguageProvider from './LanguageProvider'
@@ -14,26 +14,15 @@ document.addEventListener('click', event => {
   }
 })
 
-render(
-  <AppContainer>
-    <Store>
-      <LanguageProvider />
-    </Store>
-  </AppContainer>,
-  document.getElementById('root')
-)
+const AppContainer = process.env.PLAIN_HMR ? Fragment : ReactHotAppContainer
 
-if (module.hot) {
-  module.hot.accept('./LanguageProvider', () => {
-    // eslint-disable-next-line global-require
-    const NextRoot = require('./LanguageProvider').default
-    render(
-      <AppContainer>
-        <Store>
-          <NextRoot />
-        </Store>
-      </AppContainer>,
-      document.getElementById('root')
-    )
-  })
-}
+document.addEventListener('DOMContentLoaded', () =>
+  render(
+    <AppContainer>
+      <Store>
+        <LanguageProvider />
+      </Store>
+    </AppContainer>,
+    document.getElementById('root')
+  )
+)
