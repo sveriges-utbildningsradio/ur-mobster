@@ -5,8 +5,13 @@ import shortid from 'shortid'
 import Mobsters from './Mobsters'
 import generateMobsterName from '../../utils/generateMobsterName'
 import { move, reorder } from '../../utils/listHelpers'
+// eslint-disable-next-line import/no-cycle
 import { initialState, reducer } from './store/reducer'
 import * as types from './store/actionTypes'
+import { UserList } from '../../types'
+
+// eslint-disable-next-line import/no-mutable-exports
+export let exportedDispatch: React.Dispatch<>
 
 const MobstersContainer = ({ reachedEnd }: boolean) => {
   const init = ({ activeUsers, inactiveUsers }) => {
@@ -30,7 +35,7 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState, init)
-
+  exportedDispatch = dispatch
   const [username, setUsername] = useState('')
   const [isEditing, setIsEditing] = useState(false)
 
@@ -124,7 +129,7 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
       user => user.name !== userToRemove
     )
 
-    if (list === 'activeUsers') {
+    if (list === UserList.ACTIVE) {
       dispatch({
         type: types.UPDATE_ACTIVEUSERS,
         payload: remainingUsers
@@ -157,7 +162,7 @@ const MobstersContainer = ({ reachedEnd }: boolean) => {
         destination.index
       )
 
-      if (source.droppableId === 'inactiveUsers') {
+      if (source.droppableId === UserList.INACTIVE) {
         dispatch({
           type: types.UPDATE_INACTIVEUSERS,
           payload: items

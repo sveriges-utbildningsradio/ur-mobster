@@ -1,7 +1,7 @@
 import React from 'react'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
 import { FormattedMessage } from 'react-intl'
-import { User } from '../../types'
+import { User, UserList } from '../../types'
 import styles from './Mobsters.css'
 import avatarImage from '../../assets/avatar.png'
 import removeButton from '../../assets/stop.png'
@@ -55,10 +55,10 @@ const MobstersList = ({
                           className={styles.avatar}
                           src={user.avatar ? user.avatar : avatarImage}
                         />
-                        {index === 0 && droppableId === 'activeUsers' && (
+                        {index === 0 && droppableId === UserList.ACTIVE && (
                           <span className={styles.driverDot} />
                         )}
-                        {index === 1 && droppableId === 'activeUsers' && (
+                        {index === 1 && droppableId === UserList.ACTIVE && (
                           <span className={styles.navigatorDot} />
                         )}
                       </div>

@@ -4,3 +4,8 @@ export type User = {
   id: string
   name: string
 }
+
+export enum UserList {
+  ACTIVE = 'activeUsers',
+  INACTIVE = 'inactiveUsers'
+}
