@@ -9,3 +9,8 @@ export enum UserList {
   ACTIVE = 'activeUsers',
   INACTIVE = 'inactiveUsers'
 }
+
+export enum LanguageValue {
+  SV = 'sv',
+  EN = 'en'
+}

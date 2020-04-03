@@ -1,5 +1,6 @@
 import * as React from 'react'
 import storage from 'electron-json-storage'
+// eslint-disable-next-line import/no-cycle
 import reducer from './reducer'
 import {
   updateLanguage,
@@ -9,22 +10,26 @@ import {
   updateBreakTimeLeft
 } from './actions'
 import { FIFTY_MINUTES, FIVE_MINUTES, TEN_MINUTES } from '../constants'
+import { LanguageValue } from '../types'
+
+// eslint-disable-next-line import/no-mutable-exports
+export let exportedDispatch: React.Dispatch<>
 
 export const INITIAL_STATE = {
   breakTimeLeft: FIVE_MINUTES,
   breakDuration: FIVE_MINUTES,
   breakFrequency: FIFTY_MINUTES,
   duration: TEN_MINUTES,
-  language: 'sv'
+  language: LanguageValue.SV
 }
 
 export const SettingsStoreContext = React.createContext(INITIAL_STATE)
 
 export const handleLanguage = () => {
   const browserLanguage = navigator.language.substring(0, 2)
-  const availableLanguages = new Set(['en', 'sv'])
+  const availableLanguages = new Set([LanguageValue.EN, LanguageValue.SV])
 
-  if (!availableLanguages.has(browserLanguage)) return 'sv'
+  if (!availableLanguages.has(browserLanguage)) return LanguageValue.SV
 
   return browserLanguage
 }
@@ -78,6 +83,8 @@ const Store = ({ initialState, children }: StoreProps) => {
   }
 
   const [state, dispatch] = React.useReducer(reducer, initialState, init)
+
+  exportedDispatch = dispatch
 
   return (
     <SettingsStoreContext.Provider

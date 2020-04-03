@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import dot from '../../../../assets/dot-blue.png'
 import { SettingsStoreContext } from '../../../../store/store'
 import styles from './SettingsToggle.css'
+import { LanguageValue } from '../../../../types'
 
 type OptionType = {
   label: string
-  value: string
+  value: LanguageValue
 }
 
 type SettingsToggleProps = {

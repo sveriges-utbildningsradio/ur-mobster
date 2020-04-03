@@ -1,29 +1,51 @@
 import * as types from './actionTypes'
 import persistToStore from '../utils/persistToStore'
+// eslint-disable-next-line import/no-cycle
+import { handleSettings } from '../utils/multiMobberMode/multiMobberMode'
 
-const reducer = (state, action) => {
-  switch (action.type) {
+const reducer = (state, { payload, type }) => {
+  switch (type) {
     case types.SET_SETTINGS_FROM_STORAGE:
-      return { ...action.payload }
+      return { ...payload }
 
     case types.UPDATE_LANGUAGE:
-      persistToStore('language', action.payload)
-      return { ...state, language: action.payload }
+      persistToStore('language', payload)
+      return { ...state, language: payload }
 
     case types.UPDATE_BREAK_DURATION:
-      persistToStore('breakDuration', action.payload)
-      return { ...state, breakDuration: action.payload }
+      handleSettings(type, payload)
+      persistToStore('breakDuration', payload)
+      return { ...state, breakDuration: payload }
 
     case types.UPDATE_BREAK_FREQUENCY:
-      persistToStore('breakFrequency', action.payload)
-      return { ...state, breakFrequency: action.payload }
+      handleSettings(type, payload)
+      persistToStore('breakFrequency', payload)
+      return { ...state, breakFrequency: payload }
 
     case types.UPDATE_DURATION:
-      persistToStore('duration', action.payload)
-      return { ...state, duration: action.payload }
+      handleSettings(type, payload)
+      persistToStore('duration', payload)
+      return { ...state, duration: payload }
 
     case types.UPDATE_BREAK_TIME_LEFT:
-      return { ...state, breakTimeLeft: action.payload }
+      handleSettings(type, payload)
+      return { ...state, breakTimeLeft: payload }
+
+    // FROM REMOTE, not triggering a socket.emit
+    case types.UPDATE_BREAK_DURATION_FROM_REMOTE:
+      persistToStore('breakDuration', payload)
+      return { ...state, breakDuration: payload }
+
+    case types.UPDATE_BREAK_FREQUENCY_FROM_REMOTE:
+      persistToStore('breakFrequency', payload)
+      return { ...state, breakFrequency: payload }
+
+    case types.UPDATE_DURATION_FROM_REMOTE:
+      persistToStore('duration', payload)
+      return { ...state, duration: payload }
+
+    case types.UPDATE_BREAK_TIME_LEFT_FROM_REMOTE:
+      return { ...state, breakTimeLeft: payload }
 
     default:
       return state
