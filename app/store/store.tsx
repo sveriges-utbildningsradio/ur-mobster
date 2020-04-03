@@ -3,11 +3,18 @@ import storage from 'electron-json-storage'
 // eslint-disable-next-line import/no-cycle
 import reducer from './reducer'
 import {
-  updateLanguage,
-  updateDuration,
+  resetBreak,
+  setTimeIsUp,
   updateBreakDuration,
   updateBreakFrequency,
-  updateBreakTimeLeft
+  updateBreakTimeLeft,
+  updateDuration,
+  updateIsOnBreak,
+  updateIsRunning,
+  updateLanguage,
+  updateReachedEnd,
+  updateTimeLeft,
+  updateTimeSinceBreak
 } from './actions'
 import { FIFTY_MINUTES, FIVE_MINUTES, TEN_MINUTES } from '../constants'
 import { LanguageValue } from '../types'
@@ -16,11 +23,16 @@ import { LanguageValue } from '../types'
 export let exportedDispatch: React.Dispatch<>
 
 export const INITIAL_STATE = {
-  breakTimeLeft: FIVE_MINUTES,
   breakDuration: FIVE_MINUTES,
   breakFrequency: FIFTY_MINUTES,
+  breakTimeLeft: FIVE_MINUTES,
   duration: TEN_MINUTES,
-  language: LanguageValue.SV
+  isOnBreak: false,
+  isRunning: false,
+  language: LanguageValue.SV,
+  reachedEnd: false,
+  timeLeft: TEN_MINUTES,
+  timeSinceBreak: 0
 }
 
 export const SettingsStoreContext = React.createContext(INITIAL_STATE)
@@ -35,11 +47,16 @@ export const handleLanguage = () => {
 }
 
 type initialStateProps = {
-  breakTimeLeft: number
   breakDuration: number
   breakFrequency: number
+  breakTimeLeft: number
   duration: number
+  isOnBreak: boolean
+  isRunning: boolean
   language: string
+  reachedEnd: boolean
+  timeLeft: number
+  timeSinceBreak: number
 }
 
 type StoreProps = {
@@ -53,13 +70,28 @@ const Store = ({ initialState, children }: StoreProps) => {
     breakFrequency,
     breakTimeLeft,
     duration,
-    language
+    language,
+    isOnBreak,
+    isRunning,
+    reachedEnd,
+    timeLeft,
+    timeSinceBreak
   }) => {
     storage.getAll((_, data) => {
       if (Object.keys(data).length === 0 && data.constructor === Object) {
-        return { breakDuration, breakFrequency, duration, language }
+        return {
+          breakDuration,
+          breakFrequency,
+          breakTimeLeft,
+          duration,
+          language,
+          isOnBreak,
+          isRunning,
+          reachedEnd,
+          timeLeft,
+          timeSinceBreak
+        }
       }
-
       const defaultLanguage = handleLanguage()
 
       // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -79,7 +111,18 @@ const Store = ({ initialState, children }: StoreProps) => {
       return null
     })
 
-    return { breakDuration, breakFrequency, breakTimeLeft, duration, language }
+    return {
+      breakDuration,
+      breakFrequency,
+      breakTimeLeft,
+      duration,
+      language,
+      isOnBreak,
+      isRunning,
+      reachedEnd,
+      timeLeft,
+      timeSinceBreak
+    }
   }
 
   const [state, dispatch] = React.useReducer(reducer, initialState, init)
@@ -91,11 +134,18 @@ const Store = ({ initialState, children }: StoreProps) => {
       value={{
         ...state,
         dispatch,
-        updateLanguage,
-        updateDuration,
+        resetBreak,
+        setTimeIsUp,
         updateBreakDuration,
         updateBreakFrequency,
-        updateBreakTimeLeft
+        updateBreakTimeLeft,
+        updateDuration,
+        updateIsOnBreak,
+        updateIsRunning,
+        updateLanguage,
+        updateReachedEnd,
+        updateTimeLeft,
+        updateTimeSinceBreak
       }}
     >
       {children}

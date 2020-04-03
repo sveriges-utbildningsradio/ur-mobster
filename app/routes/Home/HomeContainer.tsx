@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Home from './Home'
 import useInterval from '../../utils/useInterval'
 import { SettingsStoreContext } from '../../store/store'
 
+// TODO: Move setWindowActive and setWindowHidden to reducer to make it sync between remotes
 const {
   setReminderTimerIsActive,
   setWindowActive,
@@ -11,46 +12,44 @@ const {
 
 const HomeContainer = () => {
   const {
-    breakDuration,
     breakFrequency,
     breakTimeLeft,
     dispatch,
     duration,
-    updateBreakTimeLeft
+    isOnBreak,
+    isRunning,
+    reachedEnd,
+    resetBreak,
+    setTimeIsUp,
+    timeLeft,
+    timeSinceBreak,
+    updateBreakTimeLeft,
+    updateIsOnBreak,
+    updateIsRunning,
+    updateReachedEnd,
+    updateTimeLeft,
+    updateTimeSinceBreak
   } = useContext(SettingsStoreContext)
-
-  const [count, setCount] = useState(duration)
-  const [isRunning, setIsRunning] = useState(false)
-  const [reachedEnd, setReachedEnd] = useState(false)
-
-  // Break state
-  const [timeSinceBreak, setTimeSinceBreak] = useState(0)
-  const [isOnBreak, setIsOnBreak] = useState(false)
 
   useInterval(
     () => {
-      setCount(count - 1)
-
-      if (count === 0) {
-        setIsRunning(false)
-        setCount(duration)
+      dispatch(updateTimeLeft(timeLeft - 1))
+      if (timeLeft === 0) {
+        dispatch(setTimeIsUp())
         setWindowActive()
-        setReachedEnd(true)
 
-        setTimeSinceBreak(prevTime => prevTime + duration)
+        dispatch(updateTimeSinceBreak(prevTime => prevTime + duration))
       }
     },
     isRunning ? 1000 : null
   )
 
   useEffect(() => {
-    setCount(duration)
+    dispatch(updateTimeLeft(duration))
   }, [duration])
 
-  const resetBreak = () => {
-    dispatch(updateBreakTimeLeft(breakDuration))
-    setIsOnBreak(false)
-    setTimeSinceBreak(0)
+  const handleResetBreak = () => {
+    dispatch(resetBreak())
     setWindowActive()
   }
 
@@ -60,7 +59,7 @@ const HomeContainer = () => {
       dispatch(updateBreakTimeLeft(breakTimeLeft - 1))
 
       if (breakTimeLeft === 1) {
-        resetBreak()
+        handleResetBreak()
       }
     },
     isOnBreak ? 1000 : null
@@ -69,33 +68,34 @@ const HomeContainer = () => {
   useEffect(() => {
     if (timeSinceBreak >= breakFrequency) {
       setReminderTimerIsActive(true)
-      setIsOnBreak(true)
+      dispatch(updateIsOnBreak(true))
     }
   }, [timeSinceBreak])
 
-  const handleIsRunningClick = timerIsRunning => {
+  const handleIsRunningClick = (timerIsRunning: boolean) => {
     if (timerIsRunning) {
-      setReachedEnd(false)
+      dispatch(updateReachedEnd(false))
       setWindowHidden()
     }
 
-    setIsRunning(timerIsRunning)
+    dispatch(updateIsRunning(timerIsRunning))
   }
 
   const handleResetClick = () => {
-    setIsRunning(false)
-    setCount(duration)
+    // TODO: Make it reset the remote's time too
+    dispatch(updateIsRunning(false))
+    dispatch(updateTimeLeft(duration))
   }
 
   return (
     <Home
-      count={count}
-      isOnBreak={isOnBreak}
-      isRunning={isRunning}
       handleIsRunningClick={handleIsRunningClick}
       handleResetClick={handleResetClick}
+      isOnBreak={isOnBreak}
+      isRunning={isRunning}
       reachedEnd={reachedEnd}
-      resetBreak={resetBreak}
+      resetBreak={handleResetBreak}
+      timeLeft={timeLeft}
     />
   )
 }

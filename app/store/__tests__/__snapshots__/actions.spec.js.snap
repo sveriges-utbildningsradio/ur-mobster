@@ -28,9 +28,44 @@ Object {
 }
 `;
 
+exports[`store/actions updateIsOnBreak 1`] = `
+Object {
+  "payload": true,
+  "type": "UPDATE_IS_ON_BREAK",
+}
+`;
+
+exports[`store/actions updateIsRunning 1`] = `
+Object {
+  "payload": true,
+  "type": "UPDATE_IS_RUNNING",
+}
+`;
+
 exports[`store/actions updateLanguage 1`] = `
 Object {
   "payload": "en",
   "type": "UPDATE_LANGUAGE",
+}
+`;
+
+exports[`store/actions updateReachedEnd 1`] = `
+Object {
+  "payload": true,
+  "type": "UPDATE_REACHED_END",
+}
+`;
+
+exports[`store/actions updateTimeLeft 1`] = `
+Object {
+  "payload": 300,
+  "type": "UPDATE_TIME_LEFT",
+}
+`;
+
+exports[`store/actions updateTimeSinceBreak 1`] = `
+Object {
+  "payload": 300,
+  "type": "UPDATE_TIME_SINCE_BREAK",
 }
 `;

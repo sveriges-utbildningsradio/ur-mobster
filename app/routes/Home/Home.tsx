@@ -9,23 +9,23 @@ import DefaultButton from '../../components/Button/DefaultButton'
 import ResetButton from '../../components/Button/ResetButton'
 
 type HomeProps = {
-  count: number
-  isOnBreak: boolean
-  isRunning: boolean
   handleIsRunningClick: (isRunning: boolean) => void
   handleResetClick: () => void
+  isOnBreak: boolean
+  isRunning: boolean
   reachedEnd: boolean
   resetBreak: () => void
+  timeLeft: number
 }
 
 const Home = ({
-  count,
-  isOnBreak,
-  isRunning,
   handleIsRunningClick,
   handleResetClick,
+  isOnBreak,
+  isRunning,
   reachedEnd,
-  resetBreak
+  resetBreak,
+  timeLeft
 }: HomeProps) => (
   <div className={styles.wrap} data-tid="container">
     <div className={styles.dragArea} />
@@ -38,7 +38,7 @@ const Home = ({
       {isOnBreak && <Break resetBreak={resetBreak} />}
       <h2 className={styles.header}>UR Mob</h2>
       <h3 className={styles.timeLeft} data-e2e="duration-time-left">
-        <FormattedMessage id="timeLeft" />: {formatTime(count)}
+        <FormattedMessage id="timeLeft" />: {formatTime(timeLeft)}
       </h3>
 
       <div className={styles.buttonsWrap}>

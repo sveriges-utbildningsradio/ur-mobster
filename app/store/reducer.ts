@@ -6,7 +6,7 @@ import { handleSettings } from '../utils/multiMobberMode/multiMobberMode'
 const reducer = (state, { payload, type }) => {
   switch (type) {
     case types.SET_SETTINGS_FROM_STORAGE:
-      return { ...payload }
+      return { ...state, ...payload }
 
     case types.UPDATE_LANGUAGE:
       persistToStore('language', payload)
@@ -28,8 +28,25 @@ const reducer = (state, { payload, type }) => {
       return { ...state, duration: payload }
 
     case types.UPDATE_BREAK_TIME_LEFT:
-      handleSettings(type, payload)
       return { ...state, breakTimeLeft: payload }
+
+    case types.UPDATE_TIME_LEFT:
+      return { ...state, timeLeft: payload }
+
+    case types.UPDATE_TIME_SINCE_BREAK:
+      return { ...state, timeSinceBreak: payload }
+
+    case types.UPDATE_IS_RUNNING:
+      handleSettings(type, payload)
+      return { ...state, isRunning: payload }
+
+    case types.UPDATE_REACHED_END:
+      handleSettings(type, payload)
+      return { ...state, reachedEnd: payload }
+
+    case types.UPDATE_IS_ON_BREAK:
+      handleSettings(type, payload)
+      return { ...state, isOnBreak: payload }
 
     // FROM REMOTE, not triggering a socket.emit
     case types.UPDATE_BREAK_DURATION_FROM_REMOTE:
@@ -44,8 +61,54 @@ const reducer = (state, { payload, type }) => {
       persistToStore('duration', payload)
       return { ...state, duration: payload }
 
-    case types.UPDATE_BREAK_TIME_LEFT_FROM_REMOTE:
-      return { ...state, breakTimeLeft: payload }
+    case types.UPDATE_IS_RUNNING_FROM_REMOTE:
+      return { ...state, isRunning: payload }
+
+    case types.UPDATE_REACHED_END_FROM_REMOTE:
+      return { ...state, reachedEnd: payload }
+
+    case types.UPDATE_IS_ON_BREAK_FROM_REMOTE:
+      return { ...state, isOnBreak: payload }
+
+    case types.SET_TIME_IS_UP: {
+      handleSettings(type)
+      return {
+        ...state,
+        isRunning: false,
+        reachedEnd: true,
+        timeLeft: state.duration
+      }
+    }
+
+    case types.SET_TIME_IS_UP_FROM_REMOTE: {
+      return {
+        ...state,
+        isRunning: false,
+        reachedEnd: true,
+        timeLeft: state.duration
+      }
+    }
+
+    case types.RESET_BREAK: {
+      handleSettings(type)
+      return {
+        ...state,
+        breakTimeLeft: state.breakDuration,
+        isOnBreak: false,
+        timeLeft: state.duration,
+        timeSinceBreak: 0
+      }
+    }
+
+    case types.RESET_BREAK_FROM_REMOTE: {
+      return {
+        ...state,
+        breakTimeLeft: state.breakDuration,
+        isOnBreak: false,
+        timeLeft: state.duration,
+        timeSinceBreak: 0
+      }
+    }
 
     default:
       return state

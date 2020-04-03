@@ -30,4 +30,32 @@ describe('store/actions', () => {
 
     expect(action).toMatchSnapshot()
   })
+  it('updateTimeLeft', () => {
+    const action = actions.updateTimeLeft(300)
+
+    expect(action).toMatchSnapshot()
+  })
+
+  it('updateIsRunning', () => {
+    const action = actions.updateIsRunning(true)
+
+    expect(action).toMatchSnapshot()
+  })
+  it('updateReachedEnd', () => {
+    const action = actions.updateReachedEnd(true)
+
+    expect(action).toMatchSnapshot()
+  })
+
+  it('updateTimeSinceBreak', () => {
+    const action = actions.updateTimeSinceBreak(300)
+
+    expect(action).toMatchSnapshot()
+  })
+
+  it('updateIsOnBreak', () => {
+    const action = actions.updateIsOnBreak(true)
+
+    expect(action).toMatchSnapshot()
+  })
 })
