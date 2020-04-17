@@ -11,35 +11,43 @@ import { exportedDispatch as settingsDispatch } from '../../store/store'
 import { LanguageValue, User, UserList } from '../../types'
 import { UPDATE_SETTING, UPDATE_USERS } from './constants'
 
+let isConnected = false
 let socket
 const IS_TEST_ENV = process.env.NODE_ENV === 'test'
 
-if (!IS_TEST_ENV || !process.env.E2E_BUILD) {
-  socket = io.connect(SOCKET_SERVER_URL)
+export const toggleConnected = () => {
+  isConnected = !isConnected
+  console.log('connected to server: ', isConnected)
 
-  /* LISTENERS */
-  socket.on(UPDATE_USERS, ({ list, users }) => {
-    // console.log('USERS UPDATED FROM SERVER: ', list, users)
+  if (!IS_TEST_ENV || !process.env.E2E_BUILD) {
+    if (isConnected) {
+      socket = io.connect(SOCKET_SERVER_URL)
 
-    if (list === UserList.ACTIVE) {
-      mobstersDispatch({
-        type: UPDATE_ACTIVE_FROM_REMOTE,
-        payload: users
+      /* LISTENERS */
+      socket.on(UPDATE_USERS, ({ list, users }) => {
+        if (list === UserList.ACTIVE) {
+          mobstersDispatch({
+            type: UPDATE_ACTIVE_FROM_REMOTE,
+            payload: users
+          })
+        } else if (list === UserList.INACTIVE) {
+          mobstersDispatch({
+            type: UPDATE_INACTIVE_FROM_REMOTE,
+            payload: users
+          })
+        }
       })
-    } else if (list === UserList.INACTIVE) {
-      mobstersDispatch({
-        type: UPDATE_INACTIVE_FROM_REMOTE,
-        payload: users
+
+      socket.on(UPDATE_SETTING, ({ type, value }) => {
+        settingsDispatch({
+          payload: value,
+          type: `${type}_FROM_REMOTE`
+        })
       })
+    } else {
+      socket.disconnect()
     }
-  })
-
-  socket.on(UPDATE_SETTING, ({ type, value }) => {
-    settingsDispatch({
-      payload: value,
-      type: `${type}_FROM_REMOTE`
-    })
-  })
+  }
 }
 
 /* DISPATCHERS */

@@ -1,0 +1,89 @@
+.wrapper {
+  background-color: #2396fc;
+  color: #110737;
+  height: 44px;
+  margin: 50px 0 30px;
+  width: 183px;
+}
+
+.wrapperExpanded {
+  height: 169px;
+  margin: 30px 0;
+  padding: 24px 28px 24px 42px;
+  width: 100%;
+}
+
+.header {
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.urlInput {
+  background: #2396fc;
+  border: none;
+  border-bottom: 1px solid #110737;
+  color: #110737;
+  font-family: Roboto, sans-serif;
+  font-size: 18px;
+  margin-bottom: 5px;
+  width: 360px;
+}
+
+.urlInput:hover {
+  background: #2396fc;
+  color: #110737;
+}
+
+.urlInput::placeholder {
+  color: #110737;
+}
+
+.statusWrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  width: 360px;
+}
+
+.status {
+  font-size: 20px;
+}
+
+.connectButton {
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  min-width: 100px;
+}
+
+.addButton {
+  align-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 42px;
+  width: 100%;
+  height: 100%;
+}
+
+.addButtonLabel {
+  padding-left: 42px;
+  padding-right: 15px;
+}
+
+.addButton:focus {
+  outline: 2px solid #2cdbec;
+}
+
+.buttonImage {
+  height: 24px;
+  width: 24px;
+}

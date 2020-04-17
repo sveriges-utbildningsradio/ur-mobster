@@ -2,6 +2,7 @@ import React from 'react'
 import { FormattedMessage } from 'react-intl'
 import styles from './Home.css'
 import { formatTime } from '../../utils/formatTime'
+import MobsterParty from '../../components/MobsterParty'
 import Mobsters from '../../components/Mobsters'
 import Settings from '../../components/Settings'
 import Break from '../../components/Break'
@@ -30,6 +31,7 @@ const Home = ({
   <div className={styles.wrap} data-tid="container">
     <div className={styles.dragArea} />
     <div className={styles.mobstersWrap}>
+      <MobsterParty />
       <Mobsters reachedEnd={reachedEnd} />
     </div>
 

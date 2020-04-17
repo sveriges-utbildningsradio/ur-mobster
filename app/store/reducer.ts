@@ -1,7 +1,10 @@
 import * as types from './actionTypes'
 import persistToStore from '../utils/persistToStore'
 // eslint-disable-next-line import/no-cycle
-import { handleSettings } from '../utils/multiMobberMode/multiMobberMode'
+import {
+  handleSettings,
+  toggleConnected
+} from '../utils/multiMobberMode/multiMobberMode'
 
 const reducer = (state, { payload, type }) => {
   switch (type) {
@@ -47,6 +50,14 @@ const reducer = (state, { payload, type }) => {
     case types.UPDATE_IS_ON_BREAK:
       handleSettings(type, payload)
       return { ...state, isOnBreak: payload }
+
+    case types.CONNECT_MOBSTER_PARTY:
+      toggleConnected()
+      return { ...state, isConnected: true }
+
+    case types.DISCONNECT_MOBSTER_PARTY:
+      toggleConnected()
+      return { ...state, isConnected: false }
 
     // FROM REMOTE, not triggering a socket.emit
     case types.UPDATE_BREAK_DURATION_FROM_REMOTE:

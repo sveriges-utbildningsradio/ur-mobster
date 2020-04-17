@@ -27,6 +27,7 @@ export const INITIAL_STATE = {
   breakFrequency: FIFTY_MINUTES,
   breakTimeLeft: FIVE_MINUTES,
   duration: TEN_MINUTES,
+  isConnected: false,
   isOnBreak: false,
   isRunning: false,
   language: LanguageValue.SV,
@@ -51,6 +52,7 @@ type initialStateProps = {
   breakFrequency: number
   breakTimeLeft: number
   duration: number
+  isConnected: boolean
   isOnBreak: boolean
   isRunning: boolean
   language: string
@@ -71,6 +73,7 @@ const Store = ({ initialState, children }: StoreProps) => {
     breakTimeLeft,
     duration,
     language,
+    isConnected,
     isOnBreak,
     isRunning,
     reachedEnd,
@@ -85,6 +88,7 @@ const Store = ({ initialState, children }: StoreProps) => {
           breakTimeLeft,
           duration,
           language,
+          isConnected,
           isOnBreak,
           isRunning,
           reachedEnd,
@@ -117,6 +121,7 @@ const Store = ({ initialState, children }: StoreProps) => {
       breakTimeLeft,
       duration,
       language,
+      isConnected,
       isOnBreak,
       isRunning,
       reachedEnd,
