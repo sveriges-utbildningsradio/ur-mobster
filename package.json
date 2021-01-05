@@ -230,7 +230,7 @@
     "@babel/preset-typescript": "^7.8.3",
     "@hot-loader/react-dom": "^16.12.0",
     "@testing-library/react": "^8.0.1",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "browserslist-config-erb": "^0.0.1",
     "core-js": "3",
     "devtron": "^1.4.0",
